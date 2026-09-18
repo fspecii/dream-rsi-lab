@@ -64,8 +64,8 @@ def bounded_process(argv, *, payload=b'', timeout=60, limit=65536):
             'seconds': time.monotonic() - start}
 
 
-# Remove later Git history/remotes before allowing any model-directed command.
-# Keep exactly the originally tracked files, including tracked ignored files.
+# Remove non-ancestral references and objects before model-directed commands.
+# Preserve base ancestry/tags because packages may derive versions from Git.
 INITIALIZE = r'''
 set -eu
 # Prepared images may retain the environment-setup revision at HEAD.
@@ -74,12 +74,17 @@ git -c safe.directory=/testbed cat-file -e "$1^{commit}" 2>/dev/null || { echo '
 git -c safe.directory=/testbed reset --hard "$1" >/dev/null
 actual=$(git -c safe.directory=/testbed rev-parse HEAD)
 [ "$actual" = "$1" ] || { echo 'Base commit mismatch' >&2; exit 1; }
-git -c safe.directory=/testbed ls-files -z > /tmp/dream-original-files
-rm -rf /testbed/.git
-git init -q
-git -c core.hooksPath=/dev/null add -f --pathspec-from-file=/tmp/dream-original-files --pathspec-file-nul
-git -c core.hooksPath=/dev/null -c user.name=DreamLab -c user.email=local@example.invalid commit -qm baseline
-rm /tmp/dream-original-files
+git for-each-ref --merged="$1" --format='%(refname)' refs/tags > /tmp/dream-kept-refs
+printf '%s\n' refs/heads/dream-baseline >> /tmp/dream-kept-refs
+git update-ref refs/heads/dream-baseline "$1"
+git symbolic-ref HEAD refs/heads/dream-baseline
+git for-each-ref --format='%(refname)' | while IFS= read -r ref; do
+    if ! grep -Fxq "$ref" /tmp/dream-kept-refs; then printf 'delete %s\n' "$ref"; fi
+done | git update-ref --stdin
+git remote | while IFS= read -r remote; do git remote remove "$remote"; done
+git reflog expire --expire=now --all
+git -c pack.threads=1 -c pack.windowMemory=64m gc --prune=now
+rm /tmp/dream-kept-refs
 '''
 
 FILE_TOOL = r'''
