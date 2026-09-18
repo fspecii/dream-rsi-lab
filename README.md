@@ -44,6 +44,11 @@ xarray's patch failed official tests, and Django produced no patch. The
 [development evidence](examples/benchmarks/retrieval/README.md) includes all costs
 and traces; it establishes no repair or efficiency improvement.
 
+A subsequent Qwen3.5 9B development run repaired the exposed Django case in five
+calls and passed official evaluation. Its public issue contains a suggested fix;
+this does not establish independent diagnosis or broad reliability. The registered
+xarray run is pending. [Model development evidence](examples/benchmarks/model-development/README.md).
+
 ## Quick start
 
 Use macOS or Linux, Python 3.11+, Ollama, and Docker:

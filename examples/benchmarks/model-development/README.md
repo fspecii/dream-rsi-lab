@@ -23,3 +23,17 @@ tokens, 8.13 seconds including first model load). It returned the requested JSON
 read action and line range. Raw request/response and model metadata are preserved
 under `compatibility/`. This is transport evidence, not repository-repair evidence.
 The registered Django repair run has started; its result is pending.
+
+Django generation finished after 5 calls with a 570-byte patch, two reads, two
+replacement attempts (one failed), and a finish action. It used 11,961 input and
+385 output tokens, taking 103.01 seconds of model request time. The model ran no
+reproducer or tests before finishing, so its completion message is not evidence
+of verification. Official evaluation completed and reported **resolved**, with zero infrastructure failures, ambiguous failures, or errors. The public Django issue already
+contains a suggested fix; this is not evidence of independent diagnosis.
+The registered xarray run has now started without Django evaluator feedback.
+
+`django-official-results.json` is the official summary;
+`django-evaluation-method.json` records the exact-image evaluation entry point.
+This first successful repair is an exposed development result with a suggested
+fix in the public issue, not an independent benchmark score or learned-controller
+gain. The xarray outcome remains pending; no two-case aggregate is claimed yet.

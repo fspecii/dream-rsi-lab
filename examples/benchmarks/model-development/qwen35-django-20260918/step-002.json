@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/forms/models.py",
+    "start": 80,
+    "end": 95
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "80:     \"\"\"\n81:     opts = instance._meta\n82:     data = {}\n83:     for f in chain(opts.concrete_fields, opts.private_fields, opts.many_to_many):\n84:         if not getattr(f, 'editable', False):\n85:             continue\n86:         if fields and f.name not in fields:\n87:             continue\n88:         if exclude and f.name in exclude:\n89:             continue\n90:         data[f.name] = f.value_from_object(instance)\n91:     return data\n92: \n93: \n94: def apply_limit_choices_to_to_formfield(formfield):\n95:     \"\"\"Apply limit_choices_to to the formfield's queryset if needed.\"\"\"\n",
+    "stderr": "",
+    "seconds": 0.39532687500468455
+  }
+}

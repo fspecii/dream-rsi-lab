@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/forms/models.py",
+    "start": 69,
+    "end": 105
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "69: def model_to_dict(instance, fields=None, exclude=None):\n70:     \"\"\"\n71:     Return a dict containing the data in ``instance`` suitable for passing as\n72:     a Form's ``initial`` keyword argument.\n73: \n74:     ``fields`` is an optional list of field names. If provided, return only the\n75:     named.\n76: \n77:     ``exclude`` is an optional list of field names. If provided, exclude the\n78:     named from the returned dict, even if they are listed in the ``fields``\n79:     argument.\n80:     \"\"\"\n81:     opts = instance._meta\n82:     data = {}\n83:     for f in chain(opts.concrete_fields, opts.private_fields, opts.many_to_many):\n84:         if not getattr(f, 'editable', False):\n85:             continue\n86:         if fields and f.name not in fields:\n87:             continue\n88:         if exclude and f.name in exclude:\n89:             continue\n90:         data[f.name] = f.value_from_object(instance)\n91:     return data\n92: \n93: \n94: def apply_limit_choices_to_to_formfield(formfield):\n95:     \"\"\"Apply limit_choices_to to the formfield's queryset if needed.\"\"\"\n96:     if hasattr(formfield, 'queryset') and hasattr(formfield, 'get_limit_choices_to'):\n97:         limit_choices_to = formfield.get_limit_choices_to()\n98:         if limit_choices_to is not None:\n99:             formfield.queryset = formfield.queryset.complex_filter(limit_choices_to)\n100: \n101: \n102: def fields_for_model(model, fields=None, exclude=None, widgets=None,\n103:                      formfield_callback=None, localized_fields=None,\n104:                      labels=None, help_texts=None, error_messages=None,\n105:                      field_classes=None, *, apply_limit_choices_to=True):\n",
+    "stderr": "",
+    "seconds": 0.40000470899394713
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "action": {
+    "action": "finish",
+    "summary": "Fixed model_to_dict() to return an empty dict when fields=[] is passed by changing 'if fields' to 'if fields is not None'. The fix was applied to the first occurrence in django/forms/models.py (line 86) while leaving the second occurrence (line 434) unchanged. This ensures that passing an empty list explicitly results in an empty dict, as expected."
+  },
+  "observation": {
+    "summary": "Fixed model_to_dict() to return an empty dict when fields=[] is passed by changing 'if fields' to 'if fields is not None'. The fix was applied to the first occurrence in django/forms/models.py (line 86) while leaving the second occurrence (line 434) unchanged. This ensures that passing an empty list explicitly results in an empty dict, as expected."
+  }
+}

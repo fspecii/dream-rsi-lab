@@ -1,0 +1,16 @@
+{
+  "action": {
+    "action": "replace",
+    "path": "django/forms/models.py",
+    "old": "        if fields and f.name not in fields:\n            continue\n        if exclude and f.name in exclude:",
+    "new": "        if fields is not None and f.name not in fields:\n            continue\n        if exclude and f.name in exclude:",
+    "summary": "Fixed model_to_dict() to return empty dict for empty fields list by changing 'if fields' to 'if fields is not None'. Added line range start=86, end=88 to target only the first occurrence in model_to_dict function (line 86), avoiding ambiguity with the second occurrence at line 434."
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "Replaced one occurrence\n",
+    "stderr": "",
+    "seconds": 0.44523045897949487
+  }
+}

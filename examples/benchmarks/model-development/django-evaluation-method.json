@@ -1,0 +1,10 @@
+{
+  "run_id": "dream-lab-qwen35-django-20260918",
+  "method": "Unmodified official load_instances, run_instances, make_run_report using prebuilt-image wrapper; exact candidate image asserted before evaluation.",
+  "harness_commit": "02e7a74ffd0b707aab73d203fe87bdc7c76afc8e",
+  "task_repo_commit": "3d07b464b7b311a0cbfb5ed5b2d8a3b96f84a33d",
+  "wrapper": "../retrieval/evaluate_pinned_candidate.py",
+  "wrapper_sha256": "1a272c73a28d9319c06ceb3bb82236dbb1cc1a12fffd4b97f5136650f664ed3d",
+  "candidate_patch_sha256": "dbdb40f0b8c6a9fb93dbff45dfd563b600a4b81881b0d6c7e322107d1d3f5501",
+  "image_id": "sha256:50498082fff67d42201c282ba0e9f768f31e4cae8982012db9f8d4216652f24b"
+}

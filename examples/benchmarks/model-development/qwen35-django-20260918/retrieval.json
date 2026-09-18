@@ -1,0 +1,28 @@
+{
+  "context": {
+    "method": "issue symbols, traceback lines, and filenames; no reference patches",
+    "queries": {
+      "symbols": [
+        "model_to_dict"
+      ],
+      "filenames": [],
+      "trace_lines": []
+    },
+    "files_scanned": 856,
+    "bytes_scanned": 4735271,
+    "scan_truncated": false,
+    "files": [
+      {
+        "path": "django/forms/models.py",
+        "score": 40,
+        "matched_queries": [
+          "model_to_dict"
+        ],
+        "sha256": "0d4d398417274509aab863550eb2eefa663db84e5df3ea742540175c1c489832",
+        "excerpt": "57:             file_field_list.append(f)\n58:         else:\n59:             f.save_form_data(instance, cleaned_data[f.name])\n60: \n61:     for f in file_field_list:\n62:         f.save_form_data(instance, cleaned_data[f.name])\n63: \n64:     return instance\n65: \n66: \n67: # ModelForms #################################################################\n68: \n69: def model_to_dict(instance, fields=None, exclude=None):\n70:     \"\"\"\n71:     Return a dict containing the data in ``instance`` suitable for passing as\n72:     a Form's ``initial`` keyword argument.\n73: \n74:     ``fields`` is an optional list of field names. If provided, return only the\n75:     named.\n76: \n77:     ``exclude`` is an optional list of field names. If provided, exclude the\n78:     named from the returned dict, even if they are listed in the ``fields``\n79:     argument.\n80:     \"\"\"\n81:     opts = instance._meta\n82:     data = {}\n83:     for f in chain(opts.concrete_fields, opts.private_fields, opts.many_to_many):\n84:         if not getattr(f, 'editable', False):\n85:             continue\n86:         if fields and f.name not in fields:\n87:             continue"
+      }
+    ],
+    "warning": "Search hints only; ranking and excerpts do not establish a correct repair."
+  },
+  "seconds": 1.4008374999975786
+}
