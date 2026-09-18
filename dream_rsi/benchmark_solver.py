@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -69,6 +70,18 @@ Recent actions and bounded observations (older ones may be omitted):
 '''
 
 
+def recovery_required(history):
+    """A failed edit needs fresh inspection before another edit is attempted."""
+    for step in reversed(history):
+        action, observation = step.get('action') or {}, step['observation']
+        failed = observation.get('returncode', 0) != 0 or 'invalid_action' in observation
+        if action.get('action') in ('read', 'run') and not failed:
+            return False
+        if action.get('action') == 'replace' and failed:
+            return True
+    return False
+
+
 def generate_prediction(inputs: Path, instance_id: str, output: Path,
                         model='qwen2.5-coder:7b', steps=24, seed=2027,
                         base_url='http://localhost:11434', policy_path: Path | None = None,
@@ -101,6 +114,7 @@ def generate_prediction(inputs: Path, instance_id: str, output: Path,
                 'command_timeout_seconds': 60, 'output_limit_bytes_per_stream': 65536,
                 'implementation': implementation, 'policy': controller.value if controller else 'fixed sequential tool loop',
                 'retrieval': bool(retrieve_context),
+                'workflow_revision': 'edit-recovery-v1',
                 'selection': 'Current patch at finish or budget exhaustion; no official test feedback',
                 'status': 'preparing'}
     save_json(output/'manifest.json', manifest)
@@ -132,8 +146,24 @@ def generate_prediction(inputs: Path, instance_id: str, output: Path,
                     if controller:
                         prompt = controller.guidance(history) + '\n' + prompt
                         schema = controller.schema(ACTION_SCHEMA, history)
+                    recover = recovery_required(history)
+                    if recover:
+                        schema = copy.deepcopy(schema)
+                        schema['properties']['action']['enum'] = [
+                            kind for kind in schema['properties']['action']['enum']
+                            if kind in ('read', 'run')]
+                    # Initial retrieval is a snapshot. Put current observations last so
+                    # stale source cannot visually supersede the most recent tool result.
+                    prompt += ('\nCURRENT TOOL STATE (supersedes initial source excerpts):\n' +
+                               json.dumps(history[-2:], ensure_ascii=False)[-20000:])
+                    if recover:
+                        prompt += ('\nThe last edit failed. Read current source or run a diagnostic '
+                                   'before attempting another replacement. Use returned match counts '
+                                   'and line numbers; do not repeat the failed edit.')
                     action = client.generate(prompt, schema,
                                              seed+step, 'discovery', f'step-{step:03d}', max_tokens=4096)
+                    if recover and action.get('action') not in ('read', 'run'):
+                        raise ValueError('Edit recovery requires a read or diagnostic run before another edit')
                     if controller:
                         controller.check(action, history)
                     kind = action.get('action')

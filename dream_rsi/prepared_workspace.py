@@ -110,8 +110,28 @@ if request['action'] == 'read':
     print('\n'.join(f'{i}: {line}' for i, line in enumerate(content.splitlines(), 1) if start <= i <= end))
 elif request['action'] == 'replace':
     old, new = request['old'], request['new']
-    if not isinstance(old, str) or not old or not isinstance(new, str) or content.count(old) != 1:
-        raise ValueError('Old text must match exactly once')
+    if not isinstance(old, str) or not old or not isinstance(new, str):
+        raise ValueError('Replacement needs nonempty old text and string new text')
+    count = content.count(old)
+    if count != 1:
+        positions = []
+        offset = 0
+        for _ in range(min(count, 3)):
+            offset = content.find(old, offset)
+            positions.append(content.count('\n', 0, offset) + 1)
+            offset += len(old)
+        lines = content.splitlines()
+        # For missing matches, show the current beginning; never reuse stale source.
+        anchors = positions or [1]
+        excerpts = []
+        for line in anchors:
+            start = max(1, line - 2)
+            excerpts.append('\n'.join('%d: %s' % (i, lines[i-1][:300])
+                for i in range(start, min(len(lines), start + 7) + 1)))
+        print(json.dumps({'error': 'missing_match' if count == 0 else 'ambiguous_match',
+            'matches': count, 'match_lines': positions, 'current_excerpts': excerpts,
+            'next_step': 'Read the current file around the intended location, then include enough surrounding text to match exactly once.'}))
+        sys.exit(1)
     changed = content.replace(old, new, 1)
     if len(changed.encode()) > 262144:
         raise ValueError('Changed file exceeds 256 KiB')

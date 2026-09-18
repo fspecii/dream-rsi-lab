@@ -1,0 +1,29 @@
+{
+  "registered_at_utc": "2026-09-18T12:59:28.635517+00:00",
+  "purpose": "Development test of edit recovery on the already-exposed Django case; not independent validation or learned improvement",
+  "instances": [
+    "django__django-11163"
+  ],
+  "model": "qwen2.5-coder:7b",
+  "model_digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+  "seed": 2027,
+  "max_calls_per_instance": 24,
+  "max_output_tokens_per_call": 4096,
+  "retrieval": true,
+  "policy": "fixed sequential loop with failed-edit recovery; learned controller disabled",
+  "implementation": {
+    "benchmark_solver.py": "9cebea1afa10ddfaed0adc51eab4ba7ec2450c4839bf96b01019e22be536286c",
+    "prepared_workspace.py": "abdcb3cee30226131ad7cf362c621898f640498bf458a5751fafaa566d3a2339",
+    "model.py": "36f369c386f0f17f5361399fd53e848c9b32bb00def54db38f5cbaa163874cd1",
+    "benchmark_inputs.py": "a30b6ee28993d074f91976c0bb1f78f5a2210e15c54dd099d2b64af48dccc7c1",
+    "repository_retrieval.py": "995bfc264bb68aa4b79260f71e24dddbf8ede31ae3fff00100579bd40f54ead7"
+  },
+  "rules": [
+    "Use issue text and base tracked source only; no reference/evaluator patches or solution links.",
+    "Keep failed attempts and do not extend the budget after seeing results.",
+    "Run official scoring only after each frozen prediction.",
+    "Report retrieval time, total candidate wall time, model tokens/calls, and outcomes; no net-efficiency claim.",
+    "A fresh independent sample is required before stronger performance claims."
+  ],
+  "workflow_revision": "edit-recovery-v1"
+}

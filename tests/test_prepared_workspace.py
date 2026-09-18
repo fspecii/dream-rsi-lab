@@ -78,6 +78,27 @@ RUN git init -q && git config user.name Fixture && git config user.email fixture
             self.assertNotEqual(workspace.file_action({'action':'read', 'path':'escape.py'})['returncode'], 0)
             self.assertNotEqual(workspace.file_action({'action':'replace', 'path':'calc.py', 'old':'missing', 'new':'bad'})['returncode'], 0)
 
+    def test_edit_feedback_disambiguates_without_modifying_source(self):
+        with PreparedWorkspace(self.image, self.base) as workspace:
+            workspace.run("printf 'def first():\\n    return 1\\ndef second():\\n    return 1\\n' > calc.py")
+            before = workspace.patch()
+            request = {'action':'replace', 'path':'calc.py', 'old':'return 1', 'new':'return 2'}
+            ambiguous = workspace.file_action(request)
+            feedback = json.loads(ambiguous['stdout'])
+            self.assertEqual(ambiguous['returncode'], 1)
+            self.assertEqual(feedback['error'], 'ambiguous_match')
+            self.assertEqual(feedback['matches'], 2)
+            self.assertEqual(feedback['match_lines'], [2, 4])
+            self.assertEqual(workspace.patch(), before)
+            request.update(old='def second():\n    return 1', new='def second():\n    return 2')
+            self.assertEqual(workspace.file_action(request)['returncode'], 0)
+            missing = workspace.file_action(request)
+            feedback = json.loads(missing['stdout'])
+            self.assertEqual(feedback['error'], 'missing_match')
+            self.assertEqual(feedback['matches'], 0)
+            self.assertIn('return 2', str(feedback['current_excerpts']))
+            self.assertEqual(workspace.run('python -c "from calc import first, second; assert first() == 1 and second() == 2"')['returncode'], 0)
+
     def test_candidate_workflow_exports_logged_prediction(self):
         from dream_rsi.benchmark_inputs import prepare_inputs, VERIFIED
         from dream_rsi.benchmark_solver import generate_prediction, load_public_input
@@ -146,6 +167,18 @@ RUN git init -q && git config user.name Fixture && git config user.email fixture
             (retrieved/'retrieval.json').write_text(json.dumps(saved_context))
             with self.assertRaisesRegex(ValueError,'Retrieval context differs'):
                 audit_candidate(retrieved)
+            # A model ignoring the restricted schema cannot repeat failed edits.
+            original_actions = list(actions)
+            bad = {'action':'replace', 'path':'calc.py', 'old':'missing', 'new':'bad'}
+            actions[:] = [bad, bad] + original_actions
+            recovered = root/'recovered'
+            generate_prediction(inputs,row['instance_id'],recovered,model='fixture',steps=6,retrieve_context=True)
+            blocked = json.loads((recovered/'step-001.json').read_text())
+            self.assertIn('Edit recovery requires', blocked['observation']['invalid_action'])
+            last = json.loads((recovered/'step-005.json').read_text())
+            self.assertEqual(last['action']['action'], 'finish')
+            audit_candidate(recovered)
+            actions[:] = original_actions
             with self.assertRaises(FileExistsError):
                 generate_prediction(inputs, row['instance_id'], output, model='fixture', steps=4)
             document['tasks'][0]['patch'] = 'forbidden'
