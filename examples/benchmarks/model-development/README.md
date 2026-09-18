@@ -11,3 +11,9 @@ Q4_K_M model and Apache 2.0 license. Family-level performance tables on that pag
 must not be attributed to this 9B package. Its suitability for this project remains
 unproven until measured locally. Download and compatibility checks precede any
 registered benchmark inference; results are not available yet.
+
+The registered sequence is Django then xarray, 24 calls each, using the unchanged
+scoped-edit workflow and retrieval. Explicit request options and package defaults
+are recorded separately. This is a comparison of model packages/configurations,
+not an isolated model-weights experiment. A neutral schema compatibility check
+precedes inference. Neither task is an untouched final evaluation.
