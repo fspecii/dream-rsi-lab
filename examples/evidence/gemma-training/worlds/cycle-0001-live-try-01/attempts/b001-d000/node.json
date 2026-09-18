@@ -1,0 +1,33 @@
+{
+  "id": "b001-d000",
+  "branch": 1,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n",
+  "rationale": "The original function failed to handle Unicode characters and multiple consecutive non-alphanumeric characters. This revised function uses `re.sub` to replace all non-alphanumeric characters with a hyphen, handles multiple hyphens by replacing them with a single hyphen, and strips leading/trailing hyphens. It also handles empty strings correctly.",
+  "evaluation": {
+    "score": 0.5,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.2505035839858465,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": [
+        {
+          "index": 1,
+          "passed": false,
+          "actual": "caf-tea",
+          "error": "wrong output"
+        }
+      ]
+    }
+  },
+  "seed": 177839923,
+  "model_call_id": "cycle-0001-live-try-01-b001-d000",
+  "artifact": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n"
+}

@@ -1,0 +1,111 @@
+{
+  "name": "cycle-0001-check-01-candidate-try-01",
+  "seed": 410863342,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [],
+  "decisions": [],
+  "policy": {
+    "name": "cycle-0001-try-01-edit-01-eligible",
+    "rationale": "Rejecting if objective is below baseline, stabilizing exploration and preventing stagnation.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "not (0.496500 < 0.5)",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 0.1919449999986682,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [
+    {
+      "name": "cycle-0001-live-try-01",
+      "best": 0.5,
+      "baseline": 0.5,
+      "gain": 0.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Given before and after objects mapping SKU strings to integer counts, return an object of after minus before. Missing counts are zero. Include only nonzero differences.",
+    "entrypoint": "inventory_delta",
+    "visible_tests": [
+      {
+        "args": [
+          {
+            "A": 3,
+            "B": 2
+          },
+          {
+            "A": 5,
+            "C": 1
+          }
+        ],
+        "expected": {
+          "A": 2,
+          "B": -2,
+          "C": 1
+        }
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          {},
+          {}
+        ],
+        "expected": {}
+      },
+      {
+        "args": [
+          {
+            "x": 0
+          },
+          {
+            "x": 0,
+            "y": -1
+          }
+        ],
+        "expected": {
+          "y": -1
+        }
+      },
+      {
+        "args": [
+          {
+            "a": 4
+          },
+          {}
+        ],
+        "expected": {
+          "a": -4
+        }
+      },
+      {
+        "args": [
+          {
+            "z": 5
+          },
+          {
+            "z": 5
+          }
+        ],
+        "expected": {}
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "validation"
+  },
+  "case_id": "inventory-delta",
+  "baseline_artifact": "def inventory_delta(before, after):\n    return {k: after[k]-before[k] for k in before}\n"
+}

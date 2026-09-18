@@ -1,0 +1,26 @@
+{
+  "id": "b001-d000",
+  "branch": 1,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n",
+  "rationale": "The provided solution addresses the problem's requirements by iterating through the input list `items` in steps of `size`, creating sublists of that size. It handles the edge case where `items` is empty or `size` is non-positive by returning an empty list. The code avoids modifying the original `items` list and correctly constructs the batches as specified.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 2,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.3010013339808211,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 315397210,
+  "model_call_id": "code-solve-b001-d000",
+  "artifact": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n"
+}

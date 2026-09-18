@@ -1,0 +1,49 @@
+{
+  "problem": "batch-items",
+  "world": {
+    "name": "code-solve",
+    "best": 0.5,
+    "baseline": 0.5,
+    "gain": 0.0,
+    "calls": 4,
+    "rounds": 4,
+    "width": 2,
+    "depth": 2
+  },
+  "selection": {
+    "node": null,
+    "source": "def batches(items, size):\n    return [items[i:i+size] for i in range(0, len(items)-size+1, size)]\n",
+    "visible_score": 0.5,
+    "hidden_score": 0.5,
+    "hidden_valid": true,
+    "assessment": {
+      "score": 0.5,
+      "valid": true,
+      "error": null,
+      "diagnostics": {
+        "passed": 2,
+        "total": 4,
+        "status": "completed",
+        "seconds": 0.19297479101805948,
+        "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+        "hidden": true
+      }
+    }
+  },
+  "usage": {
+    "discovery": {
+      "calls": 4,
+      "input_tokens": 2596,
+      "output_tokens": 1119,
+      "request_seconds": 18.06922412503627,
+      "errors": 0
+    },
+    "policy": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "request_seconds": 0,
+      "errors": 0
+    }
+  }
+}

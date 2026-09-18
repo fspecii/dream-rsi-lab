@@ -1,0 +1,297 @@
+{
+  "name": "cycle-0003-check-00-candidate-try-01",
+  "seed": 1942227837,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 1,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import urllib.parse\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict(urllib.parse.parse_qsl(query, keep_blank_values=True, keep_blank_key_values=True, encoding='utf-8'))",
+      "rationale": "",
+      "evaluation": {
+        "score": 0.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 0,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.2422195420076605,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": [
+            {
+              "index": 0,
+              "passed": false,
+              "actual": null,
+              "error": "TypeError: parse_qsl() got an unexpected keyword argument 'keep_blank_key_values'"
+            },
+            {
+              "index": 1,
+              "passed": false,
+              "actual": null,
+              "error": "TypeError: parse_qsl() got an unexpected keyword argument 'keep_blank_key_values'"
+            }
+          ]
+        }
+      },
+      "seed": 112516364,
+      "model_call_id": "cycle-0003-check-00-candidate-try-01-b000-d000",
+      "artifact": "import urllib.parse\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict(urllib.parse.parse_qsl(query, keep_blank_values=True, keep_blank_key_values=True, encoding='utf-8'))"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "import urllib.parse\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict(urllib.parse.parse_qsl(query, keep_blank_values=True, encoding='utf-8'))\n",
+      "rationale": "",
+      "evaluation": {
+        "score": 0.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 0,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.25167291701654904,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": [
+            {
+              "index": 0,
+              "passed": false,
+              "actual": {
+                "a": "2",
+                "b": ""
+              },
+              "error": "wrong output"
+            },
+            {
+              "index": 1,
+              "passed": false,
+              "actual": {
+                "q": "hello world"
+              },
+              "error": "wrong output"
+            }
+          ]
+        }
+      },
+      "seed": 2087974236,
+      "model_call_id": "cycle-0003-check-00-candidate-try-01-b000-d001",
+      "artifact": "import urllib.parse\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict(urllib.parse.parse_qsl(query, keep_blank_values=True, encoding='utf-8'))\n"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 0.0,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 1,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 0.0,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "cycle-0003-try-01-edit-01-width",
+    "rationale": "Reduce width to half to save resources while preserving discovery quality.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width if history_count < 2 else max(1, int(hard_width * 0.5))",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 8.785285332996864,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [
+    {
+      "name": "cycle-0001-live-try-01",
+      "best": 1.0,
+      "baseline": 0.5,
+      "gain": 0.5,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0002-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0003-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Parse a URL query string into an object mapping each key to a list of decoded values in occurrence order. Decode plus as a space and percent escapes; preserve blank values and repeated keys. An optional leading ? is allowed.",
+    "entrypoint": "query_values",
+    "visible_tests": [
+      {
+        "args": [
+          "a=1&a=2&b="
+        ],
+        "expected": {
+          "a": [
+            "1",
+            "2"
+          ],
+          "b": [
+            ""
+          ]
+        }
+      },
+      {
+        "args": [
+          "?q=hello+world"
+        ],
+        "expected": {
+          "q": [
+            "hello world"
+          ]
+        }
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          ""
+        ],
+        "expected": {}
+      },
+      {
+        "args": [
+          "x=%26%3D&x="
+        ],
+        "expected": {
+          "x": [
+            "&=",
+            ""
+          ]
+        }
+      },
+      {
+        "args": [
+          "flag&x=1"
+        ],
+        "expected": {
+          "flag": [
+            ""
+          ],
+          "x": [
+            "1"
+          ]
+        }
+      },
+      {
+        "args": [
+          "q=caf%C3%A9"
+        ],
+        "expected": {
+          "q": [
+            "caf\u00e9"
+          ]
+        }
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "validation",
+    "proposal_version": 2
+  },
+  "case_id": "query-values",
+  "baseline_artifact": "def query_values(query):\n    return dict(part.split(\"=\") for part in query.split(\"&\"))\n"
+}

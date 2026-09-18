@@ -1,0 +1,1 @@
+The provided code correctly implements the slugification logic as specified in the problem description. It handles empty strings, lowercases the input, replaces non-alphanumeric characters with hyphens, and removes trailing hyphens. The regular expressions are appropriate for the task.

@@ -1,0 +1,26 @@
+{
+  "id": "b001-d001",
+  "branch": 1,
+  "depth": 1,
+  "parent_id": "b001-d000",
+  "points": [],
+  "source": "import operator\n\ndef merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=operator.itemgetter(0))\n    merged = [intervals[0]]\n\n    for current in intervals[1:]:\n        previous = merged[-1]\n        if current[0] <= previous[1]:\n            merged[-1] = [previous[0], max(previous[1], current[1])]\n        else:\n            merged.append(current)\n\n    return merged",
+  "rationale": "",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 2,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.19888887499109842,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 1856439242,
+  "model_call_id": "cycle-0003-live-try-01-b001-d001",
+  "artifact": "import operator\n\ndef merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=operator.itemgetter(0))\n    merged = [intervals[0]]\n\n    for current in intervals[1:]:\n        previous = merged[-1]\n        if current[0] <= previous[1]:\n            merged[-1] = [previous[0], max(previous[1], current[1])]\n        else:\n            merged.append(current)\n\n    return merged"
+}

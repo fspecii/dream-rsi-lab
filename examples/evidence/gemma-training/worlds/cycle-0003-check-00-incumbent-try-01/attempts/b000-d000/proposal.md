@@ -1,0 +1,1 @@
+The original solution only produced a sequence of increasing values, not exponential backoff delays. This version correctly calculates the delays using the formula `min(cap, base * 2**i)` for each iteration from 0 to `attempts - 1`. It also handles the edge case where `attempts` is 0 or negative by returning an empty list.

@@ -1,0 +1,1 @@
+The function first handles the empty string case. Then, it converts the title to lowercase and replaces all sequences of non-alphanumeric characters with hyphens. Finally, it removes consecutive hyphens and strips leading/trailing hyphens to produce the URL slug.

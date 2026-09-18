@@ -1,0 +1,26 @@
+{
+  "id": "b001-d001",
+  "branch": 1,
+  "depth": 1,
+  "parent_id": "b001-d000",
+  "points": [],
+  "source": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n",
+  "rationale": "The function correctly implements the batching logic as specified. It handles the edge case of an empty input list or a non-positive size by returning an empty list. It iterates through the input list in steps of the specified size, creating sublists and appending them to a result list. The slicing `items[i:i+size]` ensures that even the last batch, which may be smaller than the specified size, is included.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 2,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.24740329099586233,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 339519033,
+  "model_call_id": "code-solve-b001-d001",
+  "artifact": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n"
+}

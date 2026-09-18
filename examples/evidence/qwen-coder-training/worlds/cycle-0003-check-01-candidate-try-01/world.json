@@ -1,0 +1,285 @@
+{
+  "name": "cycle-0003-check-01-candidate-try-01",
+  "seed": 1944243893,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 1,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import copy\n\ndef deduplicate(events):\n    seen = set()\n    result = []\n    for event in events:\n        if event['id'] not in seen:\n            seen.add(event['id'])\n            result.append(copy.deepcopy(event))\n    return result",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.2732971659861505,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 1097500336,
+      "model_call_id": "cycle-0003-check-01-candidate-try-01-b000-d000",
+      "artifact": "import copy\n\ndef deduplicate(events):\n    seen = set()\n    result = []\n    for event in events:\n        if event['id'] not in seen:\n            seen.add(event['id'])\n            result.append(copy.deepcopy(event))\n    return result"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "import copy\n\ndef deduplicate(events):\n    seen = set()\n    result = []\n    for event in events:\n        if event['id'] not in seen:\n            seen.add(event['id'])\n            result.append(event)\n    return result",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.25090920898946933,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 2118369071,
+      "model_call_id": "cycle-0003-check-01-candidate-try-01-b000-d001",
+      "artifact": "import copy\n\ndef deduplicate(events):\n    seen = set()\n    result = []\n    for event in events:\n        if event['id'] not in seen:\n            seen.add(event['id'])\n            result.append(event)\n    return result"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 1.0,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 1,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 1.0,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "cycle-0003-try-01-edit-01-width",
+    "rationale": "Reduce width to half to save resources while preserving discovery quality.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width if history_count < 2 else max(1, int(hard_width * 0.5))",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 8.760607417003484,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [
+    {
+      "name": "cycle-0001-live-try-01",
+      "best": 1.0,
+      "baseline": 0.5,
+      "gain": 0.5,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0002-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0003-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Given event objects with an id key, keep the first occurrence of each id, preserving order. IDs are strings. Return the original event objects without changing them.",
+    "entrypoint": "deduplicate",
+    "visible_tests": [
+      {
+        "args": [
+          [
+            {
+              "id": "a",
+              "v": 1
+            },
+            {
+              "id": "a",
+              "v": 2
+            },
+            {
+              "id": "b",
+              "v": 3
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "id": "a",
+            "v": 1
+          },
+          {
+            "id": "b",
+            "v": 3
+          }
+        ]
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          []
+        ],
+        "expected": []
+      },
+      {
+        "args": [
+          [
+            {
+              "id": "x"
+            },
+            {
+              "id": "y"
+            },
+            {
+              "id": "x"
+            },
+            {
+              "id": "z"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "id": "x"
+          },
+          {
+            "id": "y"
+          },
+          {
+            "id": "z"
+          }
+        ]
+      },
+      {
+        "args": [
+          [
+            {
+              "id": "",
+              "v": 1
+            },
+            {
+              "id": "",
+              "v": 2
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "id": "",
+            "v": 1
+          }
+        ]
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "validation",
+    "proposal_version": 2
+  },
+  "case_id": "deduplicate-events",
+  "baseline_artifact": "def deduplicate(events):\n    return list({e[\"id\"]: e for e in events}.values())\n"
+}

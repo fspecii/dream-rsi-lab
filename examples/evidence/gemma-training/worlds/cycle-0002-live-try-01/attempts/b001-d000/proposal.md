@@ -1,0 +1,1 @@
+The provided solution addresses the problem's requirements by handling empty input, lowercasing the title, replacing non-alphanumeric characters with hyphens, and removing trailing hyphens. The use of regular expressions enables more robust handling of various non-alphanumeric characters and multiple consecutive delimiters.

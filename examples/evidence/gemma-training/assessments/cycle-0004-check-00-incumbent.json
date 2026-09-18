@@ -1,0 +1,27 @@
+{
+  "name": "cycle-0004-check-00-incumbent-try-01",
+  "best": 0.25,
+  "baseline": 0.0,
+  "gain": 0.5,
+  "calls": 4,
+  "rounds": 4,
+  "width": 2,
+  "depth": 2,
+  "case_id": "query-values",
+  "visible_best": 0.5,
+  "valid_attempts": 1,
+  "selected_node": "b001-d001",
+  "assessment": {
+    "score": 0.25,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 4,
+      "status": "completed",
+      "seconds": 0.18939741599024273,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": true
+    }
+  }
+}

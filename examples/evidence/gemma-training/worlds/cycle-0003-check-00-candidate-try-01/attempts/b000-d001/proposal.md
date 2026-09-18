@@ -1,0 +1,1 @@
+The function implements the exponential backoff delay logic as specified. It handles the edge case where `attempts` is zero or negative by returning an empty list. Otherwise, it iterates `attempts` times, calculating each delay as the minimum of `cap` and `base * (2**i)`, and appending the delay to the `delays` list.

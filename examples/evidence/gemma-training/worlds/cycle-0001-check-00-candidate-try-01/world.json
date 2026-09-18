@@ -1,0 +1,134 @@
+{
+  "name": "cycle-0001-check-00-candidate-try-01",
+  "seed": 1941482650,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [],
+  "decisions": [],
+  "policy": {
+    "name": "cycle-0001-try-01-edit-01-eligible",
+    "rationale": "Rejecting if objective is below baseline, stabilizing exploration and preventing stagnation.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "not (0.496500 < 0.5)",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 0.1938957090023905,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [
+    {
+      "name": "cycle-0001-live-try-01",
+      "best": 0.5,
+      "baseline": 0.5,
+      "gain": 0.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Given event objects with an id key, keep the first occurrence of each id, preserving order. IDs are strings. Return the original event objects without changing them.",
+    "entrypoint": "deduplicate",
+    "visible_tests": [
+      {
+        "args": [
+          [
+            {
+              "id": "a",
+              "v": 1
+            },
+            {
+              "id": "a",
+              "v": 2
+            },
+            {
+              "id": "b",
+              "v": 3
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "id": "a",
+            "v": 1
+          },
+          {
+            "id": "b",
+            "v": 3
+          }
+        ]
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          []
+        ],
+        "expected": []
+      },
+      {
+        "args": [
+          [
+            {
+              "id": "x"
+            },
+            {
+              "id": "y"
+            },
+            {
+              "id": "x"
+            },
+            {
+              "id": "z"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "id": "x"
+          },
+          {
+            "id": "y"
+          },
+          {
+            "id": "z"
+          }
+        ]
+      },
+      {
+        "args": [
+          [
+            {
+              "id": "",
+              "v": 1
+            },
+            {
+              "id": "",
+              "v": 2
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "id": "",
+            "v": 1
+          }
+        ]
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "validation"
+  },
+  "case_id": "deduplicate-events",
+  "baseline_artifact": "def deduplicate(events):\n    return list({e[\"id\"]: e for e in events}.values())\n"
+}

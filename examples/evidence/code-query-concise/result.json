@@ -1,0 +1,49 @@
+{
+  "problem": "query-values",
+  "world": {
+    "name": "code-solve",
+    "best": 0.5,
+    "baseline": 0.0,
+    "gain": 0.5,
+    "calls": 2,
+    "rounds": 2,
+    "width": 1,
+    "depth": 2
+  },
+  "selection": {
+    "node": "b000-d000",
+    "source": "def query_values(query):\n    result = {}\n    if not query:\n        return result\n    if query.startswith('?'):\n        query = query[1:]\n    parts = query.split('&')\n    for part in parts:\n        if '=' in part:\n            key, value = part.split('=', 1)\n            if key in result:\n                result[key].append(value)\n            else:\n                result[key] = [value]\n        elif part:\n            if part in result:\n                result[part].append('')\n            else:\n                result[part] = ['']\n    return result",
+    "visible_score": 0.5,
+    "hidden_score": 0.5,
+    "hidden_valid": true,
+    "assessment": {
+      "score": 0.5,
+      "valid": true,
+      "error": null,
+      "diagnostics": {
+        "passed": 2,
+        "total": 4,
+        "status": "completed",
+        "seconds": 0.18561445901286788,
+        "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+        "hidden": true
+      }
+    }
+  },
+  "usage": {
+    "discovery": {
+      "calls": 2,
+      "input_tokens": 928,
+      "output_tokens": 312,
+      "request_seconds": 15.459852998988936,
+      "errors": 0
+    },
+    "policy": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "request_seconds": 0,
+      "errors": 0
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event[\"id\"] not in seen_ids:\n            seen_ids.add(event[\"id\"])  # Add the id to the set\n            result.append(event)\n    return result\n\n\nif __name__ == '__main__':\n    # Test case\n    events = [{",
+  "rationale": "The function deduplicates a list of event objects based on their 'id' key. It maintains the original order of the events while ensuring that only the first occurrence of each 'id' is kept. The function uses a set 'seen_ids' to efficiently track the IDs that have already been processed. The resulting list 'result' contains the deduplicated event objects.",
+  "evaluation": {
+    "score": 0.0,
+    "valid": false,
+    "error": "'{' was never closed (candidate.py, line 15)",
+    "diagnostics": {}
+  },
+  "seed": 1088634496,
+  "model_call_id": "cycle-0001-check-00-incumbent-try-01-b000-d000",
+  "artifact": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event[\"id\"] not in seen_ids:\n            seen_ids.add(event[\"id\"])  # Add the id to the set\n            result.append(event)\n    return result\n\n\nif __name__ == '__main__':\n    # Test case\n    events = [{"
+}

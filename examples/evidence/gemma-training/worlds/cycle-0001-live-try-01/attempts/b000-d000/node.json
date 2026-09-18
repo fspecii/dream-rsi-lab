@@ -1,0 +1,33 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n",
+  "rationale": "The function first handles the empty string case. Then, it converts the title to lowercase and replaces all sequences of non-alphanumeric characters with hyphens. Finally, it removes consecutive hyphens and strips leading/trailing hyphens to produce the URL slug.",
+  "evaluation": {
+    "score": 0.5,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.24960387501050718,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": [
+        {
+          "index": 1,
+          "passed": false,
+          "actual": "caf-tea",
+          "error": "wrong output"
+        }
+      ]
+    }
+  },
+  "seed": 1230057398,
+  "model_call_id": "cycle-0001-live-try-01-b000-d000",
+  "artifact": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n"
+}

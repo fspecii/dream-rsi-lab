@@ -1,0 +1,10 @@
+{
+  "name": "cycle-02-edit-03-depth",
+  "rationale": "Replaces 'cold start' with early return on depth to limit wasted work while preserving late improvements via the conditional structure.",
+  "priority": "10 if is_root else -depth",
+  "eligible": "True",
+  "batch_size": "workers",
+  "width": "hard_width if history_count < 2 else max(workers, int(hard_width * beta))",
+  "depth": "hard_depth if history_count < 2 else max(1, int(hard_depth * beta))",
+  "beta": 0.6
+}

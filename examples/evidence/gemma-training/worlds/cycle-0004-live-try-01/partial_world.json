@@ -1,0 +1,535 @@
+{
+  "name": "cycle-0004-live-try-01",
+  "seed": 1674795346,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n    merged = []\n    for interval in intervals:\n        if not merged or interval[0] > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged\n",
+      "rationale": "The function first handles the empty input case. It then sorts the intervals based on their start times.  It iterates through the sorted intervals, merging overlapping intervals. If the current interval's start time is greater than the end time of the last merged interval, it's a new interval and is added to the merged list. Otherwise, the end time of the last merged interval is updated to be the maximum of its current end time and the end time of the current interval, effectively merging the intervals.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.30556666699703783,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 1000056259,
+      "model_call_id": "cycle-0004-live-try-01-b000-d000",
+      "artifact": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n    merged = []\n    for interval in intervals:\n        if not merged or interval[0] > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged\n"
+    },
+    {
+      "id": "b001-d000",
+      "branch": 1,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "",
+      "rationale": "",
+      "evaluation": {
+        "score": 0.0,
+        "valid": false,
+        "error": "Invalid model response (cycle-0004-live-try-01-b001-d000): model response truncated by token limit",
+        "diagnostics": {}
+      },
+      "seed": 1759754945,
+      "model_call_id": "cycle-0004-live-try-01-b001-d000",
+      "artifact": ""
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n    merged = []\n    for interval in intervals:\n        if not merged or interval[0] > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged\n",
+      "rationale": "The function efficiently merges overlapping intervals. It first sorts the intervals based on their start times. Then, it iterates through the sorted intervals, adding them to the `merged` list if they don't overlap with the last interval in the `merged` list or updating the end time of the last interval if they do overlap. The final merged list is sorted by the start times of the intervals. The function handles empty input and correctly merges overlapping intervals. The internal logic correctly implements the merging algorithm and addresses the specified edge cases.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.41234804200939834,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 304972697,
+      "model_call_id": "cycle-0004-live-try-01-b000-d001",
+      "artifact": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n    merged = []\n    for interval in intervals:\n        if not merged or interval[0] > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged\n"
+    },
+    {
+      "id": "b001-d001",
+      "branch": 1,
+      "depth": 1,
+      "parent_id": "b001-d000",
+      "points": [],
+      "source": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n    merged = []\n    for interval in intervals:\n        if not merged or interval[0] > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged\n",
+      "rationale": "The function sorts the intervals by their start times. It then iterates through the sorted intervals, merging overlapping intervals into a single interval. If an interval does not overlap with the last merged interval, it is added to the merged list. Otherwise, the end time of the last merged interval is updated to the maximum of its current end time and the end time of the current interval. This ensures that all overlapping intervals are combined into a single interval, and the result is sorted by start time. The edge case of an empty input is also handled by returning an empty list.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.3064181660010945,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 216669096,
+      "model_call_id": "cycle-0004-live-try-01-b001-d001",
+      "artifact": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n    merged = []\n    for interval in intervals:\n        if not merged or interval[0] > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged\n"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 1.0,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b001-d000"
+      ],
+      "best": 1.0,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 1.0,
+      "calls": 3,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 1,
+            "last_failed": true,
+            "successes": 0,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 3,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001"
+      ],
+      "selected": [
+        "b001-d001"
+      ],
+      "best": 1.0,
+      "calls": 4,
+      "candidates": [
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 3,
+            "workers": 1,
+            "rounds": 3,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 1,
+            "last_failed": true,
+            "successes": 0,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 0.0,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [
+    {
+      "name": "cycle-0001-live-try-01",
+      "best": 0.5,
+      "baseline": 0.5,
+      "gain": 0.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0002-live-try-01",
+      "best": 0.5,
+      "baseline": 0.5,
+      "gain": 0.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0003-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Merge overlapping or touching closed intervals [start,end]. Return sorted merged intervals. Input may be unsorted; endpoints are integers and start <= end. Empty input returns [].",
+    "entrypoint": "merge_intervals",
+    "visible_tests": [
+      {
+        "args": [
+          [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            [
+              4,
+              5
+            ],
+            [
+              1,
+              4
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            1,
+            5
+          ]
+        ]
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          []
+        ],
+        "expected": []
+      },
+      {
+        "args": [
+          [
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            [
+              1,
+              10
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              6
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            1,
+            10
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            [
+              10,
+              12
+            ],
+            [
+              -3,
+              -1
+            ],
+            [
+              0,
+              2
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            -3,
+            -1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            10,
+            12
+          ]
+        ]
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "train"
+  },
+  "case_id": "merge-bookings",
+  "baseline_artifact": "def merge_intervals(intervals):\n    return sorted(intervals)\n"
+}

@@ -1,0 +1,1 @@
+The provided solution addresses the problem's requirements by iterating through the input list `items` in steps of `size`, creating sublists of that size. It handles the edge case where `items` is empty or `size` is non-positive by returning an empty list. The code avoids modifying the original `items` list and correctly constructs the batches as specified.

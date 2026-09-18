@@ -1,0 +1,1 @@
+The function correctly implements the exponential backoff delays as specified. It handles the edge case of attempts <= 0 by returning an empty list, and for positive attempts, it calculates the delays using the formula min(cap, base * 2**i) and appends them to a list, which is then returned.

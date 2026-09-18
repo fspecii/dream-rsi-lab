@@ -1,0 +1,33 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-\\s]', '\\-', title)\n    title = re.sub(r'[-\\s]+', '-', title)\n    return title.rstrip('-')\n",
+  "rationale": "The function first handles the empty string case. Then, it converts the input to lowercase and replaces all non-alphanumeric characters (except hyphens and spaces) with a single hyphen.  Next, it replaces multiple consecutive non-alphanumeric characters or spaces with a single hyphen. Finally, it strips any trailing hyphens.",
+  "evaluation": {
+    "score": 0.5,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.2437784579815343,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": [
+        {
+          "index": 1,
+          "passed": false,
+          "actual": "-caf\\-\\-tea\\",
+          "error": "wrong output"
+        }
+      ]
+    }
+  },
+  "seed": 1844210503,
+  "model_call_id": "cycle-0002-live-try-01-b000-d000",
+  "artifact": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-\\s]', '\\-', title)\n    title = re.sub(r'[-\\s]+', '-', title)\n    return title.rstrip('-')\n"
+}

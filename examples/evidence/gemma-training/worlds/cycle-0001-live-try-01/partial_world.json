@@ -1,0 +1,442 @@
+{
+  "name": "cycle-0001-live-try-01",
+  "seed": 1495470740,
+  "baseline_points": [],
+  "baseline_score": 0.5,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n",
+      "rationale": "The function first handles the empty string case. Then, it converts the title to lowercase and replaces all sequences of non-alphanumeric characters with hyphens. Finally, it removes consecutive hyphens and strips leading/trailing hyphens to produce the URL slug.",
+      "evaluation": {
+        "score": 0.5,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.24960387501050718,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": [
+            {
+              "index": 1,
+              "passed": false,
+              "actual": "caf-tea",
+              "error": "wrong output"
+            }
+          ]
+        }
+      },
+      "seed": 1230057398,
+      "model_call_id": "cycle-0001-live-try-01-b000-d000",
+      "artifact": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n"
+    },
+    {
+      "id": "b001-d000",
+      "branch": 1,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n",
+      "rationale": "The original function failed to handle Unicode characters and multiple consecutive non-alphanumeric characters. This revised function uses `re.sub` to replace all non-alphanumeric characters with a hyphen, handles multiple hyphens by replacing them with a single hyphen, and strips leading/trailing hyphens. It also handles empty strings correctly.",
+      "evaluation": {
+        "score": 0.5,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.2505035839858465,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": [
+            {
+              "index": 1,
+              "passed": false,
+              "actual": "caf-tea",
+              "error": "wrong output"
+            }
+          ]
+        }
+      },
+      "seed": 177839923,
+      "model_call_id": "cycle-0001-live-try-01-b001-d000",
+      "artifact": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n",
+      "rationale": "The function implements the specified slugification logic: lowercasing, replacing non-alphanumeric characters with hyphens, and removing consecutive hyphens. It handles empty input correctly.",
+      "evaluation": {
+        "score": 0.5,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.20150299998931587,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": [
+            {
+              "index": 1,
+              "passed": false,
+              "actual": "caf-tea",
+              "error": "wrong output"
+            }
+          ]
+        }
+      },
+      "seed": 1976139316,
+      "model_call_id": "cycle-0001-live-try-01-b000-d001",
+      "artifact": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n"
+    },
+    {
+      "id": "b001-d001",
+      "branch": 1,
+      "depth": 1,
+      "parent_id": "b001-d000",
+      "points": [],
+      "source": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n",
+      "rationale": "The provided solution correctly implements the slugification logic as specified. It handles empty strings, lowercases the input, replaces non-alphanumeric characters with hyphens, collapses multiple hyphens into a single hyphen, and strips leading/trailing hyphens. The test cases demonstrate this functionality.",
+      "evaluation": {
+        "score": 0.5,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.2347063340130262,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": [
+            {
+              "index": 1,
+              "passed": false,
+              "actual": "caf-tea",
+              "error": "wrong output"
+            }
+          ]
+        }
+      },
+      "seed": 171244686,
+      "model_call_id": "cycle-0001-live-try-01-b001-d001",
+      "artifact": "import re\n\ndef slugify(title):\n    if not title:\n        return \"\"\n    title = title.lower()\n    title = re.sub(r'[^a-zA-Z0-9\\-]+', '-', title)\n    slug = re.sub(r'-+', '-', title)\n    return slug.strip('-')\n"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 0.5,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b001-d000"
+      ],
+      "best": 0.5,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 0.5,
+      "calls": 3,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 3,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001"
+      ],
+      "selected": [
+        "b001-d001"
+      ],
+      "best": 0.5,
+      "calls": 4,
+      "candidates": [
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 2,
+            "probes": 3,
+            "workers": 1,
+            "rounds": 3,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 0.0,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Turn a title into an ASCII URL slug: normalize Unicode accents, lowercase, replace each run of non-alphanumeric characters with one hyphen, and strip edge hyphens. Empty input returns an empty string.",
+    "entrypoint": "slugify",
+    "visible_tests": [
+      {
+        "args": [
+          "Hello World"
+        ],
+        "expected": "hello-world"
+      },
+      {
+        "args": [
+          "  Caf\u00e9 & Tea!  "
+        ],
+        "expected": "cafe-tea"
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          "D\u00e9j\u00e0 vu / 2026"
+        ],
+        "expected": "deja-vu-2026"
+      },
+      {
+        "args": [
+          "---"
+        ],
+        "expected": ""
+      },
+      {
+        "args": [
+          "a___b  c"
+        ],
+        "expected": "a-b-c"
+      },
+      {
+        "args": [
+          ""
+        ],
+        "expected": ""
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "train"
+  },
+  "case_id": "slugify",
+  "baseline_artifact": "def slugify(title):\n    return title.lower().replace(\" \", \"-\")\n"
+}

@@ -1,0 +1,90 @@
+{
+  "workspace": "ca247139ae40",
+  "created_at": "2026-09-18T10:31:49.334771+00:00",
+  "model": {
+    "name": "qwen2.5-coder:7b",
+    "model": "qwen2.5-coder:7b",
+    "modified_at": "2026-09-18T13:24:32.294940163+03:00",
+    "size": 4683087561,
+    "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "7.6B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 3584
+    },
+    "capabilities": [
+      "completion",
+      "tools",
+      "insert"
+    ]
+  },
+  "runtime": {
+    "runtime": "docker",
+    "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea"
+  },
+  "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+  "config": {
+    "model": "qwen2.5-coder:7b",
+    "task": "python_code",
+    "seed": 2027,
+    "branches": 2,
+    "depth": 2,
+    "workers": 1,
+    "revisions": 3,
+    "validation_pairs": 2
+  },
+  "proposal_version": 2,
+  "training_proposal_versions": [
+    2
+  ],
+  "champion": {
+    "version": 0,
+    "policy": {
+      "name": "fixed_parallel_refine",
+      "rationale": "Open all available directions and refine uniformly to the shared cap.",
+      "priority": "10 if is_root else -depth",
+      "eligible": "True",
+      "batch_size": "workers",
+      "width": "hard_width",
+      "depth": "hard_depth",
+      "beta": 0.6
+    }
+  },
+  "plan": [
+    {
+      "problem": "flatten-config",
+      "seed": 228043907,
+      "repeat": 0
+    },
+    {
+      "problem": "pagination",
+      "seed": 334696513,
+      "repeat": 0
+    },
+    {
+      "problem": "run-length",
+      "seed": 2131728355,
+      "repeat": 0
+    },
+    {
+      "problem": "path-normalize",
+      "seed": 268338744,
+      "repeat": 0
+    }
+  ],
+  "training_usage": {
+    "calls": 33,
+    "discovery_calls": 24,
+    "policy_calls": 9,
+    "input_tokens": 16853,
+    "output_tokens": 2583
+  },
+  "warning": "Small starter suite. No industry-wide or repository-level claim."
+}

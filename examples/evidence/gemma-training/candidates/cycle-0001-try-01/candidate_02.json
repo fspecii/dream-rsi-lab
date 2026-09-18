@@ -1,0 +1,98 @@
+{
+  "policy": {
+    "name": "cycle-0001-try-01-edit-02-priority",
+    "rationale": "Prioritize higher scores, penalizing deeper exploration with beta, fallback to baseline for roots.",
+    "priority": "anchor - (depth * beta) if depth > 0 else -baseline",
+    "eligible": "not (0.496500 < 0.5)",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "selection_score": 0.5,
+  "objective": "paper",
+  "default": {
+    "beta": 0.6,
+    "supported": true,
+    "mean_score": 0.5,
+    "mean_calls": 0,
+    "mean_best": 0.5,
+    "attainment_auc": 1.0,
+    "parallel_penalty": 0.0
+  },
+  "pareto_reward": 1.0,
+  "sweep": [
+    {
+      "beta": 0.2,
+      "supported": true,
+      "mean_score": 0.5,
+      "mean_calls": 0,
+      "mean_best": 0.5,
+      "attainment_auc": 1.0,
+      "parallel_penalty": 0.0,
+      "episodes": [
+        {
+          "world": "cycle-0001-live-try-01",
+          "status": "supported",
+          "score": 0.5,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 0.0,
+          "best_score": 0.5,
+          "calls": 0,
+          "rounds": 0,
+          "curve": [],
+          "decisions": [],
+          "stop_reason": "policy_stop"
+        }
+      ]
+    },
+    {
+      "beta": 0.6,
+      "supported": true,
+      "mean_score": 0.5,
+      "mean_calls": 0,
+      "mean_best": 0.5,
+      "attainment_auc": 1.0,
+      "parallel_penalty": 0.0,
+      "episodes": [
+        {
+          "world": "cycle-0001-live-try-01",
+          "status": "supported",
+          "score": 0.5,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 0.0,
+          "best_score": 0.5,
+          "calls": 0,
+          "rounds": 0,
+          "curve": [],
+          "decisions": [],
+          "stop_reason": "policy_stop"
+        }
+      ]
+    },
+    {
+      "beta": 1.0,
+      "supported": true,
+      "mean_score": 0.5,
+      "mean_calls": 0,
+      "mean_best": 0.5,
+      "attainment_auc": 1.0,
+      "parallel_penalty": 0.0,
+      "episodes": [
+        {
+          "world": "cycle-0001-live-try-01",
+          "status": "supported",
+          "score": 0.5,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 0.0,
+          "best_score": 0.5,
+          "calls": 0,
+          "rounds": 0,
+          "curve": [],
+          "decisions": [],
+          "stop_reason": "policy_stop"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+The function deduplicates a list of event objects based on their 'id' key. It maintains the original order of the events while ensuring that only the first occurrence of each 'id' is kept. The function uses a set 'seen_ids' to efficiently track the IDs that have already been processed. The resulting list 'result' contains the deduplicated event objects.

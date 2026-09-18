@@ -1,0 +1,1 @@
+The provided solution correctly implements the slugification logic as specified. It handles empty strings, lowercases the input, replaces non-alphanumeric characters with hyphens, collapses multiple hyphens into a single hyphen, and strips leading/trailing hyphens. The test cases demonstrate this functionality.

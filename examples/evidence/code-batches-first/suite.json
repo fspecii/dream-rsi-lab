@@ -1,0 +1,926 @@
+{
+  "version": 1,
+  "name": "Developer workflow starter suite",
+  "problems": [
+    {
+      "id": "slugify",
+      "split": "train",
+      "description": "Turn a title into an ASCII URL slug: normalize Unicode accents, lowercase, replace each run of non-alphanumeric characters with one hyphen, and strip edge hyphens. Empty input returns an empty string.",
+      "entrypoint": "slugify",
+      "starter": "def slugify(title):\n    return title.lower().replace(\" \", \"-\")\n",
+      "visible_tests": [
+        {
+          "args": [
+            "Hello World"
+          ],
+          "expected": "hello-world"
+        },
+        {
+          "args": [
+            "  Caf\u00e9 & Tea!  "
+          ],
+          "expected": "cafe-tea"
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            "D\u00e9j\u00e0 vu / 2026"
+          ],
+          "expected": "deja-vu-2026"
+        },
+        {
+          "args": [
+            "---"
+          ],
+          "expected": ""
+        },
+        {
+          "args": [
+            "a___b  c"
+          ],
+          "expected": "a-b-c"
+        },
+        {
+          "args": [
+            ""
+          ],
+          "expected": ""
+        }
+      ]
+    },
+    {
+      "id": "batch-items",
+      "split": "train",
+      "description": "Split items into consecutive lists of at most size items, including any short final list. Empty items gives []. A nonpositive size gives []. Do not modify items.",
+      "entrypoint": "batches",
+      "starter": "def batches(items, size):\n    return [items[i:i+size] for i in range(0, len(items)-size+1, size)]\n",
+      "visible_tests": [
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            2
+          ],
+          "expected": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              5
+            ]
+          ]
+        },
+        {
+          "args": [
+            [],
+            3
+          ],
+          "expected": []
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            [
+              1
+            ],
+            2
+          ],
+          "expected": [
+            [
+              1
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            0
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              1,
+              2
+            ],
+            -1
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4
+            ],
+            2
+          ],
+          "expected": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "merge-bookings",
+      "split": "train",
+      "description": "Merge overlapping or touching closed intervals [start,end]. Return sorted merged intervals. Input may be unsorted; endpoints are integers and start <= end. Empty input returns [].",
+      "entrypoint": "merge_intervals",
+      "starter": "def merge_intervals(intervals):\n    return sorted(intervals)\n",
+      "visible_tests": [
+        {
+          "args": [
+            [
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                6
+              ],
+              [
+                8,
+                10
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              6
+            ],
+            [
+              8,
+              10
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                4,
+                5
+              ],
+              [
+                1,
+                4
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              5
+            ]
+          ]
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              [
+                2,
+                2
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                1,
+                2
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              3
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                1,
+                10
+              ],
+              [
+                2,
+                3
+              ],
+              [
+                5,
+                6
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              1,
+              10
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              [
+                10,
+                12
+              ],
+              [
+                -3,
+                -1
+              ],
+              [
+                0,
+                2
+              ]
+            ]
+          ],
+          "expected": [
+            [
+              -3,
+              -1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              10,
+              12
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "csv-totals",
+      "split": "train",
+      "description": "Parse CSV text with a header category,amount. Amounts are integers. Sum by category and return an object. CSV quoting must work. Ignore rows whose amount is not a valid integer or category is empty.",
+      "entrypoint": "category_totals",
+      "starter": "def category_totals(text):\n    return {}\n",
+      "visible_tests": [
+        {
+          "args": [
+            "category,amount\nA,2\nA,3\nB,7\n"
+          ],
+          "expected": {
+            "A": 5,
+            "B": 7
+          }
+        },
+        {
+          "args": [
+            "category,amount\n"
+          ],
+          "expected": {}
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            "category,amount\n\"A,B\",4\n\"A,B\",-1\n"
+          ],
+          "expected": {
+            "A,B": 3
+          }
+        },
+        {
+          "args": [
+            "category,amount\nA,no\nA,2\n,10\n"
+          ],
+          "expected": {
+            "A": 2
+          }
+        },
+        {
+          "args": [
+            "category,amount\nB,-4\nB,4\n"
+          ],
+          "expected": {
+            "B": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "deduplicate-events",
+      "split": "validation",
+      "description": "Given event objects with an id key, keep the first occurrence of each id, preserving order. IDs are strings. Return the original event objects without changing them.",
+      "entrypoint": "deduplicate",
+      "starter": "def deduplicate(events):\n    return list({e[\"id\"]: e for e in events}.values())\n",
+      "visible_tests": [
+        {
+          "args": [
+            [
+              {
+                "id": "a",
+                "v": 1
+              },
+              {
+                "id": "a",
+                "v": 2
+              },
+              {
+                "id": "b",
+                "v": 3
+              }
+            ]
+          ],
+          "expected": [
+            {
+              "id": "a",
+              "v": 1
+            },
+            {
+              "id": "b",
+              "v": 3
+            }
+          ]
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              {
+                "id": "x"
+              },
+              {
+                "id": "y"
+              },
+              {
+                "id": "x"
+              },
+              {
+                "id": "z"
+              }
+            ]
+          ],
+          "expected": [
+            {
+              "id": "x"
+            },
+            {
+              "id": "y"
+            },
+            {
+              "id": "z"
+            }
+          ]
+        },
+        {
+          "args": [
+            [
+              {
+                "id": "",
+                "v": 1
+              },
+              {
+                "id": "",
+                "v": 2
+              }
+            ]
+          ],
+          "expected": [
+            {
+              "id": "",
+              "v": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inventory-delta",
+      "split": "validation",
+      "description": "Given before and after objects mapping SKU strings to integer counts, return an object of after minus before. Missing counts are zero. Include only nonzero differences.",
+      "entrypoint": "inventory_delta",
+      "starter": "def inventory_delta(before, after):\n    return {k: after[k]-before[k] for k in before}\n",
+      "visible_tests": [
+        {
+          "args": [
+            {
+              "A": 3,
+              "B": 2
+            },
+            {
+              "A": 5,
+              "C": 1
+            }
+          ],
+          "expected": {
+            "A": 2,
+            "B": -2,
+            "C": 1
+          }
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            {},
+            {}
+          ],
+          "expected": {}
+        },
+        {
+          "args": [
+            {
+              "x": 0
+            },
+            {
+              "x": 0,
+              "y": -1
+            }
+          ],
+          "expected": {
+            "y": -1
+          }
+        },
+        {
+          "args": [
+            {
+              "a": 4
+            },
+            {}
+          ],
+          "expected": {
+            "a": -4
+          }
+        },
+        {
+          "args": [
+            {
+              "z": 5
+            },
+            {
+              "z": 5
+            }
+          ],
+          "expected": {}
+        }
+      ]
+    },
+    {
+      "id": "query-values",
+      "split": "validation",
+      "description": "Parse a URL query string into an object mapping each key to a list of decoded values in occurrence order. Decode plus as a space and percent escapes; preserve blank values and repeated keys. An optional leading ? is allowed.",
+      "entrypoint": "query_values",
+      "starter": "def query_values(query):\n    return dict(part.split(\"=\") for part in query.split(\"&\"))\n",
+      "visible_tests": [
+        {
+          "args": [
+            "a=1&a=2&b="
+          ],
+          "expected": {
+            "a": [
+              "1",
+              "2"
+            ],
+            "b": [
+              ""
+            ]
+          }
+        },
+        {
+          "args": [
+            "?q=hello+world"
+          ],
+          "expected": {
+            "q": [
+              "hello world"
+            ]
+          }
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            ""
+          ],
+          "expected": {}
+        },
+        {
+          "args": [
+            "x=%26%3D&x="
+          ],
+          "expected": {
+            "x": [
+              "&=",
+              ""
+            ]
+          }
+        },
+        {
+          "args": [
+            "flag&x=1"
+          ],
+          "expected": {
+            "flag": [
+              ""
+            ],
+            "x": [
+              "1"
+            ]
+          }
+        },
+        {
+          "args": [
+            "q=caf%C3%A9"
+          ],
+          "expected": {
+            "q": [
+              "caf\u00e9"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "retry-delays",
+      "split": "validation",
+      "description": "Return attempts exponential backoff delays: min(cap, base * 2**i) for i from 0 to attempts-1. Base and cap are nonnegative integers. Attempts <= 0 returns [].",
+      "entrypoint": "retry_delays",
+      "starter": "def retry_delays(base, cap, attempts):\n    return [base * i for i in range(attempts)]\n",
+      "visible_tests": [
+        {
+          "args": [
+            2,
+            10,
+            5
+          ],
+          "expected": [
+            2,
+            4,
+            8,
+            10,
+            10
+          ]
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            0,
+            9,
+            4
+          ],
+          "expected": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "args": [
+            8,
+            3,
+            3
+          ],
+          "expected": [
+            3,
+            3,
+            3
+          ]
+        },
+        {
+          "args": [
+            2,
+            10,
+            0
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            3,
+            100,
+            4
+          ],
+          "expected": [
+            3,
+            6,
+            12,
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flatten-config",
+      "split": "test",
+      "description": "Flatten a nested configuration object into dot-separated keys. Leaves are any JSON value other than nonempty objects; preserve empty objects as leaf values. Root is always an object. Keys do not contain dots.",
+      "entrypoint": "flatten_config",
+      "starter": "",
+      "visible_tests": [
+        {
+          "args": [
+            {
+              "a": {
+                "b": 2
+              },
+              "x": 1
+            }
+          ],
+          "expected": {
+            "a.b": 2,
+            "x": 1
+          }
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            {}
+          ],
+          "expected": {}
+        },
+        {
+          "args": [
+            {
+              "a": {},
+              "b": {
+                "c": []
+              }
+            }
+          ],
+          "expected": {
+            "a": {},
+            "b.c": []
+          }
+        },
+        {
+          "args": [
+            {
+              "a": {
+                "b": {
+                  "c": null
+                }
+              },
+              "z": false
+            }
+          ],
+          "expected": {
+            "a.b.c": null,
+            "z": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "pagination",
+      "split": "test",
+      "description": "Return an object with items, page, pages, total. Page numbers are one-based. Clamp requested page to [1,pages]. pages is ceil(len(items)/page_size), at least 1. page_size must be positive; for nonpositive size return None.",
+      "entrypoint": "paginate",
+      "starter": "",
+      "visible_tests": [
+        {
+          "args": [
+            [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            2,
+            2
+          ],
+          "expected": {
+            "items": [
+              3,
+              4
+            ],
+            "page": 2,
+            "pages": 3,
+            "total": 5
+          }
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            [],
+            9,
+            3
+          ],
+          "expected": {
+            "items": [],
+            "page": 1,
+            "pages": 1,
+            "total": 0
+          }
+        },
+        {
+          "args": [
+            [
+              1,
+              2,
+              3
+            ],
+            99,
+            2
+          ],
+          "expected": {
+            "items": [
+              3
+            ],
+            "page": 2,
+            "pages": 2,
+            "total": 3
+          }
+        },
+        {
+          "args": [
+            [
+              1,
+              2
+            ],
+            0,
+            1
+          ],
+          "expected": {
+            "items": [
+              1
+            ],
+            "page": 1,
+            "pages": 2,
+            "total": 2
+          }
+        },
+        {
+          "args": [
+            [
+              1
+            ],
+            1,
+            0
+          ],
+          "expected": null
+        }
+      ]
+    },
+    {
+      "id": "run-length",
+      "split": "test",
+      "description": "Encode consecutive equal values as [value,count] pairs. Values are strings. Empty input returns []. Preserve run order; separated runs of the same value stay separate.",
+      "entrypoint": "encode_runs",
+      "starter": "",
+      "visible_tests": [
+        {
+          "args": [
+            [
+              "a",
+              "a",
+              "b"
+            ]
+          ],
+          "expected": [
+            [
+              "a",
+              2
+            ],
+            [
+              "b",
+              1
+            ]
+          ]
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            []
+          ],
+          "expected": []
+        },
+        {
+          "args": [
+            [
+              "a",
+              "b",
+              "a"
+            ]
+          ],
+          "expected": [
+            [
+              "a",
+              1
+            ],
+            [
+              "b",
+              1
+            ],
+            [
+              "a",
+              1
+            ]
+          ]
+        },
+        {
+          "args": [
+            [
+              "",
+              "",
+              ""
+            ]
+          ],
+          "expected": [
+            [
+              "",
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "path-normalize",
+      "split": "test",
+      "description": "Normalize an absolute POSIX path string: collapse repeated slashes, remove . components, resolve .. by removing the preceding component without going above root. Return / for an empty result. No filesystem access.",
+      "entrypoint": "normalize_path",
+      "starter": "",
+      "visible_tests": [
+        {
+          "args": [
+            "/a//b/../c/"
+          ],
+          "expected": "/a/c"
+        }
+      ],
+      "hidden_tests": [
+        {
+          "args": [
+            "/../../"
+          ],
+          "expected": "/"
+        },
+        {
+          "args": [
+            "/a/./b/../../c"
+          ],
+          "expected": "/c"
+        },
+        {
+          "args": [
+            "/"
+          ],
+          "expected": "/"
+        },
+        {
+          "args": [
+            "/a/.../b"
+          ],
+          "expected": "/a/.../b"
+        }
+      ]
+    }
+  ]
+}

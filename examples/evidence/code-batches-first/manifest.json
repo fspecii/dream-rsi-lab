@@ -1,0 +1,39 @@
+{
+  "task": "python_code",
+  "problem": "batch-items",
+  "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+  "model": {
+    "name": "qwen3.5:0.8b",
+    "model": "qwen3.5:0.8b",
+    "modified_at": "2026-03-04T17:10:44.462401309+02:00",
+    "size": 1036046583,
+    "digest": "f3817196d142eaf72ce79dfebe53dcb20bd21da87ce13e138a8f8e10a866b3a4",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen35",
+      "families": [
+        "qwen35"
+      ],
+      "parameter_size": "873.44M",
+      "quantization_level": "Q8_0",
+      "context_length": 262144,
+      "embedding_length": 1024
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "tools",
+      "thinking"
+    ]
+  },
+  "runtime": {
+    "runtime": "docker",
+    "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea"
+  },
+  "seed": 2027,
+  "branches": 2,
+  "depth": 2,
+  "workers": 1,
+  "selection": "Visible tests only; private tests assessed once after search."
+}

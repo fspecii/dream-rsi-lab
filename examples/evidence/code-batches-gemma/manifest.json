@@ -1,0 +1,37 @@
+{
+  "task": "python_code",
+  "problem": "batch-items",
+  "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+  "model": {
+    "name": "gemma3:4b",
+    "model": "gemma3:4b",
+    "modified_at": "2025-11-20T02:52:17.778918171+02:00",
+    "size": 3338801804,
+    "digest": "a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "gemma3",
+      "families": [
+        "gemma3"
+      ],
+      "parameter_size": "4.3B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 131072,
+      "embedding_length": 2560
+    },
+    "capabilities": [
+      "completion",
+      "vision"
+    ]
+  },
+  "runtime": {
+    "runtime": "docker",
+    "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea"
+  },
+  "seed": 2027,
+  "branches": 2,
+  "depth": 2,
+  "workers": 1,
+  "selection": "Visible tests only; private tests assessed once after search."
+}

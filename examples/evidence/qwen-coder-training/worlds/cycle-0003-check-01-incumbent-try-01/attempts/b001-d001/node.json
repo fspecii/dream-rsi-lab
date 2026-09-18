@@ -1,0 +1,26 @@
+{
+  "id": "b001-d001",
+  "branch": 1,
+  "depth": 1,
+  "parent_id": "b001-d000",
+  "points": [],
+  "source": "def deduplicate(events):\n    seen = set()\n    result = []\n    for event in events:\n        if event['id'] not in seen:\n            seen.add(event['id'])\n            result.append(event)\n    return result",
+  "rationale": "",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.24286579198087566,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 1187243699,
+  "model_call_id": "cycle-0003-check-01-incumbent-try-01-b001-d001",
+  "artifact": "def deduplicate(events):\n    seen = set()\n    result = []\n    for event in events:\n        if event['id'] not in seen:\n            seen.add(event['id'])\n            result.append(event)\n    return result"
+}

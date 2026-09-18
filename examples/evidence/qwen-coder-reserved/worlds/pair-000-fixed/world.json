@@ -1,0 +1,460 @@
+{
+  "name": "pair-000-fixed",
+  "seed": 228043907,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.19746358299744315,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 224202933,
+      "model_call_id": "pair-000-fixed-b000-d000",
+      "artifact": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config"
+    },
+    {
+      "id": "b001-d000",
+      "branch": 1,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.19950129100470804,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 1421225920,
+      "model_call_id": "pair-000-fixed-b001-d000",
+      "artifact": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.1860856249986682,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 2033864434,
+      "model_call_id": "pair-000-fixed-b000-d001",
+      "artifact": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config"
+    },
+    {
+      "id": "b001-d001",
+      "branch": 1,
+      "depth": 1,
+      "parent_id": "b001-d000",
+      "points": [],
+      "source": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.24348641699180007,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 2065570743,
+      "model_call_id": "pair-000-fixed-b001-d001",
+      "artifact": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 1.0,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b001-d000"
+      ],
+      "best": 1.0,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 1.0,
+      "calls": 3,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 3,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001"
+      ],
+      "selected": [
+        "b001-d001"
+      ],
+      "best": 1.0,
+      "calls": 4,
+      "candidates": [
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 3,
+            "workers": 1,
+            "rounds": 3,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 25.757099750015186,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [
+    {
+      "name": "cycle-0001-live-try-01",
+      "best": 1.0,
+      "baseline": 0.5,
+      "gain": 0.5,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0002-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0003-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Flatten a nested configuration object into dot-separated keys. Leaves are any JSON value other than nonempty objects; preserve empty objects as leaf values. Root is always an object. Keys do not contain dots.",
+    "entrypoint": "flatten_config",
+    "visible_tests": [
+      {
+        "args": [
+          {
+            "a": {
+              "b": 2
+            },
+            "x": 1
+          }
+        ],
+        "expected": {
+          "a.b": 2,
+          "x": 1
+        }
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          {}
+        ],
+        "expected": {}
+      },
+      {
+        "args": [
+          {
+            "a": {},
+            "b": {
+              "c": []
+            }
+          }
+        ],
+        "expected": {
+          "a": {},
+          "b.c": []
+        }
+      },
+      {
+        "args": [
+          {
+            "a": {
+              "b": {
+                "c": null
+              }
+            },
+            "z": false
+          }
+        ],
+        "expected": {
+          "a.b.c": null,
+          "z": false
+        }
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "test",
+    "proposal_version": 2
+  },
+  "case_id": "flatten-config",
+  "baseline_artifact": "def flatten_config(*args, **kwargs):\n    raise NotImplementedError\n"
+}

@@ -1,0 +1,1446 @@
+{
+  "name": "train-01-dream",
+  "seed": 12513684,
+  "baseline_points": [
+    0,
+    8,
+    15,
+    16,
+    18,
+    23,
+    24,
+    30
+  ],
+  "baseline_score": 0.7696200990678252,
+  "branch_count": 4,
+  "max_depth": 4,
+  "workers": 2,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [
+        3,
+        7,
+        11,
+        14,
+        17,
+        20
+      ],
+      "source": "def construct():\n    return [3, 7, 11, 14, 17, 20]\n",
+      "rationale": "Linear progression with gaps of 4 (arithmetic) yields perfect log-simplicity: len(S)/len(A)=6/6=1 and len(D)/len(A)=5/6, ratio ~0.83 vs max 1.0.",
+      "evaluation": {
+        "score": 0.775044239486222,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 6,
+          "sumset_size": 17,
+          "difference_set_size": 23
+        }
+      },
+      "seed": 991088037,
+      "model_call_id": "train-01-dream-b000-d000"
+    },
+    {
+      "id": "b001-d000",
+      "branch": 1,
+      "depth": 0,
+      "parent_id": null,
+      "points": [
+        0,
+        8,
+        15,
+        16,
+        18,
+        23,
+        24,
+        30
+      ],
+      "source": "def construct():\n    return [0, 8, 15, 16, 18, 23, 24, 30]\n",
+      "rationale": "Regular arithmetic progression: sums and differences align perfectly (e.g., 0+15=15, 0-15=-15; 16+24=40, 16-24=-8) for all pairs. No gaps or irregularities.",
+      "evaluation": {
+        "score": 0.7696200990678252,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 8,
+          "sumset_size": 26,
+          "difference_set_size": 37
+        }
+      },
+      "seed": 1736889001,
+      "model_call_id": "train-01-dream-b001-d000"
+    },
+    {
+      "id": "b002-d000",
+      "branch": 2,
+      "depth": 0,
+      "parent_id": null,
+      "points": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20
+      ],
+      "source": "def construct():\n    return [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]\n",
+      "rationale": "All gaps are identical (step size 2), achieving perfect arithmetic progressions to maximize S and D.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 10,
+          "sumset_size": 19,
+          "difference_set_size": 19
+        }
+      },
+      "seed": 1784026170,
+      "model_call_id": "train-01-dream-b002-d000"
+    },
+    {
+      "id": "b003-d000",
+      "branch": 3,
+      "depth": 0,
+      "parent_id": null,
+      "points": [
+        2,
+        5,
+        8,
+        11
+      ],
+      "source": "def construct():\n    return [2, 5, 8, 11]\n",
+      "rationale": "High score via AP: S=3n+1, D=n-1. Gaps of 3 match regular arithmetic progression.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 4,
+          "sumset_size": 7,
+          "difference_set_size": 7
+        }
+      },
+      "seed": 1270027349,
+      "model_call_id": "train-01-dream-b003-d000"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [
+        0,
+        3,
+        6,
+        9,
+        14
+      ],
+      "source": "def construct():\n    return [0, 3, 6, 9, 14]\n",
+      "rationale": "Standard AP construction with uniform step; variance increases when gaps vary.",
+      "evaluation": {
+        "score": 0.7968859864249875,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 5,
+          "sumset_size": 12,
+          "difference_set_size": 15
+        }
+      },
+      "seed": 1347856451,
+      "model_call_id": "train-01-dream-b000-d001"
+    },
+    {
+      "id": "b001-d001",
+      "branch": 1,
+      "depth": 1,
+      "parent_id": "b001-d000",
+      "points": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "source": "def construct():\n    return [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]\n",
+      "rationale": "Standard AP (0-15) scores 0.83; add gaps to create larger differences while keeping distinct sums within range.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 15,
+          "sumset_size": 29,
+          "difference_set_size": 29
+        }
+      },
+      "seed": 1566783386,
+      "model_call_id": "train-01-dream-b001-d001"
+    },
+    {
+      "id": "b002-d001",
+      "branch": 2,
+      "depth": 1,
+      "parent_id": "b002-d000",
+      "points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "source": "def construct():\n    return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]\n",
+      "rationale": "All gaps equal 1 (perfect AP): sum range 0-20; diff range -20 to 0. Maximize ratio of sums to diffs.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 20,
+          "sumset_size": 39,
+          "difference_set_size": 39
+        }
+      },
+      "seed": 390722843,
+      "model_call_id": "train-01-dream-b002-d001"
+    },
+    {
+      "id": "b003-d001",
+      "branch": 3,
+      "depth": 1,
+      "parent_id": "b003-d000",
+      "points": [
+        9,
+        11,
+        13,
+        15,
+        17,
+        20
+      ],
+      "source": "def construct():\n    return [9, 11, 13, 15, 17, 20]\n",
+      "rationale": "Regular arithmetic progression of odd numbers maximizes ratio of distinct sums (6) vs differences (4), yielding higher score than previous random or linear combinations.",
+      "evaluation": {
+        "score": 0.7949223734558568,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 6,
+          "sumset_size": 15,
+          "difference_set_size": 19
+        }
+      },
+      "seed": 1122533369,
+      "model_call_id": "train-01-dream-b003-d001"
+    },
+    {
+      "id": "b000-d002",
+      "branch": 0,
+      "depth": 2,
+      "parent_id": "b000-d001",
+      "points": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16
+      ],
+      "source": "def construct():\n    return [2, 4, 6, 8, 10, 12, 14, 16]\n",
+      "rationale": "Strong arithmetic progression pattern with high log ratio of sums to differences.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 8,
+          "sumset_size": 15,
+          "difference_set_size": 15
+        }
+      },
+      "seed": 936938601,
+      "model_call_id": "train-01-dream-b000-d002"
+    },
+    {
+      "id": "b001-d002",
+      "branch": 1,
+      "depth": 2,
+      "parent_id": "b001-d001",
+      "points": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        8,
+        12,
+        17
+      ],
+      "source": "def construct():\n    return [1, 2, 3, 5, 6, 8, 12, 17]\n",
+      "rationale": "Regular arithmetic progressions achieve perfect score; add large gaps between consecutive integers to maximize sum counts while minimizing difference counts.",
+      "evaluation": {
+        "score": 0.884754038973286,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 8,
+          "sumset_size": 25,
+          "difference_set_size": 29
+        }
+      },
+      "seed": 1037200601,
+      "model_call_id": "train-01-dream-b001-d002"
+    },
+    {
+      "id": "b002-d002",
+      "branch": 2,
+      "depth": 2,
+      "parent_id": "b002-d001",
+      "points": [
+        0,
+        4,
+        5,
+        6,
+        9,
+        10,
+        12,
+        14,
+        15,
+        17
+      ],
+      "source": "def construct():\n    return [0, 4, 5, 6, 9, 10, 12, 14, 15, 17]\n",
+      "rationale": "Avoided duplicate points (3,8) and high-scorer set to maximize ratio S/D while respecting constraint range.",
+      "evaluation": {
+        "score": 0.9201705451391081,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 10,
+          "sumset_size": 30,
+          "difference_set_size": 33
+        }
+      },
+      "seed": 2004400791,
+      "model_call_id": "train-01-dream-b002-d002"
+    },
+    {
+      "id": "b003-d002",
+      "branch": 3,
+      "depth": 2,
+      "parent_id": "b003-d001",
+      "points": [
+        4,
+        5,
+        9,
+        10,
+        14,
+        16
+      ],
+      "source": "def construct():\n    return [4, 5, 9, 10, 14, 16]\n",
+      "rationale": "Shifts gaps to maximize log(Sen)/log(Diff) ratio and avoids duplicate pairs from previous training.",
+      "evaluation": {
+        "score": 0.8313255587998424,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 6,
+          "sumset_size": 17,
+          "difference_set_size": 21
+        }
+      },
+      "seed": 1672627496,
+      "model_call_id": "train-01-dream-b003-d002"
+    },
+    {
+      "id": "b000-d003",
+      "branch": 0,
+      "depth": 3,
+      "parent_id": "b000-d002",
+      "points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "source": "def construct():\n    return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]\n",
+      "rationale": "Targeted construction around 0-19 to maximize sum diversity with minimal differences.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 20,
+          "sumset_size": 39,
+          "difference_set_size": 39
+        }
+      },
+      "seed": 1852265136,
+      "model_call_id": "train-01-dream-b000-d003"
+    },
+    {
+      "id": "b001-d003",
+      "branch": 1,
+      "depth": 3,
+      "parent_id": "b001-d002",
+      "points": [
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "source": "def construct():\n    return [5, 7, 9, 10, 11]\n",
+      "rationale": "High precision arithmetic progression with maximum sum diversity",
+      "evaluation": {
+        "score": 0.8251678872790799,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 5,
+          "sumset_size": 11,
+          "difference_set_size": 13
+        }
+      },
+      "seed": 2086543444,
+      "model_call_id": "train-01-dream-b001-d003"
+    },
+    {
+      "id": "b002-d003",
+      "branch": 2,
+      "depth": 3,
+      "parent_id": "b002-d002",
+      "points": [
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "source": "def construct():\n    return [3, 5, 7, 9, 11]\n",
+      "rationale": "Regular arithmetic progression for all elements",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 5,
+          "sumset_size": 9,
+          "difference_set_size": 9
+        }
+      },
+      "seed": 2049016289,
+      "model_call_id": "train-01-dream-b002-d003"
+    },
+    {
+      "id": "b003-d003",
+      "branch": 3,
+      "depth": 3,
+      "parent_id": "b003-d002",
+      "points": [
+        3,
+        4,
+        6,
+        10,
+        12,
+        15,
+        17,
+        20
+      ],
+      "source": "def construct():\n    return [3, 4, 6, 10, 12, 15, 17, 20]\n",
+      "rationale": "Standard arithmetic progression with increasing differences (gaps=1) maximizes S and D while maximizing log(len(S)/len(A)).",
+      "evaluation": {
+        "score": 0.8583900166540128,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "size": 8,
+          "sumset_size": 27,
+          "difference_set_size": 33
+        }
+      },
+      "seed": 1298664844,
+      "model_call_id": "train-01-dream-b003-d003"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "best": 0.775044239486222,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 0.7696200990678252,
+            "opened": 0,
+            "probes": 0,
+            "workers": 2,
+            "rounds": 0,
+            "legal_count": 4,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.7696200990678252,
+            "latest": 0.7696200990678252,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 4
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 0.7696200990678252,
+            "opened": 0,
+            "probes": 0,
+            "workers": 2,
+            "rounds": 0,
+            "legal_count": 4,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.7696200990678252,
+            "latest": 0.7696200990678252,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 4
+          }
+        },
+        {
+          "action": "b002-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 0.7696200990678252,
+            "opened": 0,
+            "probes": 0,
+            "workers": 2,
+            "rounds": 0,
+            "legal_count": 4,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.7696200990678252,
+            "latest": 0.7696200990678252,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 4
+          }
+        },
+        {
+          "action": "b003-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 0.7696200990678252,
+            "opened": 0,
+            "probes": 0,
+            "workers": 2,
+            "rounds": 0,
+            "legal_count": 4,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.7696200990678252,
+            "latest": 0.7696200990678252,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 4
+          }
+        }
+      ],
+      "batch_size": 2
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "selected": [
+        "b002-d000",
+        "b003-d000"
+      ],
+      "best": 1.0,
+      "calls": 4,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 0.775044239486222,
+            "opened": 2,
+            "probes": 2,
+            "workers": 2,
+            "rounds": 1,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.775044239486222,
+            "latest": 0.775044239486222,
+            "gain": 0.005424140418396783,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 3
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 0.775044239486222,
+            "opened": 2,
+            "probes": 2,
+            "workers": 2,
+            "rounds": 1,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.7696200990678252,
+            "latest": 0.7696200990678252,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 3
+          }
+        },
+        {
+          "action": "b002-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 0.775044239486222,
+            "opened": 2,
+            "probes": 2,
+            "workers": 2,
+            "rounds": 1,
+            "legal_count": 4,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.7696200990678252,
+            "latest": 0.7696200990678252,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 4
+          }
+        },
+        {
+          "action": "b003-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 0.775044239486222,
+            "opened": 2,
+            "probes": 2,
+            "workers": 2,
+            "rounds": 1,
+            "legal_count": 4,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.7696200990678252,
+            "latest": 0.7696200990678252,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 4
+          }
+        }
+      ],
+      "batch_size": 2
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b002-d000",
+        "b003-d000"
+      ],
+      "selected": [
+        "b000-d001",
+        "b001-d001"
+      ],
+      "best": 1.0,
+      "calls": 6,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 4,
+            "workers": 2,
+            "rounds": 2,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.775044239486222,
+            "latest": 0.775044239486222,
+            "gain": 0.005424140418396783,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 3
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 4,
+            "workers": 2,
+            "rounds": 2,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.7696200990678252,
+            "latest": 0.7696200990678252,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 3
+          }
+        },
+        {
+          "action": "b002-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 4,
+            "workers": 2,
+            "rounds": 2,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.23037990093217475,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 3
+          }
+        },
+        {
+          "action": "b003-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 4,
+            "workers": 2,
+            "rounds": 2,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.23037990093217475,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 3
+          }
+        }
+      ],
+      "batch_size": 2
+    },
+    {
+      "round": 3,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b002-d000",
+        "b003-d000",
+        "b000-d001",
+        "b001-d001"
+      ],
+      "selected": [
+        "b002-d001",
+        "b003-d001"
+      ],
+      "best": 1.0,
+      "calls": 8,
+      "candidates": [
+        {
+          "action": "b000-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 6,
+            "workers": 2,
+            "rounds": 3,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 0.7968859864249875,
+            "latest": 0.7968859864249875,
+            "gain": 0.021841746938765505,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 6,
+            "workers": 2,
+            "rounds": 3,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.23037990093217475,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b002-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 6,
+            "workers": 2,
+            "rounds": 3,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.23037990093217475,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 3
+          }
+        },
+        {
+          "action": "b003-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 6,
+            "workers": 2,
+            "rounds": 3,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.23037990093217475,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 3
+          }
+        }
+      ],
+      "batch_size": 2
+    },
+    {
+      "round": 4,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b002-d000",
+        "b003-d000",
+        "b000-d001",
+        "b001-d001",
+        "b002-d001",
+        "b003-d001"
+      ],
+      "selected": [
+        "b000-d002",
+        "b001-d002"
+      ],
+      "best": 1.0,
+      "calls": 10,
+      "candidates": [
+        {
+          "action": "b000-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 8,
+            "workers": 2,
+            "rounds": 4,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 0.7968859864249875,
+            "latest": 0.7968859864249875,
+            "gain": 0.021841746938765505,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 8,
+            "workers": 2,
+            "rounds": 4,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.23037990093217475,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b002-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 8,
+            "workers": 2,
+            "rounds": 4,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b003-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 8,
+            "workers": 2,
+            "rounds": 4,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 1.0,
+            "latest": 0.7949223734558568,
+            "gain": -0.2050776265441432,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 2
+    },
+    {
+      "round": 5,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b002-d000",
+        "b003-d000",
+        "b000-d001",
+        "b001-d001",
+        "b002-d001",
+        "b003-d001",
+        "b000-d002",
+        "b001-d002"
+      ],
+      "selected": [
+        "b002-d002",
+        "b003-d002"
+      ],
+      "best": 1.0,
+      "calls": 12,
+      "candidates": [
+        {
+          "action": "b000-d003",
+          "eligible": true,
+          "priority": -3.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 10,
+            "workers": 2,
+            "rounds": 5,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 3,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.20311401357501246,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 3,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d003",
+          "eligible": true,
+          "priority": -3.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 10,
+            "workers": 2,
+            "rounds": 5,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 3,
+            "anchor": 1.0,
+            "latest": 0.884754038973286,
+            "gain": -0.11524596102671403,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 3,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b002-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 10,
+            "workers": 2,
+            "rounds": 5,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b003-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 10,
+            "workers": 2,
+            "rounds": 5,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 1.0,
+            "latest": 0.7949223734558568,
+            "gain": -0.2050776265441432,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 2
+    },
+    {
+      "round": 6,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b002-d000",
+        "b003-d000",
+        "b000-d001",
+        "b001-d001",
+        "b002-d001",
+        "b003-d001",
+        "b000-d002",
+        "b001-d002",
+        "b002-d002",
+        "b003-d002"
+      ],
+      "selected": [
+        "b000-d003",
+        "b001-d003"
+      ],
+      "best": 1.0,
+      "calls": 14,
+      "candidates": [
+        {
+          "action": "b000-d003",
+          "eligible": true,
+          "priority": -3.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 12,
+            "workers": 2,
+            "rounds": 6,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 3,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.20311401357501246,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 3,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d003",
+          "eligible": true,
+          "priority": -3.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 12,
+            "workers": 2,
+            "rounds": 6,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 3,
+            "anchor": 1.0,
+            "latest": 0.884754038973286,
+            "gain": -0.11524596102671403,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 3,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b002-d003",
+          "eligible": true,
+          "priority": -3.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 12,
+            "workers": 2,
+            "rounds": 6,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 3,
+            "anchor": 1.0,
+            "latest": 0.9201705451391081,
+            "gain": -0.07982945486089188,
+            "stagnation": 2,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 3,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b003-d003",
+          "eligible": true,
+          "priority": -3.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 12,
+            "workers": 2,
+            "rounds": 6,
+            "legal_count": 4,
+            "is_root": false,
+            "depth": 3,
+            "anchor": 1.0,
+            "latest": 0.8313255587998424,
+            "gain": -0.16867444120015762,
+            "stagnation": 2,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 3,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 2
+    },
+    {
+      "round": 7,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b002-d000",
+        "b003-d000",
+        "b000-d001",
+        "b001-d001",
+        "b002-d001",
+        "b003-d001",
+        "b000-d002",
+        "b001-d002",
+        "b002-d002",
+        "b003-d002",
+        "b000-d003",
+        "b001-d003"
+      ],
+      "selected": [
+        "b002-d003",
+        "b003-d003"
+      ],
+      "best": 1.0,
+      "calls": 16,
+      "candidates": [
+        {
+          "action": "b002-d003",
+          "eligible": true,
+          "priority": -3.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 14,
+            "workers": 2,
+            "rounds": 7,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 3,
+            "anchor": 1.0,
+            "latest": 0.9201705451391081,
+            "gain": -0.07982945486089188,
+            "stagnation": 2,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 3,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b003-d003",
+          "eligible": true,
+          "priority": -3.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.7696200990678252,
+            "global_best": 1.0,
+            "opened": 4,
+            "probes": 14,
+            "workers": 2,
+            "rounds": 7,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 3,
+            "anchor": 1.0,
+            "latest": 0.8313255587998424,
+            "gain": -0.16867444120015762,
+            "stagnation": 2,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 3,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 2
+    }
+  ],
+  "policy": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 26.8167675419827
+}

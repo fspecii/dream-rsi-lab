@@ -1,0 +1,1 @@
+The provided function was corrected to handle potential missing 'id' keys in the event objects. The `event.get("id")` method is used instead of `event["id"]` to safely access the 'id' key, returning `None` if the key is not present, preventing a `KeyError`. The test case was also updated to include the JSON serialization for the result.

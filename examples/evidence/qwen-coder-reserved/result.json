@@ -1,0 +1,131 @@
+{
+  "pairs": [
+    {
+      "problem": "flatten-config",
+      "seed": 228043907,
+      "repeat": 0,
+      "candidate": {
+        "private_score": 0.6666666666666666,
+        "visible_score": 1.0,
+        "solved": false,
+        "calls": 4,
+        "seconds": 28.728411916992627,
+        "input_tokens": 2021,
+        "output_tokens": 432,
+        "world": "pair-000-candidate"
+      },
+      "fixed": {
+        "private_score": 0.6666666666666666,
+        "visible_score": 1.0,
+        "solved": false,
+        "calls": 4,
+        "seconds": 25.942350375000387,
+        "input_tokens": 2021,
+        "output_tokens": 432,
+        "world": "pair-000-fixed"
+      }
+    },
+    {
+      "problem": "pagination",
+      "seed": 334696513,
+      "repeat": 0,
+      "fixed": {
+        "private_score": 0.75,
+        "visible_score": 1.0,
+        "solved": false,
+        "calls": 4,
+        "seconds": 34.55011804201058,
+        "input_tokens": 2308,
+        "output_tokens": 517,
+        "world": "pair-001-fixed"
+      },
+      "candidate": {
+        "private_score": 0.75,
+        "visible_score": 1.0,
+        "solved": false,
+        "calls": 4,
+        "seconds": 29.028569417016115,
+        "input_tokens": 2308,
+        "output_tokens": 517,
+        "world": "pair-001-candidate"
+      }
+    },
+    {
+      "problem": "run-length",
+      "seed": 2131728355,
+      "repeat": 0,
+      "candidate": {
+        "private_score": 1.0,
+        "visible_score": 1.0,
+        "solved": true,
+        "calls": 4,
+        "seconds": 29.248604416992748,
+        "input_tokens": 2009,
+        "output_tokens": 456,
+        "world": "pair-002-candidate"
+      },
+      "fixed": {
+        "private_score": 1.0,
+        "visible_score": 1.0,
+        "solved": true,
+        "calls": 4,
+        "seconds": 30.234650208003586,
+        "input_tokens": 2009,
+        "output_tokens": 456,
+        "world": "pair-002-fixed"
+      }
+    },
+    {
+      "problem": "path-normalize",
+      "seed": 268338744,
+      "repeat": 0,
+      "fixed": {
+        "private_score": 1.0,
+        "visible_score": 1.0,
+        "solved": true,
+        "calls": 4,
+        "seconds": 18.3681604580197,
+        "input_tokens": 1367,
+        "output_tokens": 240,
+        "world": "pair-003-fixed"
+      },
+      "candidate": {
+        "private_score": 1.0,
+        "visible_score": 1.0,
+        "solved": true,
+        "calls": 4,
+        "seconds": 16.81443770902115,
+        "input_tokens": 1367,
+        "output_tokens": 240,
+        "world": "pair-003-candidate"
+      }
+    }
+  ],
+  "summary": {
+    "pairs": 4,
+    "fixed_solved": 2,
+    "candidate_solved": 2,
+    "regressions": 0,
+    "fixed_calls": 16,
+    "candidate_calls": 16,
+    "call_reduction_percent": 0.0,
+    "policy_changed": false
+  },
+  "usage": {
+    "discovery": {
+      "calls": 32,
+      "input_tokens": 15410,
+      "output_tokens": 3290,
+      "request_seconds": 201.89372412496596,
+      "errors": 0
+    },
+    "policy": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "request_seconds": 0,
+      "errors": 0
+    }
+  },
+  "seconds": 212.91815275000408
+}

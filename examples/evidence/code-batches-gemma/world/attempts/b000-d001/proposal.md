@@ -1,0 +1,1 @@
+The function implements the specified logic. It handles edge cases where the input list is empty or the size is non-positive by returning an empty list. Otherwise, it iterates through the list in chunks of the specified size and appends each chunk to a list, which is then returned.

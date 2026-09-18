@@ -1,0 +1,49 @@
+{
+  "problem": "batch-items",
+  "world": {
+    "name": "code-solve",
+    "best": 1.0,
+    "baseline": 0.5,
+    "gain": 0.5,
+    "calls": 4,
+    "rounds": 4,
+    "width": 2,
+    "depth": 2
+  },
+  "selection": {
+    "node": "b000-d000",
+    "source": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n    \n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n    \n    return batches_list\n",
+    "visible_score": 1.0,
+    "hidden_score": 1.0,
+    "hidden_valid": true,
+    "assessment": {
+      "score": 1.0,
+      "valid": true,
+      "error": null,
+      "diagnostics": {
+        "passed": 4,
+        "total": 4,
+        "status": "completed",
+        "seconds": 0.19797391700558364,
+        "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+        "hidden": true
+      }
+    }
+  },
+  "usage": {
+    "discovery": {
+      "calls": 4,
+      "input_tokens": 1739,
+      "output_tokens": 676,
+      "request_seconds": 32.70361216596211,
+      "errors": 0
+    },
+    "policy": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "request_seconds": 0,
+      "errors": 0
+    }
+  }
+}

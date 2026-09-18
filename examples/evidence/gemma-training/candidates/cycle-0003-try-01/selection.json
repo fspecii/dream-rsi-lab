@@ -1,0 +1,25 @@
+{
+  "selected": {
+    "name": "cycle-0003-try-01-edit-02-eligible",
+    "rationale": "Increased threshold to 0.663167, avoiding premature rejection based on slight fluctuations.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "0.663167 > 0.5 and not last_failed",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "before": 0.6631666666666667,
+  "after": 0.6635,
+  "valid_revisions": 2,
+  "rejected_revisions": [
+    {
+      "revision": 1,
+      "error": "invalid syntax (<unknown>, line 1)"
+    }
+  ],
+  "replay_evaluations": 27,
+  "offline_discovery_calls": 0,
+  "objective": "paper",
+  "editor": "focused"
+}

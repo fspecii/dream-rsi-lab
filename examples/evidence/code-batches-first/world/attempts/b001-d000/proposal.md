@@ -1,0 +1,1 @@
+Correctly implements the split logic using a while loop that builds a list of chunks. Handles edge cases: nonpositive size returns empty list, and short final lists are included by iterating until the end is reached without exceeding the chunk size.

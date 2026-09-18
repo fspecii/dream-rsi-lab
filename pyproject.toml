@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dream-rsi-demo"
+version = "0.3.0"
+description = "Independent exploration-policy improvement for math and isolated Python tasks"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+dream-rsi = "dream_rsi.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["dream_rsi*"]
+
+[tool.setuptools.package-data]
+dream_rsi = ["web/*.html", "web/*.css", "web/*.js", "web/*.svg", "data/*.json"]

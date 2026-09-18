@@ -1,0 +1,27 @@
+{
+  "name": "cycle-0003-check-01-incumbent-try-01",
+  "best": 1.0,
+  "baseline": 0.0,
+  "gain": 1.0,
+  "calls": 4,
+  "rounds": 4,
+  "width": 2,
+  "depth": 2,
+  "case_id": "deduplicate-events",
+  "visible_best": 1.0,
+  "valid_attempts": 1,
+  "selected_node": "b000-d000",
+  "assessment": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 3,
+      "total": 3,
+      "status": "completed",
+      "seconds": 0.18823450000490993,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": true
+    }
+  }
+}

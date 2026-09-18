@@ -1,0 +1,26 @@
+{
+  "id": "b001-d001",
+  "branch": 1,
+  "depth": 1,
+  "parent_id": "b001-d000",
+  "points": [],
+  "source": "import heapq\n\ndef merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    heap = []\n    for interval in intervals:\n        heapq.heappush(heap, (interval[0], interval))\n\n    merged = []\n    while heap:\n        start, interval = heapq.heappop(heap)\n        if not merged or start > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1] = (merged[-1][0], max(merged[-1][1], interval[1]))\n\n    return merged\n",
+  "rationale": "This solution utilizes a min-heap to efficiently merge overlapping intervals. The heap is initialized with the intervals sorted by their start times.  Each interval is popped from the heap, and if it overlaps with the last merged interval (or if no intervals have been merged yet), it's merged. Otherwise, the last merged interval is updated to include the current interval's end time. This approach has a time complexity of O(n log n) due to the heap operations, where n is the number of intervals. The space complexity is O(n) to store the merged intervals and the heap.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 2,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.2978335000225343,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 44674325,
+  "model_call_id": "cycle-0003-live-try-01-b001-d001",
+  "artifact": "import heapq\n\ndef merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    heap = []\n    for interval in intervals:\n        heapq.heappush(heap, (interval[0], interval))\n\n    merged = []\n    while heap:\n        start, interval = heapq.heappop(heap)\n        if not merged or start > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1] = (merged[-1][0], max(merged[-1][1], interval[1]))\n\n    return merged\n"
+}

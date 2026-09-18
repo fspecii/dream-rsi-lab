@@ -1,0 +1,1 @@
+The provided code was already correct and satisfied the problem specification. The exponential backoff delays are calculated correctly, and the edge case where `attempts <= 0` is handled appropriately by returning an empty list.

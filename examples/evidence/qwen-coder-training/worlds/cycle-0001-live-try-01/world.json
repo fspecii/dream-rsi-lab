@@ -1,0 +1,415 @@
+{
+  "name": "cycle-0001-live-try-01",
+  "seed": 1666701590,
+  "baseline_points": [],
+  "baseline_score": 0.5,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.24774574997718446,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 1989925223,
+      "model_call_id": "cycle-0001-live-try-01-b000-d000",
+      "artifact": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')"
+    },
+    {
+      "id": "b001-d000",
+      "branch": 1,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.2557876250066329,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 2004879603,
+      "model_call_id": "cycle-0001-live-try-01-b001-d000",
+      "artifact": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.2439150830032304,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 237546948,
+      "model_call_id": "cycle-0001-live-try-01-b000-d001",
+      "artifact": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')"
+    },
+    {
+      "id": "b001-d001",
+      "branch": 1,
+      "depth": 1,
+      "parent_id": "b001-d000",
+      "points": [],
+      "source": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.2449216250097379,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 428033368,
+      "model_call_id": "cycle-0001-live-try-01-b001-d001",
+      "artifact": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 1.0,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b001-d000"
+      ],
+      "best": 1.0,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.5,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 1.0,
+      "calls": 3,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.5,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.5,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 3,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001"
+      ],
+      "selected": [
+        "b001-d001"
+      ],
+      "best": 1.0,
+      "calls": 4,
+      "candidates": [
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 3,
+            "workers": 1,
+            "rounds": 3,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.5,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 25.97448008300853,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Turn a title into an ASCII URL slug: normalize Unicode accents, lowercase, replace each run of non-alphanumeric characters with one hyphen, and strip edge hyphens. Empty input returns an empty string.",
+    "entrypoint": "slugify",
+    "visible_tests": [
+      {
+        "args": [
+          "Hello World"
+        ],
+        "expected": "hello-world"
+      },
+      {
+        "args": [
+          "  Caf\u00e9 & Tea!  "
+        ],
+        "expected": "cafe-tea"
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          "D\u00e9j\u00e0 vu / 2026"
+        ],
+        "expected": "deja-vu-2026"
+      },
+      {
+        "args": [
+          "---"
+        ],
+        "expected": ""
+      },
+      {
+        "args": [
+          "a___b  c"
+        ],
+        "expected": "a-b-c"
+      },
+      {
+        "args": [
+          ""
+        ],
+        "expected": ""
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "train",
+    "proposal_version": 2
+  },
+  "case_id": "slugify",
+  "baseline_artifact": "def slugify(title):\n    return title.lower().replace(\" \", \"-\")\n"
+}

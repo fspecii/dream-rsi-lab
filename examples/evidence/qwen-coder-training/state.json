@@ -1,0 +1,560 @@
+{
+  "id": "ca247139ae40",
+  "name": "Qwen Coder evaluation",
+  "config": {
+    "model": "qwen2.5-coder:7b",
+    "task": "python_code",
+    "seed": 2027,
+    "branches": 2,
+    "depth": 2,
+    "workers": 1,
+    "revisions": 3,
+    "validation_pairs": 2
+  },
+  "created_at": "2026-09-18T10:28:22+00:00",
+  "updated_at": "2026-09-18T10:31:29+00:00",
+  "status": "idle",
+  "message": "Run complete. Current policy and all evidence are saved.",
+  "events": [
+    {
+      "time": "2026-09-18T10:28:22+00:00",
+      "message": "Checking the local model\u2026"
+    },
+    {
+      "time": "2026-09-18T10:28:22+00:00",
+      "message": "Cycle 1: collecting experiments with policy v00."
+    },
+    {
+      "time": "2026-09-18T10:28:48+00:00",
+      "message": "Cycle 1: proposing and replaying 3 controller edits."
+    },
+    {
+      "time": "2026-09-18T10:28:59+00:00",
+      "message": "Cycle 1 \u00b7 unchanged. No edit improved replay. Current policy kept; unnecessary validation calls were avoided."
+    },
+    {
+      "time": "2026-09-18T10:28:59+00:00",
+      "message": "Cycle 2: collecting experiments with policy v00."
+    },
+    {
+      "time": "2026-09-18T10:29:36+00:00",
+      "message": "Cycle 2: proposing and replaying 3 controller edits."
+    },
+    {
+      "time": "2026-09-18T10:29:48+00:00",
+      "message": "Cycle 2 \u00b7 unchanged. No edit improved replay. Current policy kept; unnecessary validation calls were avoided."
+    },
+    {
+      "time": "2026-09-18T10:29:48+00:00",
+      "message": "Cycle 3: collecting experiments with policy v00."
+    },
+    {
+      "time": "2026-09-18T10:30:19+00:00",
+      "message": "Cycle 3: proposing and replaying 3 controller edits."
+    },
+    {
+      "time": "2026-09-18T10:30:34+00:00",
+      "message": "Cycle 3: fresh check 1/2 \u00b7 candidate."
+    },
+    {
+      "time": "2026-09-18T10:30:43+00:00",
+      "message": "Cycle 3: fresh check 1/2 \u00b7 incumbent."
+    },
+    {
+      "time": "2026-09-18T10:31:02+00:00",
+      "message": "Cycle 3: fresh check 2/2 \u00b7 incumbent."
+    },
+    {
+      "time": "2026-09-18T10:31:20+00:00",
+      "message": "Cycle 3: fresh check 2/2 \u00b7 candidate."
+    },
+    {
+      "time": "2026-09-18T10:31:29+00:00",
+      "message": "Cycle 3 \u00b7 rejected. Candidate did not produce a valid construction in every fresh pair. Current policy kept."
+    },
+    {
+      "time": "2026-09-18T10:31:29+00:00",
+      "message": "Run complete. Current policy and all evidence are saved."
+    }
+  ],
+  "history": [
+    "worlds/cycle-0001-live-try-01/world.json",
+    "worlds/cycle-0002-live-try-01/world.json",
+    "worlds/cycle-0003-live-try-01/world.json"
+  ],
+  "cycles": [
+    {
+      "index": 1,
+      "started_at": "2026-09-18T10:28:22+00:00",
+      "phase": "decide",
+      "attempts": {
+        "live": 1,
+        "dream": 1
+      },
+      "worlds": {
+        "live": "worlds/cycle-0001-live-try-01/world.json"
+      },
+      "pairs": [],
+      "incumbent": {
+        "version": 0,
+        "policy": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        }
+      },
+      "validation_seeds": [
+        754208722,
+        1597298789
+      ],
+      "validation_problems": [
+        "retry-delays",
+        "query-values"
+      ],
+      "live": {
+        "name": "cycle-0001-live-try-01",
+        "best": 1.0,
+        "baseline": 0.5,
+        "gain": 0.5,
+        "calls": 4,
+        "rounds": 4,
+        "width": 2,
+        "depth": 2
+      },
+      "candidate": {
+        "name": "fixed_parallel_refine",
+        "rationale": "Open all available directions and refine uniformly to the shared cap.",
+        "priority": "10 if is_root else -depth",
+        "eligible": "True",
+        "batch_size": "workers",
+        "width": "hard_width",
+        "depth": "hard_depth",
+        "beta": 0.6
+      },
+      "selection": {
+        "selected": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        },
+        "before": 0.9964999999999999,
+        "after": 0.9964999999999999,
+        "valid_revisions": 3,
+        "rejected_revisions": [],
+        "replay_evaluations": 12,
+        "offline_discovery_calls": 0,
+        "objective": "paper",
+        "editor": "focused"
+      },
+      "replay_worlds": [
+        "cycle-0001-live-try-01"
+      ],
+      "candidate_folder": "candidates/cycle-0001-try-01",
+      "outcome": "unchanged",
+      "reason": "No edit improved replay. Current policy kept; unnecessary validation calls were avoided.",
+      "finished_at": "2026-09-18T10:28:59+00:00"
+    },
+    {
+      "index": 2,
+      "started_at": "2026-09-18T10:28:59+00:00",
+      "phase": "decide",
+      "attempts": {
+        "live": 1,
+        "dream": 1
+      },
+      "worlds": {
+        "live": "worlds/cycle-0002-live-try-01/world.json"
+      },
+      "pairs": [],
+      "incumbent": {
+        "version": 0,
+        "policy": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        }
+      },
+      "validation_seeds": [
+        1609016493,
+        309750880
+      ],
+      "validation_problems": [
+        "deduplicate-events",
+        "retry-delays"
+      ],
+      "live": {
+        "name": "cycle-0002-live-try-01",
+        "best": 1.0,
+        "baseline": 0.0,
+        "gain": 1.0,
+        "calls": 4,
+        "rounds": 4,
+        "width": 2,
+        "depth": 2
+      },
+      "candidate": {
+        "name": "fixed_parallel_refine",
+        "rationale": "Open all available directions and refine uniformly to the shared cap.",
+        "priority": "10 if is_root else -depth",
+        "eligible": "True",
+        "batch_size": "workers",
+        "width": "hard_width",
+        "depth": "hard_depth",
+        "beta": 0.6
+      },
+      "selection": {
+        "selected": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        },
+        "before": 0.9964999999999999,
+        "after": 0.9964999999999999,
+        "valid_revisions": 3,
+        "rejected_revisions": [],
+        "replay_evaluations": 24,
+        "offline_discovery_calls": 0,
+        "objective": "paper",
+        "editor": "focused"
+      },
+      "replay_worlds": [
+        "cycle-0001-live-try-01",
+        "cycle-0002-live-try-01"
+      ],
+      "candidate_folder": "candidates/cycle-0002-try-01",
+      "outcome": "unchanged",
+      "reason": "No edit improved replay. Current policy kept; unnecessary validation calls were avoided.",
+      "finished_at": "2026-09-18T10:29:48+00:00"
+    },
+    {
+      "index": 3,
+      "started_at": "2026-09-18T10:29:48+00:00",
+      "phase": "decide",
+      "attempts": {
+        "live": 1,
+        "dream": 1,
+        "check-00-candidate": 1,
+        "check-00-incumbent": 1,
+        "check-01-incumbent": 1,
+        "check-01-candidate": 1
+      },
+      "worlds": {
+        "live": "worlds/cycle-0003-live-try-01/world.json",
+        "check-00-candidate": "worlds/cycle-0003-check-00-candidate-try-01/world.json",
+        "check-00-incumbent": "worlds/cycle-0003-check-00-incumbent-try-01/world.json",
+        "check-01-incumbent": "worlds/cycle-0003-check-01-incumbent-try-01/world.json",
+        "check-01-candidate": "worlds/cycle-0003-check-01-candidate-try-01/world.json"
+      },
+      "pairs": [
+        {
+          "seed": 1942227837,
+          "candidate": {
+            "name": "cycle-0003-check-00-candidate-try-01",
+            "best": 0.0,
+            "baseline": 0.0,
+            "gain": 0.0,
+            "calls": 2,
+            "rounds": 2,
+            "width": 1,
+            "depth": 2,
+            "case_id": "query-values",
+            "visible_best": 0.0,
+            "valid_attempts": 0,
+            "selected_node": null,
+            "assessment": {
+              "score": 0.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 0,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.1811106670065783,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          },
+          "incumbent": {
+            "name": "cycle-0003-check-00-incumbent-try-01",
+            "best": 0.0,
+            "baseline": 0.0,
+            "gain": 0.0,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "query-values",
+            "visible_best": 0.0,
+            "valid_attempts": 0,
+            "selected_node": null,
+            "assessment": {
+              "score": 0.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 0,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.17718800000147894,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          }
+        },
+        {
+          "seed": 1944243893,
+          "incumbent": {
+            "name": "cycle-0003-check-01-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.0,
+            "gain": 1.0,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "deduplicate-events",
+            "visible_best": 1.0,
+            "valid_attempts": 1,
+            "selected_node": "b000-d000",
+            "assessment": {
+              "score": 1.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 3,
+                "total": 3,
+                "status": "completed",
+                "seconds": 0.18823450000490993,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          },
+          "candidate": {
+            "name": "cycle-0003-check-01-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.0,
+            "gain": 1.0,
+            "calls": 2,
+            "rounds": 2,
+            "width": 1,
+            "depth": 2,
+            "case_id": "deduplicate-events",
+            "visible_best": 1.0,
+            "valid_attempts": 1,
+            "selected_node": "b000-d000",
+            "assessment": {
+              "score": 1.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 3,
+                "total": 3,
+                "status": "completed",
+                "seconds": 0.2471320419863332,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          }
+        }
+      ],
+      "incumbent": {
+        "version": 0,
+        "policy": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        }
+      },
+      "validation_seeds": [
+        1942227837,
+        1944243893
+      ],
+      "validation_problems": [
+        "query-values",
+        "deduplicate-events"
+      ],
+      "live": {
+        "name": "cycle-0003-live-try-01",
+        "best": 1.0,
+        "baseline": 0.0,
+        "gain": 1.0,
+        "calls": 4,
+        "rounds": 4,
+        "width": 2,
+        "depth": 2
+      },
+      "candidate": {
+        "name": "cycle-0003-try-01-edit-01-width",
+        "rationale": "Reduce width to half to save resources while preserving discovery quality.",
+        "priority": "10 if is_root else -depth",
+        "eligible": "True",
+        "batch_size": "workers",
+        "width": "hard_width if history_count < 2 else max(1, int(hard_width * 0.5))",
+        "depth": "hard_depth",
+        "beta": 0.6
+      },
+      "selection": {
+        "selected": {
+          "name": "cycle-0003-try-01-edit-01-width",
+          "rationale": "Reduce width to half to save resources while preserving discovery quality.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width if history_count < 2 else max(1, int(hard_width * 0.5))",
+          "depth": "hard_depth",
+          "beta": 0.6
+        },
+        "before": 0.9964999999999999,
+        "after": 0.9971666666666666,
+        "valid_revisions": 3,
+        "rejected_revisions": [],
+        "replay_evaluations": 36,
+        "offline_discovery_calls": 0,
+        "objective": "paper",
+        "editor": "focused"
+      },
+      "replay_worlds": [
+        "cycle-0001-live-try-01",
+        "cycle-0002-live-try-01",
+        "cycle-0003-live-try-01"
+      ],
+      "candidate_folder": "candidates/cycle-0003-try-01",
+      "gate": {
+        "accepted": false,
+        "reason": "Candidate did not produce a valid construction in every fresh pair. Current policy kept.",
+        "pairs": 2,
+        "quality_ok": true,
+        "mean_quality_difference": 0.0,
+        "incumbent_calls": 8,
+        "candidate_calls": 4,
+        "call_savings_percent": 50.0,
+        "quality_losses": 0
+      },
+      "outcome": "rejected",
+      "reason": "Candidate did not produce a valid construction in every fresh pair. Current policy kept.",
+      "finished_at": "2026-09-18T10:31:29+00:00"
+    }
+  ],
+  "active_cycle": null,
+  "next_cycle": 4,
+  "champion": {
+    "version": 0,
+    "policy": {
+      "name": "fixed_parallel_refine",
+      "rationale": "Open all available directions and refine uniformly to the shared cap.",
+      "priority": "10 if is_root else -depth",
+      "eligible": "True",
+      "batch_size": "workers",
+      "width": "hard_width",
+      "depth": "hard_depth",
+      "beta": 0.6
+    }
+  },
+  "versions": [
+    {
+      "version": 0,
+      "policy": {
+        "name": "fixed_parallel_refine",
+        "rationale": "Open all available directions and refine uniformly to the shared cap.",
+        "priority": "10 if is_root else -depth",
+        "eligible": "True",
+        "batch_size": "workers",
+        "width": "hard_width",
+        "depth": "hard_depth",
+        "beta": 0.6
+      },
+      "created_at": "2026-09-18T10:28:22+00:00",
+      "source": "Initial fixed exploration",
+      "evidence": null
+    }
+  ],
+  "task_metadata": {
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "runtime": {
+      "runtime": "docker",
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea"
+    }
+  },
+  "model_metadata": {
+    "name": "qwen2.5-coder:7b",
+    "model": "qwen2.5-coder:7b",
+    "modified_at": "2026-09-18T13:24:32.294940163+03:00",
+    "size": 4683087561,
+    "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "7.6B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 3584
+    },
+    "capabilities": [
+      "completion",
+      "tools",
+      "insert"
+    ]
+  },
+  "usage": {
+    "calls": 33,
+    "discovery_calls": 24,
+    "policy_calls": 9,
+    "input_tokens": 16853,
+    "output_tokens": 2583
+  },
+  "best_artifact": {
+    "score": 1.0,
+    "points": [],
+    "source": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')",
+    "artifact": "import unicodedata\n\ndef slugify(title):\n    if not title:\n        return ''\n\n    normalized_title = unicodedata.normalize('NFKD', title).encode('ASCII', 'ignore').decode('ASCII')\n    slug = ''.join(char.lower() for char in normalized_title if char.isalnum() or char == ' ')\n    slug = '-'.join(slug.split())\n    return slug.strip('-')",
+    "diagnostics": {
+      "visible_score": 1.0
+    },
+    "world": "cycle-0001-live-try-01",
+    "node": "b000-d000",
+    "rationale": "Selected on visible tests only",
+    "task": "python_code",
+    "case_id": "slugify"
+  },
+  "progress": null,
+  "error": null,
+  "run_control": {
+    "cycles_requested": 3,
+    "cycles_remaining": 0,
+    "max_new_calls": 72,
+    "starting_calls": 0
+  }
+}

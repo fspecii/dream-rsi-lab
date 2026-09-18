@@ -1,0 +1,1 @@
+The provided solution already satisfies the requirements. The regular expressions correctly handle Unicode normalization, case conversion, replacement of non-alphanumeric characters with hyphens, and stripping trailing hyphens. The edge case of an empty string is also handled correctly.

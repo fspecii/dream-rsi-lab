@@ -1,0 +1,1 @@
+The function first handles the empty string case. Then, it converts the input to lowercase and replaces all non-alphanumeric characters (except hyphens and spaces) with a single hyphen.  Next, it replaces multiple consecutive non-alphanumeric characters or spaces with a single hyphen. Finally, it strips any trailing hyphens.

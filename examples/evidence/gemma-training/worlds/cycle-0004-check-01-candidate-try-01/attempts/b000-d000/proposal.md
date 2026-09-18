@@ -1,0 +1,1 @@
+The original code only generated a list of base values, not exponential backoff delays. This revised code implements the exponential backoff delay calculation correctly, ensuring that the delay value does not exceed the cap and that the delay increases exponentially with each attempt. It also handles the edge case where attempts <= 0 by returning an empty list.

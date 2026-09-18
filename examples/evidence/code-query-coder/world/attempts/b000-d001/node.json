@@ -1,0 +1,38 @@
+{
+  "id": "b000-d001",
+  "branch": 0,
+  "depth": 1,
+  "parent_id": "b000-d000",
+  "points": [],
+  "source": "import urllib.parse\n\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict((k, [urllib.parse.unquote(v) for v in vs]) for k, vs in urllib.parse.parse_qs(query).items())",
+  "rationale": "",
+  "evaluation": {
+    "score": 0.5,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.2597887500014622,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": [
+        {
+          "index": 0,
+          "passed": false,
+          "actual": {
+            "a": [
+              "1",
+              "2"
+            ]
+          },
+          "error": "wrong output"
+        }
+      ]
+    }
+  },
+  "seed": 1779471420,
+  "model_call_id": "code-solve-b000-d001",
+  "artifact": "import urllib.parse\n\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict((k, [urllib.parse.unquote(v) for v in vs]) for k, vs in urllib.parse.parse_qs(query).items())"
+}

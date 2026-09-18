@@ -1,0 +1,26 @@
+{
+  "id": "b001-d001",
+  "branch": 1,
+  "depth": 1,
+  "parent_id": "b001-d000",
+  "points": [],
+  "source": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event.get(\"id\") not in seen_ids:\n            seen_ids.add(event.get(\"id\"))\n            result.append(event)\n    return result\n\nif __name__ == '__main__':\n    events1 = [{\"id\": \"a\", \"v\": 1}, {\"id\": \"a\", \"v\": 2}, {\"id\": \"b\", \"v\": 3}]\n    deduplicated_events = deduplicate(events1)\n    print(json.dumps(deduplicated_events))\n",
+  "rationale": "The function `deduplicate` takes a list of event objects as input. It uses a set `seen_ids` to keep track of the IDs that have already been encountered. For each event, it checks if its ID is in `seen_ids`. If not, it adds the ID to `seen_ids` and appends the event to the `result` list. Finally, it returns the `result` list, which contains the first occurrence of each ID, preserving the original order. The `event.get(\"id\")` is used to handle cases where the \"id\" key might be missing from an event, returning `None` if the key doesn't exist, preventing a `KeyError`.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.3027498750016093,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 2020290624,
+  "model_call_id": "cycle-0003-check-01-incumbent-try-01-b001-d001",
+  "artifact": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event.get(\"id\") not in seen_ids:\n            seen_ids.add(event.get(\"id\"))\n            result.append(event)\n    return result\n\nif __name__ == '__main__':\n    events1 = [{\"id\": \"a\", \"v\": 1}, {\"id\": \"a\", \"v\": 2}, {\"id\": \"b\", \"v\": 3}]\n    deduplicated_events = deduplicate(events1)\n    print(json.dumps(deduplicated_events))\n"
+}

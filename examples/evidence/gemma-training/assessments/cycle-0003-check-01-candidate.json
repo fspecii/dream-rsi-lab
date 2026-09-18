@@ -1,0 +1,27 @@
+{
+  "name": "cycle-0003-check-01-candidate-try-01",
+  "best": 0.6666666666666666,
+  "baseline": 0.0,
+  "gain": 0.0,
+  "calls": 2,
+  "rounds": 2,
+  "width": 2,
+  "depth": 2,
+  "case_id": "deduplicate-events",
+  "visible_best": 0.0,
+  "valid_attempts": 1,
+  "selected_node": null,
+  "assessment": {
+    "score": 0.6666666666666666,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 2,
+      "total": 3,
+      "status": "completed",
+      "seconds": 0.29804216700722463,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": true
+    }
+  }
+}

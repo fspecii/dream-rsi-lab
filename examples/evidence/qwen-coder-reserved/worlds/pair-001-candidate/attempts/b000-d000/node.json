@@ -1,0 +1,26 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = ceil(total / page_size)\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = start + page_size\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }",
+  "rationale": "",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.25204895800561644,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 807737261,
+  "model_call_id": "pair-001-candidate-b000-d000",
+  "artifact": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = ceil(total / page_size)\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = start + page_size\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }"
+}

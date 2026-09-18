@@ -1,0 +1,26 @@
+{
+  "id": "b000-d001",
+  "branch": 0,
+  "depth": 1,
+  "parent_id": "b000-d000",
+  "points": [],
+  "source": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event.get(\"id\") not in seen_ids:\n            seen_ids.add(event.get(\"id\"))  # Add the id to the set\n            result.append(event)\n    return result\n\n\nif __name__ == '__main__':\n    # Test case\n    events = [{\"id\": \"a\", \"v\": 1}, {\"id\": \"a\", \"v\": 2}, {\"id\": \"b\", \"v\": 3}] \n    deduplicated_events = deduplicate(events)\n    print(json.dumps(deduplicated_events))\n",
+  "rationale": "The provided function was corrected to handle potential missing 'id' keys in the event objects. The `event.get(\"id\")` method is used instead of `event[\"id\"]` to safely access the 'id' key, returning `None` if the key is not present, preventing a `KeyError`. The test case was also updated to include the JSON serialization for the result.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.25723329198081046,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 434334062,
+  "model_call_id": "cycle-0001-check-00-incumbent-try-01-b000-d001",
+  "artifact": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event.get(\"id\") not in seen_ids:\n            seen_ids.add(event.get(\"id\"))  # Add the id to the set\n            result.append(event)\n    return result\n\n\nif __name__ == '__main__':\n    # Test case\n    events = [{\"id\": \"a\", \"v\": 1}, {\"id\": \"a\", \"v\": 2}, {\"id\": \"b\", \"v\": 3}] \n    deduplicated_events = deduplicate(events)\n    print(json.dumps(deduplicated_events))\n"
+}

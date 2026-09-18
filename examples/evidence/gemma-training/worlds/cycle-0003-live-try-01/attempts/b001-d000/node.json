@@ -1,0 +1,18 @@
+{
+  "id": "b001-d000",
+  "branch": 1,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "",
+  "rationale": "",
+  "evaluation": {
+    "score": 0.0,
+    "valid": false,
+    "error": "Invalid model response (cycle-0003-live-try-01-b001-d000): model response truncated by token limit",
+    "diagnostics": {}
+  },
+  "seed": 98181765,
+  "model_call_id": "cycle-0003-live-try-01-b001-d000",
+  "artifact": ""
+}

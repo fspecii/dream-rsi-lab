@@ -1,0 +1,1 @@
+The code implements the exponential backoff delay generation as specified. It handles the edge case where `attempts` is 0 or negative by returning an empty list. Otherwise, it iterates `attempts` times, calculating the delay as the minimum of `cap` and `base * (2**i)`. The calculated delay is then appended to the `delays` list, which is returned at the end of the function.

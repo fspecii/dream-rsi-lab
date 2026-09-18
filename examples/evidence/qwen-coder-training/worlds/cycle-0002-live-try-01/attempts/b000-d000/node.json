@@ -1,0 +1,26 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "from functools import cmp_to_key\n\n\ndef merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    def compare(a, b):\n        return a[0] - b[0]\n\n    intervals.sort(key=cmp_to_key(compare))\n    merged = [intervals[0]]\n\n    for current in intervals[1:]:\n        last_merged = merged[-1]\n        if current[0] <= last_merged[1]:\n            merged[-1] = [last_merged[0], max(last_merged[1], current[1])]\n        else:\n            merged.append(current)\n\n    return merged\n",
+  "rationale": "",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 2,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.24538775000837632,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 1976128380,
+  "model_call_id": "cycle-0002-live-try-01-b000-d000",
+  "artifact": "from functools import cmp_to_key\n\n\ndef merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    def compare(a, b):\n        return a[0] - b[0]\n\n    intervals.sort(key=cmp_to_key(compare))\n    merged = [intervals[0]]\n\n    for current in intervals[1:]:\n        last_merged = merged[-1]\n        if current[0] <= last_merged[1]:\n            merged[-1] = [last_merged[0], max(last_merged[1], current[1])]\n        else:\n            merged.append(current)\n\n    return merged\n"
+}

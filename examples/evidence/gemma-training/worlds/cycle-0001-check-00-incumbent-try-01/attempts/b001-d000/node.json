@@ -1,0 +1,18 @@
+{
+  "id": "b001-d000",
+  "branch": 1,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event[\"id\"] not in seen_ids:\n            seen_ids.add(event[\"id\"])  # Add the id to the set\n            result.append(event)\n    return result\n\n\nif __name__ == '__main__':\n    # Test case\n    events = [{",
+  "rationale": "The function iterates through the input list of event objects. It uses a set called `seen_ids` to keep track of the IDs that have already been encountered. For each event, it checks if the event's ID is already in `seen_ids`. If it's not, the event's ID is added to `seen_ids`, and the event is appended to the `result` list. This ensures that only the first occurrence of each ID is kept, preserving the original order of the events.",
+  "evaluation": {
+    "score": 0.0,
+    "valid": false,
+    "error": "'{' was never closed (candidate.py, line 15)",
+    "diagnostics": {}
+  },
+  "seed": 2125017955,
+  "model_call_id": "cycle-0001-check-00-incumbent-try-01-b001-d000",
+  "artifact": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event[\"id\"] not in seen_ids:\n            seen_ids.add(event[\"id\"])  # Add the id to the set\n            result.append(event)\n    return result\n\n\nif __name__ == '__main__':\n    # Test case\n    events = [{"
+}

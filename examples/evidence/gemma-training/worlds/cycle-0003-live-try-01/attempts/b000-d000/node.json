@@ -1,0 +1,26 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n\n    merged_intervals = []\n    current_interval = intervals[0]\n\n    for interval in intervals[1:]:\n        if interval[0] <= current_interval[1]:  # Overlapping or touching\n            current_interval[1] = max(current_interval[1], interval[1])  # Merge\n        else:\n            merged_intervals.append(current_interval)\n            current_interval = interval\n\n    merged_intervals.append(current_interval)  # Add the last interval\n\n    return merged_intervals\n",
+  "rationale": "The function first handles the edge case of an empty input list. Then, it sorts the intervals based on their starting points. It iterates through the sorted intervals, merging overlapping or touching intervals into a single interval. If an interval overlaps with the current merged interval, the end of the current interval is updated to the maximum of the two ends. If an interval does not overlap, the current merged interval is added to the result, and the current interval is updated to the new interval. Finally, the last merged interval is added to the result.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 2,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.2494959580071736,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 960043156,
+  "model_call_id": "cycle-0003-live-try-01-b000-d000",
+  "artifact": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n\n    merged_intervals = []\n    current_interval = intervals[0]\n\n    for interval in intervals[1:]:\n        if interval[0] <= current_interval[1]:  # Overlapping or touching\n            current_interval[1] = max(current_interval[1], interval[1])  # Merge\n        else:\n            merged_intervals.append(current_interval)\n            current_interval = interval\n\n    merged_intervals.append(current_interval)  # Add the last interval\n\n    return merged_intervals\n"
+}

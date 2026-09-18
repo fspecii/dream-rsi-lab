@@ -1,0 +1,259 @@
+{
+  "name": "code-solve",
+  "seed": 2027,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 1,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import urllib.parse\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict((k, [urllib.parse.unquote(v) for v in vs]) for k, vs in urllib.parse.parse_qs(query).items())",
+      "rationale": "",
+      "evaluation": {
+        "score": 0.5,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.25126649998128414,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": [
+            {
+              "index": 0,
+              "passed": false,
+              "actual": {
+                "a": [
+                  "1",
+                  "2"
+                ]
+              },
+              "error": "wrong output"
+            }
+          ]
+        }
+      },
+      "seed": 1203633561,
+      "model_call_id": "code-solve-b000-d000",
+      "artifact": "import urllib.parse\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict((k, [urllib.parse.unquote(v) for v in vs]) for k, vs in urllib.parse.parse_qs(query).items())"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "import urllib.parse\n\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict((k, [urllib.parse.unquote(v) for v in vs]) for k, vs in urllib.parse.parse_qs(query).items())",
+      "rationale": "",
+      "evaluation": {
+        "score": 0.5,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.2597887500014622,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": [
+            {
+              "index": 0,
+              "passed": false,
+              "actual": {
+                "a": [
+                  "1",
+                  "2"
+                ]
+              },
+              "error": "wrong output"
+            }
+          ]
+        }
+      },
+      "seed": 1779471420,
+      "model_call_id": "code-solve-b000-d001",
+      "artifact": "import urllib.parse\n\n\ndef query_values(query):\n    if query.startswith('?'):\n        query = query[1:]\n    return dict((k, [urllib.parse.unquote(v) for v in vs]) for k, vs in urllib.parse.parse_qs(query).items())"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 0.5,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 1,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 0.5,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.5,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.5,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 16.723082416981924,
+  "hard_branch_count": 1,
+  "hard_max_depth": 2,
+  "planning_history": [],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Parse a URL query string into an object mapping each key to a list of decoded values in occurrence order. Decode plus as a space and percent escapes; preserve blank values and repeated keys. An optional leading ? is allowed.",
+    "entrypoint": "query_values",
+    "visible_tests": [
+      {
+        "args": [
+          "a=1&a=2&b="
+        ],
+        "expected": {
+          "a": [
+            "1",
+            "2"
+          ],
+          "b": [
+            ""
+          ]
+        }
+      },
+      {
+        "args": [
+          "?q=hello+world"
+        ],
+        "expected": {
+          "q": [
+            "hello world"
+          ]
+        }
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          ""
+        ],
+        "expected": {}
+      },
+      {
+        "args": [
+          "x=%26%3D&x="
+        ],
+        "expected": {
+          "x": [
+            "&=",
+            ""
+          ]
+        }
+      },
+      {
+        "args": [
+          "flag&x=1"
+        ],
+        "expected": {
+          "flag": [
+            ""
+          ],
+          "x": [
+            "1"
+          ]
+        }
+      },
+      {
+        "args": [
+          "q=caf%C3%A9"
+        ],
+        "expected": {
+          "q": [
+            "caf\u00e9"
+          ]
+        }
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "validation",
+    "proposal_version": 2
+  },
+  "case_id": "query-values",
+  "baseline_artifact": "def query_values(query):\n    return dict(part.split(\"=\") for part in query.split(\"&\"))\n"
+}

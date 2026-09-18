@@ -1,0 +1,20 @@
+{
+  "selected": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "before": 0.9964999999999999,
+  "after": 0.9964999999999999,
+  "valid_revisions": 3,
+  "rejected_revisions": [],
+  "replay_evaluations": 24,
+  "offline_discovery_calls": 0,
+  "objective": "paper",
+  "editor": "focused"
+}

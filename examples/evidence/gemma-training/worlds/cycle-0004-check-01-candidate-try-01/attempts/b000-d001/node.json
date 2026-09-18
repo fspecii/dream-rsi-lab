@@ -1,0 +1,26 @@
+{
+  "id": "b000-d001",
+  "branch": 0,
+  "depth": 1,
+  "parent_id": "b000-d000",
+  "points": [],
+  "source": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n",
+  "rationale": "The provided code was already correct and satisfied the problem specification. The exponential backoff delays are calculated correctly, and the edge case where `attempts <= 0` is handled appropriately by returning an empty list.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.255199667008128,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 85079235,
+  "model_call_id": "cycle-0004-check-01-candidate-try-01-b000-d001",
+  "artifact": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n"
+}

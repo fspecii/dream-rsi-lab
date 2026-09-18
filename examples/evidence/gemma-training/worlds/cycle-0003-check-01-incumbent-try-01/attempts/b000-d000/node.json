@@ -1,0 +1,18 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event[\"id\"] not in seen_ids:\n            seen_ids.add(event[\"id\"])\n            result.append(event)\n    return result\n\nif __name__ == '__main__':\n    events1 = [{",
+  "rationale": "The function `deduplicate` takes a list of event objects and returns a new list containing only the first occurrence of each event ID, preserving the original order. It uses a set `seen_ids` to efficiently track the IDs that have already been encountered. The function iterates through the input `events` list. For each event, it checks if the event's ID is already present in `seen_ids`. If the ID is not in `seen_ids`, it means this is the first time we've encountered this ID. The function then adds the ID to `seen_ids` and appends the event object to the `result` list. Finally, the function returns the `result` list, which contains the deduplicated events in their original order.",
+  "evaluation": {
+    "score": 0.0,
+    "valid": false,
+    "error": "'{' was never closed (candidate.py, line 13)",
+    "diagnostics": {}
+  },
+  "seed": 1729496674,
+  "model_call_id": "cycle-0003-check-01-incumbent-try-01-b000-d000",
+  "artifact": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event[\"id\"] not in seen_ids:\n            seen_ids.add(event[\"id\"])\n            result.append(event)\n    return result\n\nif __name__ == '__main__':\n    events1 = [{"
+}

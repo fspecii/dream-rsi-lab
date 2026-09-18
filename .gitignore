@@ -1,0 +1,30 @@
+# Local maintainer notes — never publish
+*.local.md
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Experiment outputs
+runs/
+.dream-rsi/
+logs/
+results/raw/
+wandb/
+*.ckpt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Packaging outputs
+build/
+dist/

@@ -1,0 +1,26 @@
+{
+  "id": "b000-d001",
+  "branch": 0,
+  "depth": 1,
+  "parent_id": "b000-d000",
+  "points": [],
+  "source": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n    merged = []\n    for interval in intervals:\n        if not merged or interval[0] > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged\n",
+  "rationale": "The function efficiently merges overlapping intervals. It first sorts the intervals based on their start times. Then, it iterates through the sorted intervals, adding them to the `merged` list if they don't overlap with the last interval in the `merged` list or updating the end time of the last interval if they do overlap. The final merged list is sorted by the start times of the intervals. The function handles empty input and correctly merges overlapping intervals. The internal logic correctly implements the merging algorithm and addresses the specified edge cases.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 2,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.41234804200939834,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 304972697,
+  "model_call_id": "cycle-0004-live-try-01-b000-d001",
+  "artifact": "def merge_intervals(intervals):\n    if not intervals:\n        return []\n\n    intervals.sort(key=lambda x: x[0])  # Sort intervals based on start time\n    merged = []\n    for interval in intervals:\n        if not merged or interval[0] > merged[-1][1]:\n            merged.append(interval)\n        else:\n            merged[-1][1] = max(merged[-1][1], interval[1])\n    return merged\n"
+}

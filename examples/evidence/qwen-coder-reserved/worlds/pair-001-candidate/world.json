@@ -1,0 +1,492 @@
+{
+  "name": "pair-001-candidate",
+  "seed": 334696513,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = ceil(total / page_size)\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = start + page_size\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.25204895800561644,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 807737261,
+      "model_call_id": "pair-001-candidate-b000-d000",
+      "artifact": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = ceil(total / page_size)\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = start + page_size\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }"
+    },
+    {
+      "id": "b001-d000",
+      "branch": 1,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = ceil(total / page_size)\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = min(start + page_size, total)\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.2502945419983007,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 1235404991,
+      "model_call_id": "pair-001-candidate-b001-d000",
+      "artifact": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = ceil(total / page_size)\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = min(start + page_size, total)\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = max(1, ceil(total / page_size))\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = start + page_size\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.2479777499975171,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 1296831745,
+      "model_call_id": "pair-001-candidate-b000-d001",
+      "artifact": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = max(1, ceil(total / page_size))\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = start + page_size\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }"
+    },
+    {
+      "id": "b001-d001",
+      "branch": 1,
+      "depth": 1,
+      "parent_id": "b001-d000",
+      "points": [],
+      "source": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = ceil(total / page_size)\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = min(start + page_size, total)\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }",
+      "rationale": "",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.24637533398345113,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 997135264,
+      "model_call_id": "pair-001-candidate-b001-d001",
+      "artifact": "from math import ceil\n\ndef paginate(items, page, page_size):\n    if page_size <= 0:\n        return None\n    total = len(items)\n    pages = ceil(total / page_size)\n    page = max(1, min(page, pages))\n    start = (page - 1) * page_size\n    end = min(start + page_size, total)\n    return {\n        'items': items[start:end],\n        'page': page,\n        'pages': pages,\n        'total': total\n    }"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 1.0,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b001-d000"
+      ],
+      "best": 1.0,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 1.0,
+      "calls": 3,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 3,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001"
+      ],
+      "selected": [
+        "b001-d001"
+      ],
+      "best": 1.0,
+      "calls": 4,
+      "candidates": [
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 3,
+            "workers": 1,
+            "rounds": 3,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 28.844285500003025,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [
+    {
+      "name": "cycle-0001-live-try-01",
+      "best": 1.0,
+      "baseline": 0.5,
+      "gain": 0.5,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0002-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0003-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Return an object with items, page, pages, total. Page numbers are one-based. Clamp requested page to [1,pages]. pages is ceil(len(items)/page_size), at least 1. page_size must be positive; for nonpositive size return None.",
+    "entrypoint": "paginate",
+    "visible_tests": [
+      {
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          2,
+          2
+        ],
+        "expected": {
+          "items": [
+            3,
+            4
+          ],
+          "page": 2,
+          "pages": 3,
+          "total": 5
+        }
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          [],
+          9,
+          3
+        ],
+        "expected": {
+          "items": [],
+          "page": 1,
+          "pages": 1,
+          "total": 0
+        }
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            3
+          ],
+          99,
+          2
+        ],
+        "expected": {
+          "items": [
+            3
+          ],
+          "page": 2,
+          "pages": 2,
+          "total": 3
+        }
+      },
+      {
+        "args": [
+          [
+            1,
+            2
+          ],
+          0,
+          1
+        ],
+        "expected": {
+          "items": [
+            1
+          ],
+          "page": 1,
+          "pages": 2,
+          "total": 2
+        }
+      },
+      {
+        "args": [
+          [
+            1
+          ],
+          1,
+          0
+        ],
+        "expected": null
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "test",
+    "proposal_version": 2
+  },
+  "case_id": "pagination",
+  "baseline_artifact": "def paginate(*args, **kwargs):\n    raise NotImplementedError\n"
+}

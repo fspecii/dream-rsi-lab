@@ -1,0 +1,26 @@
+{
+  "id": "b000-d001",
+  "branch": 0,
+  "depth": 1,
+  "parent_id": "b000-d000",
+  "points": [],
+  "source": "import math\n\ndef retry_delays(base, cap, attempts):\n    if attempts <= 0:\n        return []\n    \n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n",
+  "rationale": "The function implements the exponential backoff delay logic as specified. It handles the edge case where `attempts` is zero or negative by returning an empty list. Otherwise, it iterates `attempts` times, calculating each delay as the minimum of `cap` and `base * (2**i)`, and appending the delay to the `delays` list.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.25026104200514965,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 1031605248,
+  "model_call_id": "cycle-0003-check-00-candidate-try-01-b000-d001",
+  "artifact": "import math\n\ndef retry_delays(base, cap, attempts):\n    if attempts <= 0:\n        return []\n    \n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n"
+}

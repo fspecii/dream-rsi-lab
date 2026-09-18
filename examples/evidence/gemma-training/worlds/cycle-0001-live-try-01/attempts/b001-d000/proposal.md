@@ -1,0 +1,1 @@
+The original function failed to handle Unicode characters and multiple consecutive non-alphanumeric characters. This revised function uses `re.sub` to replace all non-alphanumeric characters with a hyphen, handles multiple hyphens by replacing them with a single hyphen, and strips leading/trailing hyphens. It also handles empty strings correctly.

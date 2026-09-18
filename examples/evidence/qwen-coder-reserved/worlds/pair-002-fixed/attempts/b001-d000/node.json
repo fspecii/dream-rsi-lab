@@ -1,0 +1,26 @@
+{
+  "id": "b001-d000",
+  "branch": 1,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "def encode_runs(lst):\n    if not lst:\n        return []\n    encoded = []\n    current_value = lst[0]\n    count = 1\n    for value in lst[1:]:\n        if value == current_value:\n            count += 1\n        else:\n            encoded.append([current_value, count])\n            current_value = value\n            count = 1\n    encoded.append([current_value, count])\n    return encoded\n",
+  "rationale": "",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.3067273749911692,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 2097106012,
+  "model_call_id": "pair-002-fixed-b001-d000",
+  "artifact": "def encode_runs(lst):\n    if not lst:\n        return []\n    encoded = []\n    current_value = lst[0]\n    count = 1\n    for value in lst[1:]:\n        if value == current_value:\n            count += 1\n        else:\n            encoded.append([current_value, count])\n            current_value = value\n            count = 1\n    encoded.append([current_value, count])\n    return encoded\n"
+}

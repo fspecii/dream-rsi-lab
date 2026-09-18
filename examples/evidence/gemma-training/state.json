@@ -1,0 +1,980 @@
+{
+  "id": "c60205d46b64",
+  "name": "Python repair workspace",
+  "config": {
+    "model": "gemma3:4b",
+    "task": "python_code",
+    "seed": 2027,
+    "branches": 2,
+    "depth": 2,
+    "workers": 1,
+    "revisions": 3,
+    "validation_pairs": 2
+  },
+  "created_at": "2026-09-18T10:06:05+00:00",
+  "updated_at": "2026-09-18T10:22:01+00:00",
+  "status": "idle",
+  "message": "Run complete. Current policy and all evidence are saved.",
+  "events": [
+    {
+      "time": "2026-09-18T10:06:10+00:00",
+      "message": "Checking the local model\u2026"
+    },
+    {
+      "time": "2026-09-18T10:06:10+00:00",
+      "message": "Cycle 1: collecting experiments with policy v00."
+    },
+    {
+      "time": "2026-09-18T10:06:32+00:00",
+      "message": "Cycle 1: proposing and replaying 3 controller edits."
+    },
+    {
+      "time": "2026-09-18T10:06:39+00:00",
+      "message": "Cycle 1: fresh check 1/2 \u00b7 candidate."
+    },
+    {
+      "time": "2026-09-18T10:06:39+00:00",
+      "message": "Cycle 1: fresh check 1/2 \u00b7 incumbent."
+    },
+    {
+      "time": "2026-09-18T10:08:05+00:00",
+      "message": "Cycle 1: fresh check 2/2 \u00b7 incumbent."
+    },
+    {
+      "time": "2026-09-18T10:08:41+00:00",
+      "message": "Cycle 1: fresh check 2/2 \u00b7 candidate."
+    },
+    {
+      "time": "2026-09-18T10:08:41+00:00",
+      "message": "Cycle 1 \u00b7 rejected. Candidate lost solution quality on fresh data. Current policy kept."
+    },
+    {
+      "time": "2026-09-18T10:08:41+00:00",
+      "message": "Cycle 2: collecting experiments with policy v00."
+    },
+    {
+      "time": "2026-09-18T10:09:09+00:00",
+      "message": "Cycle 2: proposing and replaying 3 controller edits."
+    },
+    {
+      "time": "2026-09-18T10:09:17+00:00",
+      "message": "Cycle 2 \u00b7 unchanged. No edit improved replay. Current policy kept; unnecessary validation calls were avoided."
+    },
+    {
+      "time": "2026-09-18T10:09:17+00:00",
+      "message": "Run complete. Current policy and all evidence are saved."
+    },
+    {
+      "time": "2026-09-18T10:10:29+00:00",
+      "message": "Checking the local model\u2026"
+    },
+    {
+      "time": "2026-09-18T10:10:30+00:00",
+      "message": "Cycle 3: collecting experiments with policy v00."
+    },
+    {
+      "time": "2026-09-18T10:12:04+00:00",
+      "message": "Cycle 3: proposing and replaying 3 controller edits."
+    },
+    {
+      "time": "2026-09-18T10:12:16+00:00",
+      "message": "Cycle 3: fresh check 1/2 \u00b7 candidate."
+    },
+    {
+      "time": "2026-09-18T10:12:42+00:00",
+      "message": "Cycle 3: fresh check 1/2 \u00b7 incumbent."
+    },
+    {
+      "time": "2026-09-18T10:13:09+00:00",
+      "message": "Cycle 3: fresh check 2/2 \u00b7 incumbent."
+    },
+    {
+      "time": "2026-09-18T10:14:40+00:00",
+      "message": "Cycle 3: fresh check 2/2 \u00b7 candidate."
+    },
+    {
+      "time": "2026-09-18T10:15:44+00:00",
+      "message": "Cycle 3 \u00b7 rejected. Candidate lost solution quality on fresh data. Current policy kept."
+    },
+    {
+      "time": "2026-09-18T10:15:44+00:00",
+      "message": "Cycle 4: collecting experiments with policy v00."
+    },
+    {
+      "time": "2026-09-18T10:17:06+00:00",
+      "message": "Cycle 4: proposing and replaying 3 controller edits."
+    },
+    {
+      "time": "2026-09-18T10:17:19+00:00",
+      "message": "Cycle 4: fresh check 1/2 \u00b7 candidate."
+    },
+    {
+      "time": "2026-09-18T10:18:27+00:00",
+      "message": "Cycle 4: fresh check 1/2 \u00b7 incumbent."
+    },
+    {
+      "time": "2026-09-18T10:20:52+00:00",
+      "message": "Cycle 4: fresh check 2/2 \u00b7 incumbent."
+    },
+    {
+      "time": "2026-09-18T10:21:28+00:00",
+      "message": "Cycle 4: fresh check 2/2 \u00b7 candidate."
+    },
+    {
+      "time": "2026-09-18T10:22:01+00:00",
+      "message": "Cycle 4 \u00b7 rejected. Candidate did not produce a valid construction in every fresh pair. Current policy kept."
+    },
+    {
+      "time": "2026-09-18T10:22:01+00:00",
+      "message": "Run complete. Current policy and all evidence are saved."
+    }
+  ],
+  "history": [
+    "worlds/cycle-0001-live-try-01/world.json",
+    "worlds/cycle-0002-live-try-01/world.json",
+    "worlds/cycle-0003-live-try-01/world.json",
+    "worlds/cycle-0004-live-try-01/world.json"
+  ],
+  "cycles": [
+    {
+      "index": 1,
+      "started_at": "2026-09-18T10:06:10+00:00",
+      "phase": "decide",
+      "attempts": {
+        "live": 1,
+        "dream": 1,
+        "check-00-candidate": 1,
+        "check-00-incumbent": 1,
+        "check-01-incumbent": 1,
+        "check-01-candidate": 1
+      },
+      "worlds": {
+        "live": "worlds/cycle-0001-live-try-01/world.json",
+        "check-00-candidate": "worlds/cycle-0001-check-00-candidate-try-01/world.json",
+        "check-00-incumbent": "worlds/cycle-0001-check-00-incumbent-try-01/world.json",
+        "check-01-incumbent": "worlds/cycle-0001-check-01-incumbent-try-01/world.json",
+        "check-01-candidate": "worlds/cycle-0001-check-01-candidate-try-01/world.json"
+      },
+      "pairs": [
+        {
+          "seed": 1941482650,
+          "candidate": {
+            "name": "cycle-0001-check-00-candidate-try-01",
+            "best": 0.6666666666666666,
+            "baseline": 0.0,
+            "gain": 0.0,
+            "calls": 0,
+            "rounds": 0,
+            "width": 2,
+            "depth": 2,
+            "case_id": "deduplicate-events",
+            "visible_best": 0.0,
+            "valid_attempts": 1,
+            "selected_node": null,
+            "assessment": {
+              "score": 0.6666666666666666,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 2,
+                "total": 3,
+                "status": "completed",
+                "seconds": 0.19286116599687375,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          },
+          "incumbent": {
+            "name": "cycle-0001-check-00-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.0,
+            "gain": 1.0,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "deduplicate-events",
+            "visible_best": 1.0,
+            "valid_attempts": 1,
+            "selected_node": "b000-d001",
+            "assessment": {
+              "score": 1.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 3,
+                "total": 3,
+                "status": "completed",
+                "seconds": 0.2498043749947101,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          }
+        },
+        {
+          "seed": 410863342,
+          "incumbent": {
+            "name": "cycle-0001-check-01-incumbent-try-01",
+            "best": 0.25,
+            "baseline": 0.0,
+            "gain": 0.0,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "inventory-delta",
+            "visible_best": 0.0,
+            "valid_attempts": 1,
+            "selected_node": null,
+            "assessment": {
+              "score": 0.25,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 1,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.19082491600420326,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          },
+          "candidate": {
+            "name": "cycle-0001-check-01-candidate-try-01",
+            "best": 0.25,
+            "baseline": 0.0,
+            "gain": 0.0,
+            "calls": 0,
+            "rounds": 0,
+            "width": 2,
+            "depth": 2,
+            "case_id": "inventory-delta",
+            "visible_best": 0.0,
+            "valid_attempts": 1,
+            "selected_node": null,
+            "assessment": {
+              "score": 0.25,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 1,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.18310824999934994,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          }
+        }
+      ],
+      "incumbent": {
+        "version": 0,
+        "policy": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        }
+      },
+      "validation_seeds": [
+        1941482650,
+        410863342
+      ],
+      "validation_problems": [
+        "deduplicate-events",
+        "inventory-delta"
+      ],
+      "live": {
+        "name": "cycle-0001-live-try-01",
+        "best": 0.5,
+        "baseline": 0.5,
+        "gain": 0.0,
+        "calls": 4,
+        "rounds": 4,
+        "width": 2,
+        "depth": 2
+      },
+      "candidate": {
+        "name": "cycle-0001-try-01-edit-01-eligible",
+        "rationale": "Rejecting if objective is below baseline, stabilizing exploration and preventing stagnation.",
+        "priority": "10 if is_root else -depth",
+        "eligible": "not (0.496500 < 0.5)",
+        "batch_size": "workers",
+        "width": "hard_width",
+        "depth": "hard_depth",
+        "beta": 0.6
+      },
+      "selection": {
+        "selected": {
+          "name": "cycle-0001-try-01-edit-01-eligible",
+          "rationale": "Rejecting if objective is below baseline, stabilizing exploration and preventing stagnation.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "not (0.496500 < 0.5)",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        },
+        "before": 0.4965,
+        "after": 0.5,
+        "valid_revisions": 3,
+        "rejected_revisions": [],
+        "replay_evaluations": 12,
+        "offline_discovery_calls": 0,
+        "objective": "paper",
+        "editor": "focused"
+      },
+      "replay_worlds": [
+        "cycle-0001-live-try-01"
+      ],
+      "candidate_folder": "candidates/cycle-0001-try-01",
+      "gate": {
+        "accepted": false,
+        "reason": "Candidate lost solution quality on fresh data. Current policy kept.",
+        "pairs": 2,
+        "quality_ok": false,
+        "mean_quality_difference": -0.16666666666666669,
+        "incumbent_calls": 8,
+        "candidate_calls": 0,
+        "call_savings_percent": 100.0,
+        "quality_losses": 1
+      },
+      "outcome": "rejected",
+      "reason": "Candidate lost solution quality on fresh data. Current policy kept.",
+      "finished_at": "2026-09-18T10:08:41+00:00"
+    },
+    {
+      "index": 2,
+      "started_at": "2026-09-18T10:08:41+00:00",
+      "phase": "decide",
+      "attempts": {
+        "live": 1,
+        "dream": 1
+      },
+      "worlds": {
+        "live": "worlds/cycle-0002-live-try-01/world.json"
+      },
+      "pairs": [],
+      "incumbent": {
+        "version": 0,
+        "policy": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        }
+      },
+      "validation_seeds": [
+        544401180,
+        1461110013
+      ],
+      "validation_problems": [
+        "deduplicate-events",
+        "inventory-delta"
+      ],
+      "live": {
+        "name": "cycle-0002-live-try-01",
+        "best": 0.5,
+        "baseline": 0.5,
+        "gain": 0.0,
+        "calls": 4,
+        "rounds": 4,
+        "width": 2,
+        "depth": 2
+      },
+      "candidate": {
+        "name": "fixed_parallel_refine",
+        "rationale": "Open all available directions and refine uniformly to the shared cap.",
+        "priority": "10 if is_root else -depth",
+        "eligible": "True",
+        "batch_size": "workers",
+        "width": "hard_width",
+        "depth": "hard_depth",
+        "beta": 0.6
+      },
+      "selection": {
+        "selected": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        },
+        "before": 0.4965,
+        "after": 0.4965,
+        "valid_revisions": 2,
+        "rejected_revisions": [
+          {
+            "revision": 2,
+            "error": "invalid syntax (<unknown>, line 1)"
+          }
+        ],
+        "replay_evaluations": 18,
+        "offline_discovery_calls": 0,
+        "objective": "paper",
+        "editor": "focused"
+      },
+      "replay_worlds": [
+        "cycle-0001-live-try-01",
+        "cycle-0002-live-try-01"
+      ],
+      "candidate_folder": "candidates/cycle-0002-try-01",
+      "outcome": "unchanged",
+      "reason": "No edit improved replay. Current policy kept; unnecessary validation calls were avoided.",
+      "finished_at": "2026-09-18T10:09:17+00:00"
+    },
+    {
+      "index": 3,
+      "started_at": "2026-09-18T10:10:30+00:00",
+      "phase": "decide",
+      "attempts": {
+        "live": 1,
+        "dream": 1,
+        "check-00-candidate": 1,
+        "check-00-incumbent": 1,
+        "check-01-incumbent": 1,
+        "check-01-candidate": 1
+      },
+      "worlds": {
+        "live": "worlds/cycle-0003-live-try-01/world.json",
+        "check-00-candidate": "worlds/cycle-0003-check-00-candidate-try-01/world.json",
+        "check-00-incumbent": "worlds/cycle-0003-check-00-incumbent-try-01/world.json",
+        "check-01-incumbent": "worlds/cycle-0003-check-01-incumbent-try-01/world.json",
+        "check-01-candidate": "worlds/cycle-0003-check-01-candidate-try-01/world.json"
+      },
+      "pairs": [
+        {
+          "seed": 125448809,
+          "candidate": {
+            "name": "cycle-0003-check-00-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.0,
+            "gain": 1.0,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "retry-delays",
+            "visible_best": 1.0,
+            "valid_attempts": 1,
+            "selected_node": "b000-d000",
+            "assessment": {
+              "score": 1.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 4,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.19911670801229775,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          },
+          "incumbent": {
+            "name": "cycle-0003-check-00-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.0,
+            "gain": 1.0,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "retry-delays",
+            "visible_best": 1.0,
+            "valid_attempts": 1,
+            "selected_node": "b000-d000",
+            "assessment": {
+              "score": 1.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 4,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.19909608401940204,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          }
+        },
+        {
+          "seed": 109037607,
+          "incumbent": {
+            "name": "cycle-0003-check-01-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.0,
+            "gain": 1.0,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "deduplicate-events",
+            "visible_best": 1.0,
+            "valid_attempts": 1,
+            "selected_node": "b001-d001",
+            "assessment": {
+              "score": 1.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 3,
+                "total": 3,
+                "status": "completed",
+                "seconds": 0.19316004100255668,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          },
+          "candidate": {
+            "name": "cycle-0003-check-01-candidate-try-01",
+            "best": 0.6666666666666666,
+            "baseline": 0.0,
+            "gain": 0.0,
+            "calls": 2,
+            "rounds": 2,
+            "width": 2,
+            "depth": 2,
+            "case_id": "deduplicate-events",
+            "visible_best": 0.0,
+            "valid_attempts": 1,
+            "selected_node": null,
+            "assessment": {
+              "score": 0.6666666666666666,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 2,
+                "total": 3,
+                "status": "completed",
+                "seconds": 0.29804216700722463,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          }
+        }
+      ],
+      "incumbent": {
+        "version": 0,
+        "policy": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        }
+      },
+      "validation_seeds": [
+        125448809,
+        109037607
+      ],
+      "validation_problems": [
+        "retry-delays",
+        "deduplicate-events"
+      ],
+      "live": {
+        "name": "cycle-0003-live-try-01",
+        "best": 1.0,
+        "baseline": 0.0,
+        "gain": 1.0,
+        "calls": 4,
+        "rounds": 4,
+        "width": 2,
+        "depth": 2
+      },
+      "candidate": {
+        "name": "cycle-0003-try-01-edit-02-eligible",
+        "rationale": "Increased threshold to 0.663167, avoiding premature rejection based on slight fluctuations.",
+        "priority": "10 if is_root else -depth",
+        "eligible": "0.663167 > 0.5 and not last_failed",
+        "batch_size": "workers",
+        "width": "hard_width",
+        "depth": "hard_depth",
+        "beta": 0.6
+      },
+      "selection": {
+        "selected": {
+          "name": "cycle-0003-try-01-edit-02-eligible",
+          "rationale": "Increased threshold to 0.663167, avoiding premature rejection based on slight fluctuations.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "0.663167 > 0.5 and not last_failed",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        },
+        "before": 0.6631666666666667,
+        "after": 0.6635,
+        "valid_revisions": 2,
+        "rejected_revisions": [
+          {
+            "revision": 1,
+            "error": "invalid syntax (<unknown>, line 1)"
+          }
+        ],
+        "replay_evaluations": 27,
+        "offline_discovery_calls": 0,
+        "objective": "paper",
+        "editor": "focused"
+      },
+      "replay_worlds": [
+        "cycle-0001-live-try-01",
+        "cycle-0002-live-try-01",
+        "cycle-0003-live-try-01"
+      ],
+      "candidate_folder": "candidates/cycle-0003-try-01",
+      "gate": {
+        "accepted": false,
+        "reason": "Candidate lost solution quality on fresh data. Current policy kept.",
+        "pairs": 2,
+        "quality_ok": false,
+        "mean_quality_difference": -0.16666666666666669,
+        "incumbent_calls": 8,
+        "candidate_calls": 6,
+        "call_savings_percent": 25.0,
+        "quality_losses": 1
+      },
+      "outcome": "rejected",
+      "reason": "Candidate lost solution quality on fresh data. Current policy kept.",
+      "finished_at": "2026-09-18T10:15:44+00:00"
+    },
+    {
+      "index": 4,
+      "started_at": "2026-09-18T10:15:44+00:00",
+      "phase": "decide",
+      "attempts": {
+        "live": 1,
+        "dream": 1,
+        "check-00-candidate": 1,
+        "check-00-incumbent": 1,
+        "check-01-incumbent": 1,
+        "check-01-candidate": 1
+      },
+      "worlds": {
+        "live": "worlds/cycle-0004-live-try-01/world.json",
+        "check-00-candidate": "worlds/cycle-0004-check-00-candidate-try-01/world.json",
+        "check-00-incumbent": "worlds/cycle-0004-check-00-incumbent-try-01/world.json",
+        "check-01-incumbent": "worlds/cycle-0004-check-01-incumbent-try-01/world.json",
+        "check-01-candidate": "worlds/cycle-0004-check-01-candidate-try-01/world.json"
+      },
+      "pairs": [
+        {
+          "seed": 680044704,
+          "candidate": {
+            "name": "cycle-0004-check-00-candidate-try-01",
+            "best": 0.0,
+            "baseline": 0.0,
+            "gain": 0.0,
+            "calls": 2,
+            "rounds": 2,
+            "width": 2,
+            "depth": 2,
+            "case_id": "query-values",
+            "visible_best": 0.0,
+            "valid_attempts": 0,
+            "selected_node": null,
+            "assessment": {
+              "score": 0.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 0,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.31170683400705457,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          },
+          "incumbent": {
+            "name": "cycle-0004-check-00-incumbent-try-01",
+            "best": 0.25,
+            "baseline": 0.0,
+            "gain": 0.5,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "query-values",
+            "visible_best": 0.5,
+            "valid_attempts": 1,
+            "selected_node": "b001-d001",
+            "assessment": {
+              "score": 0.25,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 1,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.18939741599024273,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          }
+        },
+        {
+          "seed": 877424474,
+          "incumbent": {
+            "name": "cycle-0004-check-01-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.0,
+            "gain": 1.0,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "retry-delays",
+            "visible_best": 1.0,
+            "valid_attempts": 1,
+            "selected_node": "b000-d000",
+            "assessment": {
+              "score": 1.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 4,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.19318941701203585,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          },
+          "candidate": {
+            "name": "cycle-0004-check-01-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.0,
+            "gain": 1.0,
+            "calls": 4,
+            "rounds": 4,
+            "width": 2,
+            "depth": 2,
+            "case_id": "retry-delays",
+            "visible_best": 1.0,
+            "valid_attempts": 1,
+            "selected_node": "b000-d000",
+            "assessment": {
+              "score": 1.0,
+              "valid": true,
+              "error": null,
+              "diagnostics": {
+                "passed": 4,
+                "total": 4,
+                "status": "completed",
+                "seconds": 0.2709131659939885,
+                "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+                "hidden": true
+              }
+            }
+          }
+        }
+      ],
+      "incumbent": {
+        "version": 0,
+        "policy": {
+          "name": "fixed_parallel_refine",
+          "rationale": "Open all available directions and refine uniformly to the shared cap.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "True",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        }
+      },
+      "validation_seeds": [
+        680044704,
+        877424474
+      ],
+      "validation_problems": [
+        "query-values",
+        "retry-delays"
+      ],
+      "live": {
+        "name": "cycle-0004-live-try-01",
+        "best": 1.0,
+        "baseline": 0.0,
+        "gain": 1.0,
+        "calls": 4,
+        "rounds": 4,
+        "width": 2,
+        "depth": 2
+      },
+      "candidate": {
+        "name": "cycle-0004-try-01-edit-01-eligible",
+        "rationale": "Increased threshold to 0.75, avoiding premature rejection based on small fluctuations.",
+        "priority": "10 if is_root else -depth",
+        "eligible": "0.746500 > 0.5 and not last_failed",
+        "batch_size": "workers",
+        "width": "hard_width",
+        "depth": "hard_depth",
+        "beta": 0.6
+      },
+      "selection": {
+        "selected": {
+          "name": "cycle-0004-try-01-edit-01-eligible",
+          "rationale": "Increased threshold to 0.75, avoiding premature rejection based on small fluctuations.",
+          "priority": "10 if is_root else -depth",
+          "eligible": "0.746500 > 0.5 and not last_failed",
+          "batch_size": "workers",
+          "width": "hard_width",
+          "depth": "hard_depth",
+          "beta": 0.6
+        },
+        "before": 0.7464999999999999,
+        "after": 0.747,
+        "valid_revisions": 3,
+        "rejected_revisions": [],
+        "replay_evaluations": 48,
+        "offline_discovery_calls": 0,
+        "objective": "paper",
+        "editor": "focused"
+      },
+      "replay_worlds": [
+        "cycle-0001-live-try-01",
+        "cycle-0002-live-try-01",
+        "cycle-0003-live-try-01",
+        "cycle-0004-live-try-01"
+      ],
+      "candidate_folder": "candidates/cycle-0004-try-01",
+      "gate": {
+        "accepted": false,
+        "reason": "Candidate did not produce a valid construction in every fresh pair. Current policy kept.",
+        "pairs": 2,
+        "quality_ok": false,
+        "mean_quality_difference": -0.125,
+        "incumbent_calls": 8,
+        "candidate_calls": 6,
+        "call_savings_percent": 25.0,
+        "quality_losses": 1
+      },
+      "outcome": "rejected",
+      "reason": "Candidate did not produce a valid construction in every fresh pair. Current policy kept.",
+      "finished_at": "2026-09-18T10:22:01+00:00"
+    }
+  ],
+  "active_cycle": null,
+  "next_cycle": 5,
+  "champion": {
+    "version": 0,
+    "policy": {
+      "name": "fixed_parallel_refine",
+      "rationale": "Open all available directions and refine uniformly to the shared cap.",
+      "priority": "10 if is_root else -depth",
+      "eligible": "True",
+      "batch_size": "workers",
+      "width": "hard_width",
+      "depth": "hard_depth",
+      "beta": 0.6
+    }
+  },
+  "versions": [
+    {
+      "version": 0,
+      "policy": {
+        "name": "fixed_parallel_refine",
+        "rationale": "Open all available directions and refine uniformly to the shared cap.",
+        "priority": "10 if is_root else -depth",
+        "eligible": "True",
+        "batch_size": "workers",
+        "width": "hard_width",
+        "depth": "hard_depth",
+        "beta": 0.6
+      },
+      "created_at": "2026-09-18T10:06:05+00:00",
+      "source": "Initial fixed exploration",
+      "evidence": null
+    }
+  ],
+  "task_metadata": {
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "runtime": {
+      "runtime": "docker",
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea"
+    }
+  },
+  "model_metadata": {
+    "name": "gemma3:4b",
+    "model": "gemma3:4b",
+    "modified_at": "2025-11-20T02:52:17.778918171+02:00",
+    "size": 3338801804,
+    "digest": "a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "gemma3",
+      "families": [
+        "gemma3"
+      ],
+      "parameter_size": "4.3B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 131072,
+      "embedding_length": 2560
+    },
+    "capabilities": [
+      "completion",
+      "vision"
+    ]
+  },
+  "usage": {
+    "calls": 64,
+    "discovery_calls": 52,
+    "policy_calls": 12,
+    "input_tokens": 32839,
+    "output_tokens": 22670
+  },
+  "best_artifact": {
+    "score": 1.0,
+    "points": [],
+    "source": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event.get(\"id\") not in seen_ids:\n            seen_ids.add(event.get(\"id\"))  # Add the id to the set\n            result.append(event)\n    return result\n\n\nif __name__ == '__main__':\n    # Test case\n    events = [{\"id\": \"a\", \"v\": 1}, {\"id\": \"a\", \"v\": 2}, {\"id\": \"b\", \"v\": 3}] \n    deduplicated_events = deduplicate(events)\n    print(json.dumps(deduplicated_events))\n",
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.25723329198081046,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    },
+    "world": "cycle-0001-check-00-incumbent-try-01",
+    "node": "b000-d001",
+    "rationale": "The provided function was corrected to handle potential missing 'id' keys in the event objects. The `event.get(\"id\")` method is used instead of `event[\"id\"]` to safely access the 'id' key, returning `None` if the key is not present, preventing a `KeyError`. The test case was also updated to include the JSON serialization for the result.",
+    "artifact": "import json\n\ndef deduplicate(events):\n    seen_ids = set()\n    result = []\n    for event in events:\n        if event.get(\"id\") not in seen_ids:\n            seen_ids.add(event.get(\"id\"))  # Add the id to the set\n            result.append(event)\n    return result\n\n\nif __name__ == '__main__':\n    # Test case\n    events = [{\"id\": \"a\", \"v\": 1}, {\"id\": \"a\", \"v\": 2}, {\"id\": \"b\", \"v\": 3}] \n    deduplicated_events = deduplicate(events)\n    print(json.dumps(deduplicated_events))\n",
+    "task": "python_code",
+    "case_id": "deduplicate-events"
+  },
+  "progress": null,
+  "error": null,
+  "run_control": {
+    "cycles_requested": 2,
+    "cycles_remaining": 0,
+    "max_new_calls": 64,
+    "starting_calls": 22
+  }
+}

@@ -1,0 +1,465 @@
+{
+  "name": "code-solve",
+  "seed": 2027,
+  "baseline_points": [],
+  "baseline_score": 0.5,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n    \n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n    \n    return batches_list\n",
+      "rationale": "The code addresses the problem's requirements by iterating through the input list `items` in steps of `size`. It constructs each batch by slicing the list from the current index `i` to `i+size`. The loop continues until the end of the list is reached. If the input list is empty or the size is non-positive, it returns an empty list, handling the specified edge cases. The slicing operation ensures that each batch contains at most `size` elements, and any remaining elements in the last batch are included.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.31048416599514894,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 1203633561,
+      "model_call_id": "code-solve-b000-d000",
+      "artifact": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n    \n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n    \n    return batches_list\n"
+    },
+    {
+      "id": "b001-d000",
+      "branch": 1,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n",
+      "rationale": "The provided solution addresses the problem's requirements by iterating through the input list `items` in steps of `size`, creating sublists of that size. It handles the edge case where `items` is empty or `size` is non-positive by returning an empty list. The code avoids modifying the original `items` list and correctly constructs the batches as specified.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.3010013339808211,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 315397210,
+      "model_call_id": "code-solve-b001-d000",
+      "artifact": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n",
+      "rationale": "The function implements the specified logic. It handles edge cases where the input list is empty or the size is non-positive by returning an empty list. Otherwise, it iterates through the list in chunks of the specified size and appends each chunk to a list, which is then returned.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.24661604198627174,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 1779471420,
+      "model_call_id": "code-solve-b000-d001",
+      "artifact": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n"
+    },
+    {
+      "id": "b001-d001",
+      "branch": 1,
+      "depth": 1,
+      "parent_id": "b001-d000",
+      "points": [],
+      "source": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n",
+      "rationale": "The function correctly implements the batching logic as specified. It handles the edge case of an empty input list or a non-positive size by returning an empty list. It iterates through the input list in steps of the specified size, creating sublists and appending them to a result list. The slicing `items[i:i+size]` ensures that even the last batch, which may be smaller than the specified size, is included.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 2,
+          "total": 2,
+          "status": "completed",
+          "seconds": 0.24740329099586233,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 339519033,
+      "model_call_id": "code-solve-b001-d001",
+      "artifact": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n\n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n\n    return batches_list\n"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 1.0,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 0.5,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b001-d000"
+      ],
+      "best": 1.0,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.5,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.5,
+            "latest": 0.5,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 1.0,
+      "calls": 3,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.5,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.5,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 3,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001"
+      ],
+      "selected": [
+        "b001-d001"
+      ],
+      "best": 1.0,
+      "calls": 4,
+      "candidates": [
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.5,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 3,
+            "workers": 1,
+            "rounds": 3,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 0.5,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 33.82111779198749,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Split items into consecutive lists of at most size items, including any short final list. Empty items gives []. A nonpositive size gives []. Do not modify items.",
+    "entrypoint": "batches",
+    "visible_tests": [
+      {
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          2
+        ],
+        "expected": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            5
+          ]
+        ]
+      },
+      {
+        "args": [
+          [],
+          3
+        ],
+        "expected": []
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          [
+            1
+          ],
+          2
+        ],
+        "expected": [
+          [
+            1
+          ]
+        ]
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            3
+          ],
+          0
+        ],
+        "expected": []
+      },
+      {
+        "args": [
+          [
+            1,
+            2
+          ],
+          -1
+        ],
+        "expected": []
+      },
+      {
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4
+          ],
+          2
+        ],
+        "expected": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "train"
+  },
+  "case_id": "batch-items",
+  "baseline_artifact": "def batches(items, size):\n    return [items[i:i+size] for i in range(0, len(items)-size+1, size)]\n"
+}

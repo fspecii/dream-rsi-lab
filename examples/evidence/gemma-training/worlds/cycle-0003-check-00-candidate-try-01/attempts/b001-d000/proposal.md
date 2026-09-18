@@ -1,0 +1,1 @@
+The code now correctly implements exponential backoff delays using the formula min(cap, base * 2**i) for i from 0 to attempts-1. It handles the edge case where attempts <= 0 by returning an empty list. The logic is clear, efficient, and adheres to the problem description.

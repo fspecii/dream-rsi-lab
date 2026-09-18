@@ -1,0 +1,261 @@
+{
+  "workspace": "bd2a83a9b855",
+  "model": "qwen3.5:0.8b",
+  "model_digest": "f3817196d142eaf72ce79dfebe53dcb20bd21da87ce13e138a8f8e10a866b3a4",
+  "config": {
+    "model": "qwen3.5:0.8b",
+    "seed": 2027,
+    "branches": 4,
+    "depth": 4,
+    "workers": 2,
+    "revisions": 4,
+    "validation_pairs": 4
+  },
+  "usage": {
+    "calls": 276,
+    "discovery_calls": 264,
+    "policy_calls": 12,
+    "input_tokens": 554240,
+    "output_tokens": 17632
+  },
+  "champion": {
+    "version": 1,
+    "policy": {
+      "name": "cycle-0002-try-01-edit-04-depth",
+      "rationale": "Applies cold start penalty by default to maintain performance consistency while introducing a reward for recent deep exploration. Reduces work on early iterations and encourages late gains.",
+      "priority": "10 if is_root else -depth",
+      "eligible": "True",
+      "batch_size": "workers",
+      "width": "hard_width",
+      "depth": "hard_depth * beta if history_count < 2 else max(2, int(hard_depth * beta))",
+      "beta": 0.6
+    }
+  },
+  "cycles": [
+    {
+      "index": 1,
+      "outcome": "rejected",
+      "reason": "Candidate matched the current policy without improving quality or reducing work. Current policy kept.",
+      "pairs": [
+        {
+          "seed": 748722780,
+          "candidate": {
+            "name": "cycle-0001-check-00-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.8289091000151443,
+            "gain": 0.17109089998485572,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          },
+          "incumbent": {
+            "name": "cycle-0001-check-00-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.8289091000151443,
+            "gain": 0.17109089998485572,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          }
+        },
+        {
+          "seed": 747098221,
+          "incumbent": {
+            "name": "cycle-0001-check-01-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.8343785526548732,
+            "gain": 0.16562144734512685,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          },
+          "candidate": {
+            "name": "cycle-0001-check-01-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.8343785526548732,
+            "gain": 0.16562144734512685,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          }
+        },
+        {
+          "seed": 1809459019,
+          "candidate": {
+            "name": "cycle-0001-check-02-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.8343785526548732,
+            "gain": 0.16562144734512685,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          },
+          "incumbent": {
+            "name": "cycle-0001-check-02-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.8343785526548732,
+            "gain": 0.16562144734512685,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          }
+        },
+        {
+          "seed": 513053329,
+          "incumbent": {
+            "name": "cycle-0001-check-03-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.8026155325712659,
+            "gain": 0.19738446742873406,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          },
+          "candidate": {
+            "name": "cycle-0001-check-03-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.8026155325712659,
+            "gain": 0.19738446742873406,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          }
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "outcome": "promoted",
+      "reason": "Candidate preserved quality on every fresh pair and improved quality or reduced work.",
+      "pairs": [
+        {
+          "seed": 2006261649,
+          "candidate": {
+            "name": "cycle-0002-check-00-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.8725852694741113,
+            "gain": 0.1274147305258887,
+            "calls": 8,
+            "rounds": 4,
+            "width": 4,
+            "depth": 2,
+            "valid_attempts": 8
+          },
+          "incumbent": {
+            "name": "cycle-0002-check-00-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.8725852694741113,
+            "gain": 0.1274147305258887,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          }
+        },
+        {
+          "seed": 1787544814,
+          "incumbent": {
+            "name": "cycle-0002-check-01-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.8681821223176575,
+            "gain": 0.13181787768234254,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          },
+          "candidate": {
+            "name": "cycle-0002-check-01-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.8681821223176575,
+            "gain": 0.13181787768234254,
+            "calls": 8,
+            "rounds": 4,
+            "width": 4,
+            "depth": 2,
+            "valid_attempts": 8
+          }
+        },
+        {
+          "seed": 1419285421,
+          "candidate": {
+            "name": "cycle-0002-check-02-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.8343785526548732,
+            "gain": 0.16562144734512685,
+            "calls": 8,
+            "rounds": 4,
+            "width": 4,
+            "depth": 2,
+            "valid_attempts": 8
+          },
+          "incumbent": {
+            "name": "cycle-0002-check-02-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.8343785526548732,
+            "gain": 0.16562144734512685,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          }
+        },
+        {
+          "seed": 1425608743,
+          "incumbent": {
+            "name": "cycle-0002-check-03-incumbent-try-01",
+            "best": 1.0,
+            "baseline": 0.8550776288997134,
+            "gain": 0.1449223711002866,
+            "calls": 16,
+            "rounds": 8,
+            "width": 4,
+            "depth": 4,
+            "valid_attempts": 16
+          },
+          "candidate": {
+            "name": "cycle-0002-check-03-candidate-try-01",
+            "best": 1.0,
+            "baseline": 0.8550776288997134,
+            "gain": 0.1449223711002866,
+            "calls": 8,
+            "rounds": 4,
+            "width": 4,
+            "depth": 2,
+            "valid_attempts": 8
+          }
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "outcome": "unchanged",
+      "reason": "No edit improved replay. Current policy kept; unnecessary validation calls were avoided.",
+      "pairs": []
+    }
+  ],
+  "verification": {
+    "exact_scores_model_provenance_replay": "passed",
+    "worlds": 19,
+    "completed_step_retries": 0
+  }
+}

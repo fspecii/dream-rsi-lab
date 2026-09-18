@@ -1,0 +1,26 @@
+{
+  "id": "b001-d000",
+  "branch": 1,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config",
+  "rationale": "",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.24733133299741894,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 1421225920,
+  "model_call_id": "pair-000-candidate-b001-d000",
+  "artifact": "import json\n\ndef flatten_config(obj, parent_key='', sep='.'):\n    items = {}\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            new_key = f'{parent_key}{sep}{k}' if parent_key else k\n            items.update(flatten_config(v, new_key, sep=sep))\n    else:\n        items[parent_key] = obj\n    return items\n\nflatten_config = flatten_config"
+}

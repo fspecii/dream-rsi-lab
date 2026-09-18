@@ -1,0 +1,309 @@
+{
+  "name": "cycle-0004-check-00-candidate-try-01",
+  "seed": 680044704,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "import urllib.parse\n\ndef query_values(query):\n    result = {}\n    if not query:\n        return result\n    if query.startswith(\"?\"):\n        query = query[1:]\n    parts = query.split(\"&\")\n    for part in parts:\n        if=\"\":\n            continue\n        try:\n            key, value = part.split(\"=\", 1)\n            if key in result:\n                result[key].append(value)\n            else:\n                result[key] = [value]\n        except ValueError:\n            # Handle cases where '=' is missing, or part is malformed\n            pass\n    return result\n",
+      "rationale": "The function parses the query string, handling URL decoding (plus to space, percent escapes) and preserving blank values and repeated keys. It first checks for a leading '?' and removes it if present. Then, it splits the string by '&' to get individual key-value pairs. For each pair, it splits by '=' to extract the key and value. If the key already exists in the result dictionary, the value is appended to the list. Otherwise, a new entry is created with the value as a list. A try-except block handles potential ValueError exceptions that may occur if the input string is malformed.",
+      "evaluation": {
+        "score": 0.0,
+        "valid": false,
+        "error": "invalid syntax (candidate.py, line 11)",
+        "diagnostics": {}
+      },
+      "seed": 1285096508,
+      "model_call_id": "cycle-0004-check-00-candidate-try-01-b000-d000",
+      "artifact": "import urllib.parse\n\ndef query_values(query):\n    result = {}\n    if not query:\n        return result\n    if query.startswith(\"?\"):\n        query = query[1:]\n    parts = query.split(\"&\")\n    for part in parts:\n        if=\"\":\n            continue\n        try:\n            key, value = part.split(\"=\", 1)\n            if key in result:\n                result[key].append(value)\n            else:\n                result[key] = [value]\n        except ValueError:\n            # Handle cases where '=' is missing, or part is malformed\n            pass\n    return result\n"
+    },
+    {
+      "id": "b001-d000",
+      "branch": 1,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "",
+      "rationale": "",
+      "evaluation": {
+        "score": 0.0,
+        "valid": false,
+        "error": "Invalid model response (cycle-0004-check-00-candidate-try-01-b001-d000): model response truncated by token limit",
+        "diagnostics": {}
+      },
+      "seed": 203611970,
+      "model_call_id": "cycle-0004-check-00-candidate-try-01-b001-d000",
+      "artifact": ""
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 0.0,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b001-d000"
+      ],
+      "best": 0.0,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": false,
+          "priority": null,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 1,
+            "last_failed": true,
+            "successes": 0,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "cycle-0004-try-01-edit-01-eligible",
+    "rationale": "Increased threshold to 0.75, avoiding premature rejection based on small fluctuations.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "0.746500 > 0.5 and not last_failed",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 0.0,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [
+    {
+      "name": "cycle-0001-live-try-01",
+      "best": 0.5,
+      "baseline": 0.5,
+      "gain": 0.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0002-live-try-01",
+      "best": 0.5,
+      "baseline": 0.5,
+      "gain": 0.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0003-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0004-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Parse a URL query string into an object mapping each key to a list of decoded values in occurrence order. Decode plus as a space and percent escapes; preserve blank values and repeated keys. An optional leading ? is allowed.",
+    "entrypoint": "query_values",
+    "visible_tests": [
+      {
+        "args": [
+          "a=1&a=2&b="
+        ],
+        "expected": {
+          "a": [
+            "1",
+            "2"
+          ],
+          "b": [
+            ""
+          ]
+        }
+      },
+      {
+        "args": [
+          "?q=hello+world"
+        ],
+        "expected": {
+          "q": [
+            "hello world"
+          ]
+        }
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          ""
+        ],
+        "expected": {}
+      },
+      {
+        "args": [
+          "x=%26%3D&x="
+        ],
+        "expected": {
+          "x": [
+            "&=",
+            ""
+          ]
+        }
+      },
+      {
+        "args": [
+          "flag&x=1"
+        ],
+        "expected": {
+          "flag": [
+            ""
+          ],
+          "x": [
+            "1"
+          ]
+        }
+      },
+      {
+        "args": [
+          "q=caf%C3%A9"
+        ],
+        "expected": {
+          "q": [
+            "caf\u00e9"
+          ]
+        }
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "validation"
+  },
+  "case_id": "query-values",
+  "baseline_artifact": "def query_values(query):\n    return dict(part.split(\"=\") for part in query.split(\"&\"))\n"
+}

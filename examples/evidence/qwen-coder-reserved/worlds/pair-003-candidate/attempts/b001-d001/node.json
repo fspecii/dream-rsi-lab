@@ -1,0 +1,26 @@
+{
+  "id": "b001-d001",
+  "branch": 1,
+  "depth": 1,
+  "parent_id": "b001-d000",
+  "points": [],
+  "source": "import os\n\n\ndef normalize_path(path):\n    components = path.split('/')\n    stack = []\n    for component in components:\n        if component == '..':\n            if stack:\n                stack.pop()\n        elif component and component != '.':\n            stack.append(component)\n    result = '/' + '/'.join(stack)\n    return result or '/'\n",
+  "rationale": "",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.24884345798636787,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 1277391132,
+  "model_call_id": "pair-003-candidate-b001-d001",
+  "artifact": "import os\n\n\ndef normalize_path(path):\n    components = path.split('/')\n    stack = []\n    for component in components:\n        if component == '..':\n            if stack:\n                stack.pop()\n        elif component and component != '.':\n            stack.append(component)\n    result = '/' + '/'.join(stack)\n    return result or '/'\n"
+}

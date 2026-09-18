@@ -1,0 +1,37 @@
+{
+  "id": "b000-d001",
+  "branch": 0,
+  "depth": 1,
+  "parent_id": "b000-d000",
+  "points": [],
+  "source": "def query_values(query):\n    result = {}\n    if not query:\n        return result\n    if query.startswith('?'):\n        query = query[1:]\n    parts = query.split('&')\n    for part in parts:\n        if '=' in part:\n            key, value = part.split('=', 1)\n            if key in result:\n                result[key].append(value)\n            else:\n                result[key] = [value]\n        else:\n            if part in result:\n                result[part].append('')\n            else:\n                result[part] = ['']\n    return result",
+  "rationale": "",
+  "evaluation": {
+    "score": 0.5,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.2463790829933714,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": [
+        {
+          "index": 1,
+          "passed": false,
+          "actual": {
+            "q": [
+              "hello+world"
+            ]
+          },
+          "error": "wrong output"
+        }
+      ]
+    }
+  },
+  "seed": 1779471420,
+  "model_call_id": "code-solve-b000-d001",
+  "artifact": "def query_values(query):\n    result = {}\n    if not query:\n        return result\n    if query.startswith('?'):\n        query = query[1:]\n    parts = query.split('&')\n    for part in parts:\n        if '=' in part:\n            key, value = part.split('=', 1)\n            if key in result:\n                result[key].append(value)\n            else:\n                result[key] = [value]\n        else:\n            if part in result:\n                result[part].append('')\n            else:\n                result[part] = ['']\n    return result"
+}

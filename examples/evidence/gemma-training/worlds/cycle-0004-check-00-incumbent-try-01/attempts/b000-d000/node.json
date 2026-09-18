@@ -1,0 +1,18 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "import urllib.parse\n\ndef query_values(query):\n    result = {}\n    if not query:\n        return result\n    if query.startswith(\"?\"):\n        query = query[1:]\n    parts = query.split(\"&\")\n    for part in parts:\n        if=\"\":\n            continue\n        try:\n            key, value = part.split(\"=\", 1)\n            if key in result:\n                result[key].append(value)\n            else:\n                result[key] = [value]\n        except ValueError:\n            # Handle cases where '=' is missing, or part is malformed\n            pass\n    return result\n",
+  "rationale": "The function parses the query string, handling URL decoding (plus to space, percent escapes) and preserving blank values and repeated keys. It first checks for a leading '?' and removes it if present. Then, it splits the string by '&' to get individual key-value pairs. For each pair, it splits by '=' to extract the key and value. If the key already exists in the result dictionary, the value is appended to the list. Otherwise, a new entry is created with the value as a list. A try-except block handles potential ValueError exceptions that may occur if the input string is malformed.",
+  "evaluation": {
+    "score": 0.0,
+    "valid": false,
+    "error": "invalid syntax (candidate.py, line 11)",
+    "diagnostics": {}
+  },
+  "seed": 1285096508,
+  "model_call_id": "cycle-0004-check-00-incumbent-try-01-b000-d000",
+  "artifact": "import urllib.parse\n\ndef query_values(query):\n    result = {}\n    if not query:\n        return result\n    if query.startswith(\"?\"):\n        query = query[1:]\n    parts = query.split(\"&\")\n    for part in parts:\n        if=\"\":\n            continue\n        try:\n            key, value = part.split(\"=\", 1)\n            if key in result:\n                result[key].append(value)\n            else:\n                result[key] = [value]\n        except ValueError:\n            # Handle cases where '=' is missing, or part is malformed\n            pass\n    return result\n"
+}

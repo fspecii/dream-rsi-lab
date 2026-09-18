@@ -1,0 +1,10 @@
+{
+  "name": "fixed_parallel_refine",
+  "rationale": "Open all available directions and refine uniformly to the shared cap.",
+  "priority": "10 if is_root else -depth",
+  "eligible": "True",
+  "batch_size": "workers",
+  "width": "hard_width",
+  "depth": "hard_depth",
+  "beta": 0.6
+}

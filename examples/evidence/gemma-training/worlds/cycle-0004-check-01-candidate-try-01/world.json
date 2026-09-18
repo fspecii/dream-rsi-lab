@@ -1,0 +1,479 @@
+{
+  "name": "cycle-0004-check-01-candidate-try-01",
+  "seed": 877424474,
+  "baseline_points": [],
+  "baseline_score": 0.0,
+  "branch_count": 2,
+  "max_depth": 2,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n",
+      "rationale": "The original code only generated a list of base values, not exponential backoff delays. This revised code implements the exponential backoff delay calculation correctly, ensuring that the delay value does not exceed the cap and that the delay increases exponentially with each attempt. It also handles the edge case where attempts <= 0 by returning an empty list.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.24421241699019447,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 836298021,
+      "model_call_id": "cycle-0004-check-01-candidate-try-01-b000-d000",
+      "artifact": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n"
+    },
+    {
+      "id": "b001-d000",
+      "branch": 1,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n",
+      "rationale": "The code implements the exponential backoff delay generation as specified. It handles the edge case where `attempts` is 0 or negative by returning an empty list. Otherwise, it iterates `attempts` times, calculating the delay as the minimum of `cap` and `base * (2**i)`. The calculated delay is then appended to the `delays` list, which is returned at the end of the function.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.30332204201840796,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 1106201840,
+      "model_call_id": "cycle-0004-check-01-candidate-try-01-b001-d000",
+      "artifact": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n"
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n",
+      "rationale": "The provided code was already correct and satisfied the problem specification. The exponential backoff delays are calculated correctly, and the edge case where `attempts <= 0` is handled appropriately by returning an empty list.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.255199667008128,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 85079235,
+      "model_call_id": "cycle-0004-check-01-candidate-try-01-b000-d001",
+      "artifact": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n"
+    },
+    {
+      "id": "b001-d001",
+      "branch": 1,
+      "depth": 1,
+      "parent_id": "b001-d000",
+      "points": [],
+      "source": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n",
+      "rationale": "The function implements the exponential backoff delay generation as specified in the problem description. It handles the edge case where `attempts` is less than or equal to 0 by returning an empty list. Otherwise, it iterates `attempts` times, calculating each delay as `min(cap, base * (2**i))` and appending it to the `delays` list. The function returns the `delays` list.",
+      "evaluation": {
+        "score": 1.0,
+        "valid": true,
+        "error": null,
+        "diagnostics": {
+          "passed": 1,
+          "total": 1,
+          "status": "completed",
+          "seconds": 0.33485683301114477,
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "hidden": false,
+          "failures": []
+        }
+      },
+      "seed": 569636909,
+      "model_call_id": "cycle-0004-check-01-candidate-try-01-b001-d001",
+      "artifact": "def retry_delays(base, cap, attempts):\n    \"\"\"Generates exponential backoff delays.\n\n    Args:\n        base: The base delay value.\n        cap: The maximum delay value.\n        attempts: The number of attempts.\n\n    Returns:\n        A list of delay values, or an empty list if attempts <= 0.\n    \"\"\"\n    if attempts <= 0:\n        return []\n\n    delays = []\n    for i in range(attempts):\n        delay = min(cap, base * (2**i))\n        delays.append(delay)\n    return delays\n"
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 1.0,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 0.0,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b001-d000"
+      ],
+      "best": 1.0,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.0,
+            "latest": 0.0,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 1.0,
+      "calls": 3,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 3,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001"
+      ],
+      "selected": [
+        "b001-d001"
+      ],
+      "best": 1.0,
+      "calls": 4,
+      "candidates": [
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.0,
+            "global_best": 1.0,
+            "opened": 2,
+            "probes": 3,
+            "workers": 1,
+            "rounds": 3,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 1.0,
+            "latest": 1.0,
+            "gain": 1.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "cycle-0004-try-01-edit-01-eligible",
+    "rationale": "Increased threshold to 0.75, avoiding premature rejection based on small fluctuations.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "0.746500 > 0.5 and not last_failed",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 33.455081958003575,
+  "hard_branch_count": 2,
+  "hard_max_depth": 2,
+  "planning_history": [
+    {
+      "name": "cycle-0001-live-try-01",
+      "best": 0.5,
+      "baseline": 0.5,
+      "gain": 0.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0002-live-try-01",
+      "best": 0.5,
+      "baseline": 0.5,
+      "gain": 0.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0003-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    },
+    {
+      "name": "cycle-0004-live-try-01",
+      "best": 1.0,
+      "baseline": 0.0,
+      "gain": 1.0,
+      "calls": 4,
+      "rounds": 4,
+      "width": 2,
+      "depth": 2
+    }
+  ],
+  "task_name": "python_code",
+  "task_input": {
+    "description": "Return attempts exponential backoff delays: min(cap, base * 2**i) for i from 0 to attempts-1. Base and cap are nonnegative integers. Attempts <= 0 returns [].",
+    "entrypoint": "retry_delays",
+    "visible_tests": [
+      {
+        "args": [
+          2,
+          10,
+          5
+        ],
+        "expected": [
+          2,
+          4,
+          8,
+          10,
+          10
+        ]
+      }
+    ]
+  },
+  "task_private": {
+    "hidden_tests": [
+      {
+        "args": [
+          0,
+          9,
+          4
+        ],
+        "expected": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "args": [
+          8,
+          3,
+          3
+        ],
+        "expected": [
+          3,
+          3,
+          3
+        ]
+      },
+      {
+        "args": [
+          2,
+          10,
+          0
+        ],
+        "expected": []
+      },
+      {
+        "args": [
+          3,
+          100,
+          4
+        ],
+        "expected": [
+          3,
+          6,
+          12,
+          24
+        ]
+      }
+    ],
+    "suite_digest": "3181b61632d30d95f72f0f132a4983d863f4218358726bf15d848c5260954300",
+    "split": "validation"
+  },
+  "case_id": "retry-delays",
+  "baseline_artifact": "def retry_delays(base, cap, attempts):\n    return [base * i for i in range(attempts)]\n"
+}

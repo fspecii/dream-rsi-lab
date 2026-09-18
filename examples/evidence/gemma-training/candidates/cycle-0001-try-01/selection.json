@@ -1,0 +1,20 @@
+{
+  "selected": {
+    "name": "cycle-0001-try-01-edit-01-eligible",
+    "rationale": "Rejecting if objective is below baseline, stabilizing exploration and preventing stagnation.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "not (0.496500 < 0.5)",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "before": 0.4965,
+  "after": 0.5,
+  "valid_revisions": 3,
+  "rejected_revisions": [],
+  "replay_evaluations": 12,
+  "offline_discovery_calls": 0,
+  "objective": "paper",
+  "editor": "focused"
+}

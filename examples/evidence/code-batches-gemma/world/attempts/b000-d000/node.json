@@ -1,0 +1,26 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n    \n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n    \n    return batches_list\n",
+  "rationale": "The code addresses the problem's requirements by iterating through the input list `items` in steps of `size`. It constructs each batch by slicing the list from the current index `i` to `i+size`. The loop continues until the end of the list is reached. If the input list is empty or the size is non-positive, it returns an empty list, handling the specified edge cases. The slicing operation ensures that each batch contains at most `size` elements, and any remaining elements in the last batch are included.",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 2,
+      "total": 2,
+      "status": "completed",
+      "seconds": 0.31048416599514894,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 1203633561,
+  "model_call_id": "code-solve-b000-d000",
+  "artifact": "def batches(items, size):\n    if not items or size <= 0:\n        return []\n    \n    batches_list = []\n    for i in range(0, len(items), size):\n        batches_list.append(items[i:i+size])\n    \n    return batches_list\n"
+}

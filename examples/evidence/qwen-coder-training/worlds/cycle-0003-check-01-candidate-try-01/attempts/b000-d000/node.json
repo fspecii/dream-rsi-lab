@@ -1,0 +1,26 @@
+{
+  "id": "b000-d000",
+  "branch": 0,
+  "depth": 0,
+  "parent_id": null,
+  "points": [],
+  "source": "import copy\n\ndef deduplicate(events):\n    seen = set()\n    result = []\n    for event in events:\n        if event['id'] not in seen:\n            seen.add(event['id'])\n            result.append(copy.deepcopy(event))\n    return result",
+  "rationale": "",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "passed": 1,
+      "total": 1,
+      "status": "completed",
+      "seconds": 0.2732971659861505,
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "hidden": false,
+      "failures": []
+    }
+  },
+  "seed": 1097500336,
+  "model_call_id": "cycle-0003-check-01-candidate-try-01-b000-d000",
+  "artifact": "import copy\n\ndef deduplicate(events):\n    seen = set()\n    result = []\n    for event in events:\n        if event['id'] not in seen:\n            seen.add(event['id'])\n            result.append(copy.deepcopy(event))\n    return result"
+}

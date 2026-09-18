@@ -1,0 +1,2819 @@
+{
+  "policy": {
+    "name": "cycle-0004-try-01-edit-01-eligible",
+    "rationale": "Increased threshold to 0.75, avoiding premature rejection based on small fluctuations.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "0.746500 > 0.5 and not last_failed",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "selection_score": 0.747,
+  "objective": "paper",
+  "default": {
+    "beta": 0.6,
+    "supported": true,
+    "mean_score": 0.747,
+    "mean_calls": 3.5,
+    "mean_best": 0.75,
+    "attainment_auc": 1.0,
+    "parallel_penalty": 1.0
+  },
+  "pareto_reward": 0.95,
+  "sweep": [
+    {
+      "beta": 0.2,
+      "supported": true,
+      "mean_score": 0.747,
+      "mean_calls": 3.5,
+      "mean_best": 0.75,
+      "attainment_auc": 1.0,
+      "parallel_penalty": 1.0,
+      "episodes": [
+        {
+          "world": "cycle-0001-live-try-01",
+          "status": "supported",
+          "score": 0.4965,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 0.5,
+          "calls": 4,
+          "rounds": 4,
+          "curve": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 0.5,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 0.5,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 0.5,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 3,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000",
+                "b000-d001"
+              ],
+              "selected": [
+                "b001-d001"
+              ],
+              "best": 0.5,
+              "calls": 4,
+              "candidates": [
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 3,
+                    "workers": 1,
+                    "rounds": 3,
+                    "legal_count": 1,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "budget"
+        },
+        {
+          "world": "cycle-0002-live-try-01",
+          "status": "supported",
+          "score": 0.4965,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 0.5,
+          "calls": 4,
+          "rounds": 4,
+          "curve": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 0.5,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 0.5,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 0.5,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 3,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000",
+                "b000-d001"
+              ],
+              "selected": [
+                "b001-d001"
+              ],
+              "best": 0.5,
+              "calls": 4,
+              "candidates": [
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 3,
+                    "workers": 1,
+                    "rounds": 3,
+                    "legal_count": 1,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "budget"
+        },
+        {
+          "world": "cycle-0003-live-try-01",
+          "status": "supported",
+          "score": 0.9974999999999999,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 1.0,
+          "calls": 3,
+          "rounds": 3,
+          "curve": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 1.0,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 1.0,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 1.0,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": false,
+                  "priority": null,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 1,
+                    "last_failed": true,
+                    "successes": 0,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "policy_stop"
+        },
+        {
+          "world": "cycle-0004-live-try-01",
+          "status": "supported",
+          "score": 0.9974999999999999,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 1.0,
+          "calls": 3,
+          "rounds": 3,
+          "curve": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 1.0,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 1.0,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 1.0,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": false,
+                  "priority": null,
+                  "features": {
+                    "beta": 0.2,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 1,
+                    "last_failed": true,
+                    "successes": 0,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "policy_stop"
+        }
+      ]
+    },
+    {
+      "beta": 0.6,
+      "supported": true,
+      "mean_score": 0.747,
+      "mean_calls": 3.5,
+      "mean_best": 0.75,
+      "attainment_auc": 1.0,
+      "parallel_penalty": 1.0,
+      "episodes": [
+        {
+          "world": "cycle-0001-live-try-01",
+          "status": "supported",
+          "score": 0.4965,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 0.5,
+          "calls": 4,
+          "rounds": 4,
+          "curve": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 0.5,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 0.5,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 0.5,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 3,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000",
+                "b000-d001"
+              ],
+              "selected": [
+                "b001-d001"
+              ],
+              "best": 0.5,
+              "calls": 4,
+              "candidates": [
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 3,
+                    "workers": 1,
+                    "rounds": 3,
+                    "legal_count": 1,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "budget"
+        },
+        {
+          "world": "cycle-0002-live-try-01",
+          "status": "supported",
+          "score": 0.4965,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 0.5,
+          "calls": 4,
+          "rounds": 4,
+          "curve": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 0.5,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 0.5,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 0.5,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 3,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000",
+                "b000-d001"
+              ],
+              "selected": [
+                "b001-d001"
+              ],
+              "best": 0.5,
+              "calls": 4,
+              "candidates": [
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 3,
+                    "workers": 1,
+                    "rounds": 3,
+                    "legal_count": 1,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "budget"
+        },
+        {
+          "world": "cycle-0003-live-try-01",
+          "status": "supported",
+          "score": 0.9974999999999999,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 1.0,
+          "calls": 3,
+          "rounds": 3,
+          "curve": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 1.0,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 1.0,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 1.0,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": false,
+                  "priority": null,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 1,
+                    "last_failed": true,
+                    "successes": 0,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "policy_stop"
+        },
+        {
+          "world": "cycle-0004-live-try-01",
+          "status": "supported",
+          "score": 0.9974999999999999,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 1.0,
+          "calls": 3,
+          "rounds": 3,
+          "curve": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 1.0,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 1.0,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 1.0,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": false,
+                  "priority": null,
+                  "features": {
+                    "beta": 0.6,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 1,
+                    "last_failed": true,
+                    "successes": 0,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "policy_stop"
+        }
+      ]
+    },
+    {
+      "beta": 1.0,
+      "supported": true,
+      "mean_score": 0.747,
+      "mean_calls": 3.5,
+      "mean_best": 0.75,
+      "attainment_auc": 1.0,
+      "parallel_penalty": 1.0,
+      "episodes": [
+        {
+          "world": "cycle-0001-live-try-01",
+          "status": "supported",
+          "score": 0.4965,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 0.5,
+          "calls": 4,
+          "rounds": 4,
+          "curve": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 0.5,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 0.5,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 0.5,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 3,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000",
+                "b000-d001"
+              ],
+              "selected": [
+                "b001-d001"
+              ],
+              "best": 0.5,
+              "calls": 4,
+              "candidates": [
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 3,
+                    "workers": 1,
+                    "rounds": 3,
+                    "legal_count": 1,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "budget"
+        },
+        {
+          "world": "cycle-0002-live-try-01",
+          "status": "supported",
+          "score": 0.4965,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 0.5,
+          "calls": 4,
+          "rounds": 4,
+          "curve": [
+            0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 0.5,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 0.5,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 0.5,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 3,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000",
+                "b000-d001"
+              ],
+              "selected": [
+                "b001-d001"
+              ],
+              "best": 0.5,
+              "calls": 4,
+              "candidates": [
+                {
+                  "action": "b001-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.5,
+                    "global_best": 0.5,
+                    "opened": 2,
+                    "probes": 3,
+                    "workers": 1,
+                    "rounds": 3,
+                    "legal_count": 1,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.5,
+                    "latest": 0.5,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "budget"
+        },
+        {
+          "world": "cycle-0003-live-try-01",
+          "status": "supported",
+          "score": 0.9974999999999999,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 1.0,
+          "calls": 3,
+          "rounds": 3,
+          "curve": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 1.0,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 1.0,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 1.0,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": false,
+                  "priority": null,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 1,
+                    "last_failed": true,
+                    "successes": 0,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "policy_stop"
+        },
+        {
+          "world": "cycle-0004-live-try-01",
+          "status": "supported",
+          "score": 0.9974999999999999,
+          "attainment_auc": 1.0,
+          "parallel_penalty": 1.0,
+          "best_score": 1.0,
+          "calls": 3,
+          "rounds": 3,
+          "curve": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "decisions": [
+            {
+              "round": 0,
+              "prefix_ids": [],
+              "selected": [
+                "b000-d000"
+              ],
+              "best": 1.0,
+              "calls": 1,
+              "candidates": [
+                {
+                  "action": "b000-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 0.0,
+                    "opened": 0,
+                    "probes": 0,
+                    "workers": 1,
+                    "rounds": 0,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 1,
+              "prefix_ids": [
+                "b000-d000"
+              ],
+              "selected": [
+                "b001-d000"
+              ],
+              "best": 1.0,
+              "calls": 2,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d000",
+                  "eligible": true,
+                  "priority": 10.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 1,
+                    "probes": 1,
+                    "workers": 1,
+                    "rounds": 1,
+                    "legal_count": 2,
+                    "is_root": true,
+                    "depth": 0,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 0,
+                    "remaining": 2
+                  }
+                }
+              ],
+              "batch_size": 1
+            },
+            {
+              "round": 2,
+              "prefix_ids": [
+                "b000-d000",
+                "b001-d000"
+              ],
+              "selected": [
+                "b000-d001"
+              ],
+              "best": 1.0,
+              "calls": 3,
+              "candidates": [
+                {
+                  "action": "b000-d001",
+                  "eligible": true,
+                  "priority": -1.0,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 1.0,
+                    "latest": 1.0,
+                    "gain": 1.0,
+                    "stagnation": 0,
+                    "failures": 0,
+                    "last_failed": false,
+                    "successes": 1,
+                    "remaining": 1
+                  }
+                },
+                {
+                  "action": "b001-d001",
+                  "eligible": false,
+                  "priority": null,
+                  "features": {
+                    "beta": 1.0,
+                    "baseline": 0.0,
+                    "global_best": 1.0,
+                    "opened": 2,
+                    "probes": 2,
+                    "workers": 1,
+                    "rounds": 2,
+                    "legal_count": 2,
+                    "is_root": false,
+                    "depth": 1,
+                    "anchor": 0.0,
+                    "latest": 0.0,
+                    "gain": 0.0,
+                    "stagnation": 1,
+                    "failures": 1,
+                    "last_failed": true,
+                    "successes": 0,
+                    "remaining": 1
+                  }
+                }
+              ],
+              "batch_size": 1
+            }
+          ],
+          "stop_reason": "policy_stop"
+        }
+      ]
+    }
+  ]
+}

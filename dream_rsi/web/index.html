@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <title>Dream Lab — Learn how to search</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Dream Lab home"><span class="brand-mark">d<span>·</span></span><span>dream<span class="brand-light"> / lab</span></span></a>
+    <div class="sidebar-caption">A LOCAL RESEARCH WORKSPACE</div>
+    <button class="new-workspace" id="new-workspace"><span>＋</span> New workspace</button>
+    <nav aria-label="Workspaces">
+      <button class="nav-item active" id="example-nav"><span class="nav-icon">◉</span><span>Recorded replay<small>Explore without a model</small></span></button>
+      <div class="nav-heading">YOUR WORKSPACES <span id="session-count">0</span></div>
+      <div id="session-list"></div>
+    </nav>
+    <div class="sidebar-bottom"><div class="connection" id="connection"><span class="dot"></span> Checking Ollama…</div><p>Runs on this computer.<br>Your experiments stay here.</p><span class="version">DREAM-RSI / INDEPENDENT IMPLEMENTATION</span></div>
+  </aside>
+  <div class="shell">
+    <header class="topbar"><span id="breadcrumb">EXPERIMENTS <span>/</span> RECORDED REPLAY</span><span class="local-badge"><span class="dot green"></span> Local workspace</span></header>
+    <main id="main" aria-busy="true"><div class="initial-loading">Opening the lab…</div></main>
+    <footer class="page-footer"><span>Collect evidence. Revisit decisions. Test what changed.</span><span>Model weights stay fixed.</span></footer>
+  </div>
+  <dialog id="create-dialog">
+    <form id="create-form">
+      <div class="dialog-top"><span class="eyebrow">NEW WORKSPACE</span><button type="button" class="icon-button" id="close-dialog" aria-label="Close">×</button></div>
+      <h2>Give curiosity a place.</h2><p class="muted">Choose a task and let the exploration policy improve from measured experiments.</p>
+      <label>Workspace name<input id="workspace-name" name="name" required maxlength="80" value="My math workspace" autocomplete="off"></label>
+      <label>Task<select id="task-select" name="task"><option value="sum_difference">Math · sum–difference discovery</option><option value="python_code">Developer · Python generation and repair</option></select></label>
+      <div id="code-options" hidden><p class="small muted">Runs generated code in Docker. The starter suite includes repair and generation tasks, visible tests, and private checks. Gemma 3 4B is recommended among the locally tested models.</p><label>Custom suite (optional JSON)<input id="suite-file" type="file" accept=".json,application/json"></label><p class="small muted">Leave empty to use the included 12-problem suite. Requires the local python:3.12-slim Docker image.</p></div>
+      <label>Local model<select id="model-select" name="model"><option value="qwen3.5:0.8b">Qwen 3.5 · 0.8B</option></select></label>
+      <div class="task-description" id="math-description"><span class="task-icon">A±A</span><div><strong>Sum–difference discovery</strong><p>Find integer sets with more distinct sums relative to differences. Tiny data; exact, CPU-only evaluation.</p></div></div>
+      <details class="advanced"><summary>Experiment settings</summary><div class="form-grid">
+        <label>Directions<input name="branches" type="number" min="2" max="8" value="4" required></label>
+        <label>Attempts per direction<input name="depth" type="number" min="2" max="8" value="4" required></label>
+        <label>Parallel workers<input name="workers" type="number" min="1" max="4" value="2" required></label>
+        <label>Proposed edits per cycle<input name="revisions" type="number" min="1" max="8" value="4" required></label>
+        <label>Fresh validation pairs<input name="validation_pairs" type="number" min="2" max="8" value="4" required></label>
+        <label>Random seed<input name="seed" type="number" min="0" max="2147483647" value="2027" required></label>
+      </div><p class="small muted">Maximum 32 attempts per episode. Each new policy must preserve quality on every fresh pair to be accepted.</p></details>
+      <div id="form-error" class="inline-error" role="alert"></div>
+      <div class="dialog-actions"><button type="button" class="button secondary" id="cancel-create">Cancel</button><button class="button primary" type="submit">Create workspace <span>↗</span></button></div>
+    </form>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
