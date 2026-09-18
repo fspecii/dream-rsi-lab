@@ -21,7 +21,24 @@ second defines the Django function named in its issue. Both scans completed with
 reaching their input limits. These checks used the real prepared images, including
 Django's Python 3.6 environment. They make no model calls and do not generate patches.
 Source retrieval does not prove that a model will understand or correctly repair
-the code. Integration and repair evaluation remain separate work.
+the code. The helper is now available as an opt-in development mode:
+
+```bash
+python3 -m dream_rsi.benchmark_solver \
+  --inputs /path/to/public-inputs.json --instance pydata__xarray-6461 \
+  --output runs/xarray-with-context --retrieve-context --steps 24
+```
+
+The run saves the exact context before inference, its digest, implementation
+snapshot, retrieval time, and total candidate wall time. The candidate audit checks
+that every logged request contains that recorded context. Context tampering fails
+the audit. The original registered comparison rejects this setting as an unregistered
+change. Default inference is unchanged unless the flag is supplied.
+
+`development-plan.json` registers xarray followed by Django, both already-exposed
+development cases, before new repair inference. It uses the same model and 24-call
+budget with the source context enabled and no learned controller. These results
+must remain distinct from the completed pilot and independent final evaluation.
 
 The saved records include the base commit, image ID, retrieval implementation hash,
 queries, source excerpts/hashes, scan counts, and timing. Included upstream licenses

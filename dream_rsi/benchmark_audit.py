@@ -21,6 +21,12 @@ def audit_candidate(directory: Path):
     if result['status'] not in ('finished', 'budget_exhausted'):
         raise ValueError('Candidate run did not finish normally; preserve its infrastructure error separately')
     expected_implementation = IMPLEMENTATION_FILES | ({'repository_policy.py'} if isinstance(manifest.get('policy'), dict) else set())
+    context_text = None
+    if manifest.get('retrieval'):
+        expected_implementation |= {'repository_retrieval.py'}
+        context_text = json.dumps(read('retrieval.json')['context'],sort_keys=True,ensure_ascii=False)
+        if hashlib.sha256(context_text.encode()).hexdigest() != manifest['retrieval_sha256']:
+            raise ValueError('Retrieval context differs from the registered input hash')
     if set(manifest['implementation']) != expected_implementation:
         raise ValueError('Unexpected implementation snapshot set')
     for name, digest in manifest['implementation'].items():
@@ -47,6 +53,8 @@ def audit_candidate(directory: Path):
         if call_path.name != expected or step_path.name != expected:
             raise ValueError('Noncontiguous call or step logs')
         call, step = json.loads(call_path.read_text()), json.loads(step_path.read_text())
+        if context_text is not None and context_text not in call['request']['messages'][0]['content']:
+            raise ValueError('Model request does not contain the recorded retrieval context')
         if call['role'] != 'discovery' or call['id'] != expected[:-5]:
             raise ValueError('Call identity mismatch')
         if call['request']['model'] != prediction['model_name_or_path']:

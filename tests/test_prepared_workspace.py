@@ -96,12 +96,16 @@ RUN git init -q && git config user.name Fixture && git config user.email fixture
             def __init__(self, model, logs, base_url, timeout):
                 self.logs, self.calls = logs, 0
             def inspect(self): return {'name':'fixture', 'digest':'fixture'}
-            def usage(self): return {'discovery': {'calls':self.calls}}
+            def usage(self): return {'discovery': {'calls':self.calls, 'input_tokens':0,
+                'output_tokens':0, 'request_seconds':0, 'errors':0}}
             def generate(self, prompt, schema, seed, role, call_id, max_tokens):
                 result = actions[self.calls]
                 self.calls += 1
                 self.logs.mkdir(exist_ok=True)
-                (self.logs/(call_id+'.json')).write_text(json.dumps({'response':result}))
+                (self.logs/(call_id+'.json')).write_text(json.dumps({'id':call_id,'role':role,
+                    'request':{'model':'fixture','options':{'seed':seed,'num_predict':max_tokens},
+                               'messages':[{'role':'user','content':prompt}]},
+                    'response':{'message':{'content':json.dumps(result)}},'wall_seconds':0}))
                 return result
         with tempfile.TemporaryDirectory() as directory, patch('dream_rsi.benchmark_solver.OllamaModel', FixtureModel):
             root = Path(directory)
@@ -129,6 +133,19 @@ RUN git init -q && git config user.name Fixture && git config user.email fixture
             rejected = json.loads((controlled/'step-000.json').read_text())
             self.assertIn('invalid_action', rejected['observation'])
             self.assertIn('repository_policy.py', json.loads((controlled/'manifest.json').read_text())['implementation'])
+            from dream_rsi.benchmark_audit import audit_candidate
+            audit_candidate(output)
+            audit_candidate(controlled)
+            actions.pop(0)
+            retrieved = root/'retrieved'
+            generate_prediction(inputs,row['instance_id'],retrieved,model='fixture',steps=4,retrieve_context=True)
+            saved_context = json.loads((retrieved/'retrieval.json').read_text())
+            self.assertEqual(saved_context['context']['files'][0]['path'],'calc.py')
+            audit_candidate(retrieved)
+            saved_context['context']['files'][0]['excerpt'] = 'tampered after inference'
+            (retrieved/'retrieval.json').write_text(json.dumps(saved_context))
+            with self.assertRaisesRegex(ValueError,'Retrieval context differs'):
+                audit_candidate(retrieved)
             with self.assertRaises(FileExistsError):
                 generate_prediction(inputs, row['instance_id'], output, model='fixture', steps=4)
             document['tasks'][0]['patch'] = 'forbidden'

@@ -105,6 +105,8 @@ def compare(plan_path: Path, proposal_path: Path, locations: dict):
                 continue
             manifest = json.loads((run/'manifest.json').read_text())
             manifests[side] = manifest
+            if bool(manifest.get('retrieval')) != bool(plan.get('retrieval')):
+                raise ValueError('Retrieval setting differs from registered comparison')
             if (manifest['seed'] != plan['seed'] or manifest['steps'] != plan['max_calls_per_instance']
                     or manifest['max_tokens_per_call'] != plan['max_tokens_per_call']):
                 raise ValueError('Run differs from registered seed or budget')
@@ -124,6 +126,8 @@ def compare(plan_path: Path, proposal_path: Path, locations: dict):
                 raise ValueError('Paired runtime image or task input differs')
             if a['implementation']['prepared_workspace.py'] != b['implementation']['prepared_workspace.py']:
                 raise ValueError('Paired workspace adapters differ')
+            if a.get('retrieval_sha256') != b.get('retrieval_sha256'):
+                raise ValueError('Paired retrieved source context differs')
         pairs.append(pair)
     if len(digests) > 1:
         raise ValueError('Model digest changed across the comparison')
