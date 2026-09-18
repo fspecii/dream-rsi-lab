@@ -1,0 +1,16 @@
+{
+  "action": {
+    "action": "replace",
+    "path": "django/forms/models.py",
+    "old": "if fields and f.name not in fields:",
+    "new": "if fields is not None and f.name not in fields:",
+    "summary": "Fixed the issue where model_to_dict() returns all fields instead of an empty dictionary when fields is an empty list."
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 1,
+    "stdout": "{\"error\": \"ambiguous_match\", \"matches\": 2, \"match_lines\": [86, 434], \"current_excerpts\": [\"84:         if not getattr(f, 'editable', False):\\n85:             continue\\n86:         if fields and f.name not in fields:\\n87:             continue\\n88:         if exclude and f.name in exclude:\\n89:             continue\\n90:         data[f.name] = f.value_from_object(instance)\\n91:     return data\", \"432:             if not hasattr(f, 'save_form_data'):\\n433:                 continue\\n434:             if fields and f.name not in fields:\\n435:                 continue\\n436:             if exclude and f.name in exclude:\\n437:                 continue\\n438:             if f.name in cleaned_data:\\n439:                 f.save_form_data(self.instance, cleaned_data[f.name])\"], \"next_step\": \"Read the intended location, then either set start and end to its line range or include more surrounding old text. Old text must match exactly once within the selected scope.\"}\n",
+    "stderr": "",
+    "seconds": 0.4064989580074325
+  }
+}

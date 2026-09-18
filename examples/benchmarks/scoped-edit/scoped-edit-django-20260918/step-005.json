@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/forms/models.py",
+    "start": 85,
+    "end": 87
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "85:             continue\n86:         if fields and f.name not in fields:\n87:             continue\n",
+    "stderr": "",
+    "seconds": 0.3897540000034496
+  }
+}

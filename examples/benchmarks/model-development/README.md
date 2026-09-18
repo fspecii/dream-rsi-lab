@@ -17,3 +17,9 @@ scoped-edit workflow and retrieval. Explicit request options and package default
 are recorded separately. This is a comparison of model packages/configurations,
 not an isolated model-weights experiment. A neutral schema compatibility check
 precedes inference. Neither task is an untouched final evaluation.
+
+The neutral compatibility check passed with one call (48 input tokens, 50 output
+tokens, 8.13 seconds including first model load). It returned the requested JSON
+read action and line range. Raw request/response and model metadata are preserved
+under `compatibility/`. This is transport evidence, not repository-repair evidence.
+The registered Django repair run has started; its result is pending.

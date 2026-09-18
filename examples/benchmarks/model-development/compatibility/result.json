@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "response": {
+    "action": "read",
+    "path": "src/example.py",
+    "start": 10,
+    "end": 12,
+    "summary": "Compatibility check only"
+  },
+  "usage": {
+    "discovery": {
+      "calls": 1,
+      "input_tokens": 48,
+      "output_tokens": 50,
+      "request_seconds": 8.126134707999881,
+      "errors": 0
+    },
+    "policy": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "request_seconds": 0,
+      "errors": 0
+    }
+  },
+  "scope": "Neutral JSON transport compatibility only, not repair evidence."
+}
