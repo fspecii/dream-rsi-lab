@@ -19,7 +19,7 @@ included coding suite is small; it does not establish industry-wide superiority.
   with real unittest/pytest commands and reviewable patch export.
 - Python generation/repair from problem descriptions and optional starter code.
   Bring your own JSON suite with visible and private tests.
-- Disposable Docker execution with no network or host-directory mounts, a non-root
+- Function/snapshot Docker execution with no network or host-directory mounts, a non-root
   user, read-only root, and time/memory/process/output limits.
 - Replay-based controller edits. Candidates must pass fresh paired comparisons
   before promotion; cheaper quality regressions are rejected.
@@ -85,6 +85,11 @@ This exports a patch after running project tests in Docker. It leaves the source
 checkout unchanged. [Project configuration, dependencies, and limits](examples/repository/README.md).
 Repository repair currently uses fixed search; persistent learned repository
 controllers remain future work.
+
+An experimental [SWE-bench candidate runner](docs/SWE-BENCH-PILOT.md) also supports
+prepared repository images, issue-driven code inspection, edits, and visible tests.
+Its container profile differs from snapshot repair; see [security scope](SECURITY.md).
+It currently uses a fixed tool loop and has no measured benchmark score.
 
 ## Improvement and evidence
 

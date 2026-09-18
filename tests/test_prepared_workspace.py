@@ -1,0 +1,132 @@
+import os
+import json
+from unittest.mock import patch
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+import unittest
+import uuid
+
+from dream_rsi.prepared_workspace import PreparedWorkspace, bounded_process
+from dream_rsi.sandbox import SandboxUnavailable
+
+
+class BoundedProcessTests(unittest.TestCase):
+    def test_output_and_time_are_bounded(self):
+        result = bounded_process([sys.executable, '-c', 'print("x"*100000)'], limit=1024)
+        self.assertEqual(result['status'], 'output_limit')
+        self.assertEqual(len(result['stdout']), 1024)
+        result = bounded_process([sys.executable, '-c', 'import time; time.sleep(30)'], timeout=.1)
+        self.assertEqual(result['status'], 'timeout')
+
+
+@unittest.skipUnless(os.environ.get('DREAM_TEST_PREPARED_BASE'), 'Set a prepared image containing Git and Python')
+class PreparedWorkspaceTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.image = 'dream-prepared-fixture:' + uuid.uuid4().hex
+        base = os.environ['DREAM_TEST_PREPARED_BASE']
+        platform = subprocess.check_output(['docker', 'image', 'inspect', base, '--format', '{{.Os}}/{{.Architecture}}'], text=True).strip()
+        dockerfile = f'''FROM {base}
+USER root
+RUN rm -rf /testbed && mkdir /testbed
+WORKDIR /testbed
+RUN git init -q && git config user.name Fixture && git config user.email fixture@example.invalid && printf 'def add(a, b):\\n    return a - b\\n' > calc.py && git add calc.py && git commit -qm base && git rev-parse HEAD > /fixture-base && printf 'future solution canary' > later.txt && git add later.txt && git commit -qm later && git checkout -q $(cat /fixture-base)
+'''
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory)/'Dockerfile').write_text(dockerfile)
+            built = subprocess.run(['docker', 'build', '--platform', platform, '--network=none', '-t', cls.image, directory], capture_output=True, text=True, timeout=120)
+            if built.returncode:
+                raise RuntimeError(built.stderr)
+        cls.base = subprocess.check_output(['docker', 'run', '--rm', '--network=none', '--entrypoint=cat', cls.image, '/fixture-base'], text=True).strip()
+
+    @classmethod
+    def tearDownClass(cls):
+        subprocess.run(['docker', 'image', 'rm', cls.image], capture_output=True, timeout=30, check=True)
+
+    def test_repair_export_history_isolation_and_cleanup(self):
+        with PreparedWorkspace(self.image, self.base) as workspace:
+            name = workspace.name
+            settings = subprocess.check_output(['docker', 'inspect', '--format', '{{.HostConfig.NetworkMode}} {{len .Mounts}} {{.HostConfig.CapDrop}}', name], text=True)
+            self.assertEqual(settings.strip(), 'none 0 [ALL]')
+            self.assertEqual(workspace.run('git rev-list --count --all')['stdout'].strip(), '1')
+            self.assertEqual(workspace.run('git remote')['stdout'], '')
+            self.assertEqual(workspace.patch(), '')
+            self.assertIn('return a - b', workspace.file_action({'action': 'read', 'path': 'calc.py'})['stdout'])
+            self.assertNotEqual(workspace.run('python -c "from calc import add; assert add(2, 3) == 5"')['returncode'], 0)
+            edited = workspace.file_action({'action': 'replace', 'path': 'calc.py', 'old': 'return a - b', 'new': 'return a + b'})
+            self.assertEqual(edited['returncode'], 0, edited['stderr'])
+            self.assertEqual(workspace.run('python -c "from calc import add; assert add(2, 3) == 5"')['returncode'], 0)
+            self.assertIn('+    return a + b', workspace.patch())
+        check = subprocess.run(['docker', 'inspect', name], capture_output=True)
+        self.assertNotEqual(check.returncode, 0)
+        # Original prepared image is unchanged.
+        with PreparedWorkspace(self.image, self.base) as fresh:
+            self.assertEqual(fresh.patch(), '')
+            self.assertIn('return a - b', fresh.file_action({'action': 'read', 'path': 'calc.py'})['stdout'])
+
+    def test_path_escape_and_ambiguous_edits_fail(self):
+        with PreparedWorkspace(self.image, self.base) as workspace:
+            for path in ('../fixture-base', '/fixture-base', '.git/config'):
+                self.assertNotEqual(workspace.file_action({'action':'read', 'path':path})['returncode'], 0)
+            workspace.run('ln -s /fixture-base escape.py')
+            self.assertNotEqual(workspace.file_action({'action':'read', 'path':'escape.py'})['returncode'], 0)
+            self.assertNotEqual(workspace.file_action({'action':'replace', 'path':'calc.py', 'old':'missing', 'new':'bad'})['returncode'], 0)
+
+    def test_candidate_workflow_exports_logged_prediction(self):
+        from dream_rsi.benchmark_inputs import prepare_inputs, VERIFIED
+        from dream_rsi.benchmark_solver import generate_prediction, load_public_input
+        row = dict(instance_id='fixture__calc-1', repo='fixture/calc', base_commit=self.base,
+                   image=self.image, problem_statement='add(2, 3) should return 5.',
+                   datasets=[VERIFIED], split='test')
+        plan = {'dataset': VERIFIED, 'task_repo_commit': 'b'*40,
+                'instances': [{k: row[k] for k in ('instance_id', 'repo', 'base_commit', 'image')}]}
+        actions = [
+            {'action':'read', 'path':'calc.py'},
+            {'action':'replace', 'path':'calc.py', 'old':'return a - b', 'new':'return a + b'},
+            {'action':'run', 'command':'python -c "from calc import add; assert add(2, 3) == 5"'},
+            {'action':'finish', 'summary':'Fixed and checked addition'},
+        ]
+        class FixtureModel:
+            def __init__(self, model, logs, base_url, timeout):
+                self.logs, self.calls = logs, 0
+            def inspect(self): return {'name':'fixture', 'digest':'fixture'}
+            def usage(self): return {'discovery': {'calls':self.calls}}
+            def generate(self, prompt, schema, seed, role, call_id, max_tokens):
+                result = actions[self.calls]
+                self.calls += 1
+                self.logs.mkdir(exist_ok=True)
+                (self.logs/(call_id+'.json')).write_text(json.dumps({'response':result}))
+                return result
+        with tempfile.TemporaryDirectory() as directory, patch('dream_rsi.benchmark_solver.OllamaModel', FixtureModel):
+            root = Path(directory)
+            inputs = root/'inputs.json'
+            document = prepare_inputs([row], plan)
+            inputs.write_text(json.dumps(document))
+            output = root/'run'
+            prediction = generate_prediction(inputs, row['instance_id'], output, model='fixture', steps=4)
+            self.assertIn('+    return a + b', prediction['model_patch'])
+            self.assertEqual(json.loads((output/'result.json').read_text())['status'], 'finished')
+            self.assertEqual(json.loads((output/'prediction.jsonl').read_text()), prediction)
+            manifest = json.loads((output/'manifest.json').read_text())
+            self.assertTrue(manifest['image_id'].startswith('sha256:'))
+            self.assertEqual(manifest['steps'], 4)
+            with self.assertRaises(FileExistsError):
+                generate_prediction(inputs, row['instance_id'], output, model='fixture', steps=4)
+            document['tasks'][0]['patch'] = 'forbidden'
+            inputs.write_text(json.dumps(document))
+            with self.assertRaisesRegex(ValueError, 'Unexpected fields'):
+                load_public_input(inputs, row['instance_id'])
+
+    def test_bad_base_and_runaway_commands_remove_container(self):
+        workspace = PreparedWorkspace(self.image, 'a'*40)
+        with self.assertRaisesRegex(SandboxUnavailable, 'Base commit mismatch'):
+            workspace.__enter__()
+        self.assertFalse(workspace.active)
+        for command, kwargs in [('sleep 30', {'timeout':1}), ('python -c "print(\'x\'*100000)"', {'output_limit':1024})]:
+            with PreparedWorkspace(self.image, self.base, **kwargs) as workspace:
+                with self.assertRaisesRegex(SandboxUnavailable, 'workspace removed'):
+                    workspace.run(command)
+                self.assertFalse(workspace.active)
+                self.assertNotEqual(subprocess.run(['docker','inspect',workspace.name], capture_output=True).returncode, 0)

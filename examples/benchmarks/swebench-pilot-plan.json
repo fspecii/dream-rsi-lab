@@ -29,5 +29,20 @@
     "Record environment failures separately; do not replace failed environments with easier tasks.",
     "Register exact model, search budgets, and candidate implementation before any candidate inference.",
     "Use official final resolution scoring, separated from visible discovery feedback."
-  ]
+  ],
+  "candidate_protocol": {
+    "model": "qwen2.5-coder:7b",
+    "model_digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "policy": "fixed sequential tool loop",
+    "max_calls_per_instance": 24,
+    "max_output_tokens_per_call": 4096,
+    "seed": 2027,
+    "temperature": 0.7,
+    "context_tokens": 32768,
+    "command_timeout_seconds": 60,
+    "selection": "current patch on finish or budget exhaustion",
+    "official_feedback_during_search": false,
+    "implementation": "Per-run source snapshots and hashes, written before inference",
+    "retries": "Infrastructure retries must be separate recorded runs; no replacement tasks or hidden outcome-driven reruns"
+  }
 }

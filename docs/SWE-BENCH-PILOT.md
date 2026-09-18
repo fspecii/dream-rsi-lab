@@ -65,7 +65,48 @@ path; it is not a model repair result. The first build failed with insufficient
 memory in a 3 GB Colima VM. Retrying in an 8 GB VM succeeded, using the official
 linux/amd64 image build under emulation on an ARM host. Preserve both outcomes.
 
-The shipped `repo-solve` snapshot workflow is not yet a full SWE-bench solver.
-Prepared-image workspaces, issue-driven retrieval, and benchmark candidate
-generation are still required. Repository search currently uses a fixed policy;
-no learned repository-controller improvement has been demonstrated.
+## Experimental candidate runner
+
+After exporting public inputs and building the selected official image locally:
+
+```bash
+python3 -m dream_rsi.benchmark_solver \
+  --inputs /path/to/pilot-public-inputs.json \
+  --instance pydata__xarray-6461 \
+  --output runs/swebench-xarray \
+  --model qwen2.5-coder:7b --steps 24 --seed 2027
+```
+
+The runner validates the input digest, verifies the image's base checkout, removes
+later Git history/remotes, and gives the model bounded `run`, `read`, `replace`, and
+`finish` actions. Search and editable-file selection come from model actions on
+the public checkout. It saves runtime/model/implementation identifiers before
+inference and records every call, tool observation, and current patch. The fixed
+policy submits the current patch at finish or budget exhaustion. It does not
+optimize against official test outcomes. An infrastructure failure is recorded
+without silently emitting a valid prediction; the latest saved patch remains
+available for diagnosis.
+
+The output `prediction.jsonl` uses the official harness prediction format. Evaluate
+it separately, with a new run ID for every attempt:
+
+```bash
+swebench eval verified --predictions /path/to/run/prediction.jsonl \
+  --run-id unique-candidate-run --task-repo /path/to/swe-bench-tasks -j 1
+```
+
+Default bounds are 24 model calls, 4,096 output tokens per call, 60 seconds per
+container command, 2 GB container memory, 2 CPUs, and 128 processes. These are
+engineering defaults, not tuned performance claims. The writable container runs
+as root with capabilities dropped, no network or host mounts; see
+[security scope](../SECURITY.md). Container logs are disabled; tool output is
+captured and bounded by the runner. Preserve all failed and incomplete runs.
+
+Real Docker fixture tests cover repair/export, original-image preservation,
+history removal, path rejection, timeout/overflow cleanup, and the complete
+model-action-to-prediction workflow. Enable these with
+`DREAM_TEST_PREPARED_BASE` naming an available image containing Git and Python.
+
+The shipped `repo-solve` snapshot workflow remains separate. Both repository
+workflows currently use fixed policies; no learned repository-controller
+improvement has been demonstrated. No model benchmark result has been measured yet.
