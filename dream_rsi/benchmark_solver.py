@@ -123,7 +123,7 @@ def generate_prediction(inputs: Path, instance_id: str, output: Path,
                 print(f'{instance_id}: {step+1}/{steps} calls, action={action.get("action") if action else "invalid"}, patch={len(patch.encode())} bytes', flush=True)
                 if status == 'finished':
                     break
-    except Exception as exc:
+    except BaseException as exc:
         status = 'infrastructure_or_runner_error'
         save_json(output/'error.json', {'type': type(exc).__name__, 'message': str(exc)[:4000]})
         raise
