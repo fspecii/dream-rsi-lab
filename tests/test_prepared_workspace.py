@@ -32,7 +32,7 @@ class PreparedWorkspaceTests(unittest.TestCase):
 USER root
 RUN rm -rf /testbed && mkdir /testbed
 WORKDIR /testbed
-RUN git init -q && git config user.name Fixture && git config user.email fixture@example.invalid && printf 'def add(a, b):\\n    return a - b\\n' > calc.py && git add calc.py && git commit -qm base && git rev-parse HEAD > /fixture-base && printf 'future solution canary' > later.txt && git add later.txt && git commit -qm later
+RUN git init -q && git config user.name Fixture && git config user.email fixture@example.invalid && git commit --allow-empty -qm ancestor && git tag v0.9 && printf 'def add(a, b):\\n    return a - b\\n' > calc.py && git add calc.py && git commit -qm base && git rev-parse HEAD > /fixture-base && git describe --tags --always > /fixture-description && printf 'future solution canary' > later.txt && git add later.txt && git commit -qm later && git tag v9.9 && git rev-parse HEAD > /fixture-future
 '''
         with tempfile.TemporaryDirectory() as directory:
             (Path(directory)/'Dockerfile').write_text(dockerfile)
@@ -50,7 +50,11 @@ RUN git init -q && git config user.name Fixture && git config user.email fixture
             name = workspace.name
             settings = subprocess.check_output(['docker', 'inspect', '--format', '{{.HostConfig.NetworkMode}} {{len .Mounts}} {{.HostConfig.CapDrop}}', name], text=True)
             self.assertEqual(settings.strip(), 'none 0 [ALL]')
-            self.assertEqual(workspace.run('git rev-list --count --all')['stdout'].strip(), '1')
+            self.assertEqual(workspace.run('git rev-list --count --all')['stdout'].strip(), '2')
+            self.assertEqual(workspace.run('git rev-parse HEAD')['stdout'].strip(), self.base)
+            self.assertEqual(workspace.run('test "$(git describe --tags --always)" = "$(cat /fixture-description)"')['returncode'], 0)
+            self.assertNotEqual(workspace.run('git cat-file -e "$(cat /fixture-future)"')['returncode'], 0)
+            self.assertNotIn('v9.9', workspace.run('git tag')['stdout'])
             self.assertEqual(workspace.run('git remote')['stdout'], '')
             self.assertEqual(workspace.patch(), '')
             self.assertIn('return a - b', workspace.file_action({'action': 'read', 'path': 'calc.py'})['stdout'])

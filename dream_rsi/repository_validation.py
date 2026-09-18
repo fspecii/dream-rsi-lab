@@ -112,7 +112,8 @@ def compare(plan_path: Path, proposal_path: Path, locations: dict):
                 raise ValueError('Run used a different model')
             digests.add(manifest['model']['digest'])
             if side == 'candidate':
-                if manifest['policy'] != proposal['policy'] or manifest['implementation'] != plan['candidate_implementation_hashes']:
+                registered = plan.get('candidate_implementation_overrides', {}).get(instance, plan['candidate_implementation_hashes'])
+                if manifest['policy'] != proposal['policy'] or manifest['implementation'] != registered:
                     raise ValueError('Candidate policy or implementation differs from registration')
             elif manifest['policy'] != 'fixed sequential tool loop':
                 raise ValueError('Expected the fixed baseline policy')
@@ -121,6 +122,8 @@ def compare(plan_path: Path, proposal_path: Path, locations: dict):
             a,b = manifests['baseline'],manifests['candidate']
             if a['image_id'] != b['image_id'] or a['inputs_sha256'] != b['inputs_sha256']:
                 raise ValueError('Paired runtime image or task input differs')
+            if a['implementation']['prepared_workspace.py'] != b['implementation']['prepared_workspace.py']:
+                raise ValueError('Paired workspace adapters differ')
         pairs.append(pair)
     if len(digests) > 1:
         raise ValueError('Model digest changed across the comparison')

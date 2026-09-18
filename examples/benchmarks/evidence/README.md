@@ -63,3 +63,6 @@ in the prompts and tool observations are covered by the included `DJANGO-LICENSE
 
 `matplotlib-build-failure.json` records the local compiler failure, full local
 build-log digest, and pinned official-image recovery. It is not a model outcome.
+`matplotlib-image-version-preflight.json` verifies the imported package version at
+the registered base after the Git-metadata compatibility correction. No Matplotlib
+model calls preceded this correction.

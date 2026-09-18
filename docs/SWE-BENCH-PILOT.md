@@ -178,6 +178,15 @@ fault while compiling bundled FreeType under amd64 emulation. No model call ran.
 Recovery uses the official registry image, pinned to its amd64 manifest digest,
 and retains the same task. This is infrastructure evidence, not a model failure.
 
+An import preflight found that replacing Git history with a synthetic root changed
+Matplotlib's runtime version. Before either Matplotlib model run, initialization
+was corrected to retain the exact base commit, its ancestors, and ancestor tags,
+while pruning non-ancestral references, later objects, reflogs, and remotes. The
+corrected preflight reports `3.8.0.dev1498+gfa68f46289`. Docker fixture tests verify
+version-description preservation and that a later commit can no longer be read.
+The validation plan records this per-instance infrastructure amendment and the
+new source hashes. Both Matplotlib runs must use the same corrected adapter.
+
 `python3 -m dream_rsi.repository_validation` checks the recorded proposal,
 candidate implementation hashes, budgets, matching input/image/model identities,
 candidate audits, and supplied official outcomes before applying the gate. It

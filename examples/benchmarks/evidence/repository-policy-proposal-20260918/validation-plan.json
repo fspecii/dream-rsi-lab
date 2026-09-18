@@ -33,6 +33,16 @@
       "change": "ASCII-compatible driver, UTF-8 locale, pre-3.9 path containment, interruption status; no search-policy changes",
       "original_baseline_run": "swebench-pilot-django-20260918",
       "replacement_baseline_run": "swebench-pilot-django-compat-retry-20260918"
+    },
+    {
+      "registered_at_utc": "2026-09-18T12:07:23.786171+00:00",
+      "instance_id": "matplotlib__matplotlib-26291",
+      "reason": "Local GCC build crashed; use pinned official amd64 image. Synthetic Git root changed runtime package version, so retain base ancestry/tags and prune only non-ancestral refs/objects. Both paired runs use the corrected adapter.",
+      "adapter_main_commit": "8a5e0c933ea0fa358abac5d59b7c062f1a720750",
+      "candidate_oracle_feedback_seen": false,
+      "model_calls_before_amendment": 0,
+      "preflight_version": "3.8.0.dev1498+gfa68f46289",
+      "registry_manifest_digest": "sha256:9c568e99e8a534ba8b622af9c48a5c4c157c4f1003237b10ed8d0b82c4b771a5"
     }
   ],
   "candidate_implementation_hashes": {
@@ -41,5 +51,14 @@
     "model.py": "36f369c386f0f17f5361399fd53e848c9b32bb00def54db38f5cbaa163874cd1",
     "benchmark_inputs.py": "a30b6ee28993d074f91976c0bb1f78f5a2210e15c54dd099d2b64af48dccc7c1",
     "repository_policy.py": "b6d905a55db3bd2da237c6cf3fa94975bd8fd34e893d3134778a2bcd91658d81"
+  },
+  "candidate_implementation_overrides": {
+    "matplotlib__matplotlib-26291": {
+      "benchmark_solver.py": "e3d087d5fe83daa9d8517d1302b2f3aefb8fff7e8e3ad16a2bed710bd3a9831e",
+      "prepared_workspace.py": "47cd8dfe40b1f50d77177882dfcca3685fb6e3cd5b735860f3cdbb8b9a85d702",
+      "model.py": "36f369c386f0f17f5361399fd53e848c9b32bb00def54db38f5cbaa163874cd1",
+      "benchmark_inputs.py": "a30b6ee28993d074f91976c0bb1f78f5a2210e15c54dd099d2b64af48dccc7c1",
+      "repository_policy.py": "b6d905a55db3bd2da237c6cf3fa94975bd8fd34e893d3134778a2bcd91658d81"
+    }
   }
 }

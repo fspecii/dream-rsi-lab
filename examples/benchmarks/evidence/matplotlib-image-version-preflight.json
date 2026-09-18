@@ -1,0 +1,12 @@
+{
+  "image_id": "sha256:9c568e99e8a534ba8b622af9c48a5c4c157c4f1003237b10ed8d0b82c4b771a5",
+  "base_commit": "fa68f46289adf4a8a4bc7ba97ded8258ec9d079c",
+  "history": "Only base ancestors and ancestor tags retained; later objects pruned",
+  "import_check": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "3.11.11 | packaged by conda-forge | (main, Dec  5 2024, 14:17:24) [GCC 13.3.0]\n3.8.0.dev1498+gfa68f46289\n",
+    "stderr": "",
+    "seconds": 1.8627894579840358
+  }
+}
