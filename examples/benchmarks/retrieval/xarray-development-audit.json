@@ -1,0 +1,19 @@
+{
+  "instance_id": "pydata__xarray-6461",
+  "status": "budget_exhausted",
+  "usage": {
+    "calls": 24,
+    "input_tokens": 172676,
+    "output_tokens": 1610,
+    "request_seconds": 962.6110642089625,
+    "errors": 0
+  },
+  "patch_bytes": 666,
+  "patch_sha256": "9c63bcb080a966dd7c04384dbc7840bb627360662869631407b7876965372121",
+  "actions": {
+    "replace": 24
+  },
+  "failed_tool_actions": 23,
+  "most_repeated_failed_action_count": 12,
+  "scope": "Saved-record consistency only; not patch execution or official resolution."
+}

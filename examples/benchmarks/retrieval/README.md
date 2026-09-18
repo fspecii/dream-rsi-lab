@@ -43,3 +43,38 @@ must remain distinct from the completed pilot and independent final evaluation.
 The saved records include the base commit, image ID, retrieval implementation hash,
 queries, source excerpts/hashes, scan counts, and timing. Included upstream licenses
 cover those source excerpts. `SHA256SUMS` covers the recorded artifacts.
+
+## Repair replay results
+
+The xarray development replay completed all 24 calls and produced a 666-byte patch.
+Official evaluation against the exact pinned generation image completed normally
+and reported **unresolved** (zero infrastructure or ambiguous failures). All 24
+actions were replacements: the first applied, and the remaining 23 failed. The
+model ran no reproducer or tests during generation. Finding the relevant source
+and producing a patch did not establish a correct repair.
+
+The run used 172,676 input and 1,610 output tokens, 962.61 seconds of model request
+time, 1.53 seconds of retrieval, and 980.22 seconds total candidate wall time.
+This is substantially more input context than the original failed baseline; there
+is no efficiency improvement to claim. Complete candidate records, their audit,
+and the official summary are included.
+
+The initial official CLI invocation was stopped during an unnecessary forced image
+rebuild. `xarray-evaluation-setup.json` records this interruption and the replacement
+run. `evaluate_pinned_candidate.py` calls the unmodified official harness's loader,
+prebuilt-image runner, and reporter after checking the image against the generation
+manifest. It keeps the task-repository evaluation specification and scoring unchanged.
+The official run ID is `dream-lab-retrieval-dev-xarray-pinned-20260918`.
+
+The Django replay also exhausted 24 calls, with an empty patch. The official report
+classifies it as an empty submission; tests were not executed. Of its 24 actions,
+19 were failed replacements, three were failed commands, and two were successful
+reads. It used 47,179 input and 1,137 output tokens, 272.39 seconds of model request
+time, 1.43 seconds of retrieval, and 302.84 seconds total candidate wall time.
+Its official run ID is `dream-lab-retrieval-dev-django-20260918`.
+
+The registered development sequence is complete at **0 of 2 resolved**, with 48
+model calls. No hidden evaluation feedback from xarray was provided to Django.
+These remain exposed development cases, not independent final evaluation. Retrieval
+found relevant files but did not deliver correct repairs. Neither this engineering
+change nor the previously rejected learned controller establishes improvement.

@@ -7,7 +7,12 @@ tools. Repository repair currently uses fixed search and explicit file scopes.
 The next evidence should come from real development work:
 
 The selected next acceptance target is a [SWE-bench Verified engineering pilot](SWE-BENCH-PILOT.md).
-Its environment positive control passes; candidate evaluation remains open.
+Its environment positive control passes. The completed fixed pilot resolved 0 of
+3 tasks; the proposed controller was rejected after resolving neither validation
+task and saving no calls. An issue-derived source retrieval replay also resolved
+neither of two exposed development cases. These replays cannot serve as independent
+final evaluation. The next repair work must address repeated failed edits and the
+lack of effective reproduction and verification, beyond locating source files.
 
 1. **Repository improvement loops.** Snapshots, editable-path constraints, isolated
    project tests, and patch export are implemented. Next integrate these artifacts

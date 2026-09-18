@@ -39,6 +39,10 @@ The fixed repository baseline resolved **0 of 3** tasks in the registered SWE-be
 engineering pilot: each exhausted 24 calls with an empty patch. This is a small
 pilot, not a benchmark-wide score. The proposed controller also resolved neither
 validation task and saved no calls, so the registered gate rejected it.
+An opt-in source-retrieval replay on two exposed cases also resolved neither:
+xarray's patch failed official tests, and Django produced no patch. The
+[development evidence](examples/benchmarks/retrieval/README.md) includes all costs
+and traces; it establishes no repair or efficiency improvement.
 
 ## Quick start
 
