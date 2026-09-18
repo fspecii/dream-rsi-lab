@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "description": "Repair order fulfilment calculations. Shipping costs 300 cents per started kilogram, with zero charge for zero weight and ValueError for negative weight. Cart weight must include item quantities. Apply the integer discount percentage to the item subtotal only, floor the discounted subtotal to whole cents, then add undiscounted shipping. Preserve both public function signatures and empty-cart behavior.",
+  "include": ["fulfilment/*.py", "tests/*.py"],
+  "editable": ["fulfilment/rates.py", "fulfilment/checkout.py"],
+  "test_files": ["tests/test_checkout.py"],
+  "context": [],
+  "command": ["python", "-m", "unittest", "discover", "-s", "tests", "-v"],
+  "test_framework": "unittest",
+  "minimum_tests": 7
+}

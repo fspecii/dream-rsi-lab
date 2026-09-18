@@ -38,7 +38,7 @@ class LabServer(ThreadingHTTPServer):
 
 
 class LabHandler(BaseHTTPRequestHandler):
-    server_version = "DreamLab/0.3"
+    server_version = "DreamLab/0.4"
 
     def log_message(self, format, *args):
         # Polling should not flood the launch terminal.

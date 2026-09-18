@@ -1,14 +1,15 @@
 # Toward useful developer automation
 
-Version 0.3 is a usable local experiment platform for Python function generation
-and repair, alongside the original math task. It is not yet a repository-maintenance
-agent or an established improvement over developer tools.
+The lab supports function generation/repair, bounded multi-file project repair,
+and the original math task. It is not an established improvement over developer
+tools. Repository repair currently uses fixed search and explicit file scopes.
 
 The next evidence should come from real development work:
 
-1. **Repository tasks.** Add isolated checkout snapshots, constrained patch artifacts,
-   dependency preparation, and project test commands. Assess patches without granting
-   generated code access to host credentials or unrelated files.
+1. **Repository improvement loops.** Snapshots, editable-path constraints, isolated
+   project tests, and patch export are implemented. Next integrate these artifacts
+   into persistent workspaces and compare learned controllers on independent
+   repository tasks. Broaden dependency preparation and language support.
 2. **Independent evaluation.** Register a larger, untouched set of generation and
    repair problems with reference tests and explicit failure categories. Compare
    fixed search, simple early stopping, and learned controllers at matched budgets.

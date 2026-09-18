@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dream-rsi-demo"
-version = "0.3.0"
+version = "0.4.0"
 description = "Independent exploration-policy improvement for math and isolated Python tasks"
 requires-python = ">=3.11"
 dependencies = []

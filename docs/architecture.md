@@ -152,3 +152,23 @@ Docker tests cover real execution, UID, network restrictions, a read-only root,
 exception handling, output overflow, timeouts, and cleanup. Fixture tests additionally
 check split separation, prompt privacy, frozen benchmarking, and durable code loops.
 These implementation tests do not establish model performance.
+
+## Repository repair
+
+`tasks/repository.py` adapts a project snapshot to the same artifact/search engine.
+Artifacts are maps of allowed paths to complete file contents; their readable
+representation is a unified diff. Source and test files are copied into a disposable
+container through standard input, with no host mount. The project command executes
+there, and bounded output becomes visible feedback for the next attempt.
+
+The evaluator parses standard unittest/pytest summaries, rejects missing or
+insufficient tests, and checks that non-editable files did not change. Partial
+repairs receive a fractional test score. This quality signal is weaker than an
+external answer oracle: project code can affect its own test runtime. It is not
+presented as adversarially secure or as independent held-out evaluation.
+
+`repository_workflow.py` saves the baseline, task and file snapshot, source hashes,
+model/image identity, proposals, test output, and selected patch. It reruns the
+selected artifact before export and fails if its score does not reproduce. Export
+does not modify the source checkout. The current CLI runs fixed bounded search;
+persistent repository promotion and independent repository benchmarks remain open.

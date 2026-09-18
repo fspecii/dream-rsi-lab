@@ -1,0 +1,31 @@
+{
+  "id": "b000-d002",
+  "branch": 0,
+  "depth": 2,
+  "parent_id": "b000-d001",
+  "points": [],
+  "source": "diff --git \"a/fulfilment/checkout.py\" \"b/fulfilment/checkout.py\"\n--- a/fulfilment/checkout.py\n+++ b/fulfilment/checkout.py\n@@ -4,6 +4,7 @@\n def total_cents(items, discount_percent=0):\n     \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n     subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n-    weight = sum(item['unit_grams'] for item in items)\n+    weight = sum(item['unit_grams'] * item['quantity'] for item in items)\n     shipping = shipping_cents(weight)\n-    return ((subtotal + shipping) * (100 - discount_percent)) // 100\n+    discounted_subtotal = (subtotal * (100 - discount_percent)) // 100\n+    return discounted_subtotal + shipping\n\\ No newline at end of file\ndiff --git \"a/fulfilment/rates.py\" \"b/fulfilment/rates.py\"\n--- a/fulfilment/rates.py\n+++ b/fulfilment/rates.py\n@@ -2,4 +2,4 @@\n     \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n     if weight_grams < 0:\n         raise ValueError('weight must not be negative')\n-    return (weight_grams // 1000) * 300\n+    return (weight_grams // 1000 + (weight_grams % 1000 > 0)) * 300\n\\ No newline at end of file\n",
+  "rationale": "",
+  "evaluation": {
+    "score": 1.0,
+    "valid": true,
+    "error": null,
+    "diagnostics": {
+      "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+      "seconds": 0.4659635830030311,
+      "status": "completed",
+      "returncode": 0,
+      "output": "test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping) ... ok\ntest_discount_rounds_down_before_shipping (test_checkout.CheckoutTests.test_discount_rounds_down_before_shipping) ... ok\ntest_empty_cart (test_checkout.CheckoutTests.test_empty_cart) ... ok\ntest_multiple_items (test_checkout.CheckoutTests.test_multiple_items) ... ok\ntest_quantity_affects_shipping (test_checkout.CheckoutTests.test_quantity_affects_shipping) ... ok\ntest_negative_weight (test_checkout.ShippingTests.test_negative_weight) ... ok\ntest_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.000s\n\nOK\n",
+      "output_limit": false,
+      "protected_unchanged": true,
+      "test_count": 7,
+      "failures": []
+    }
+  },
+  "seed": 773842629,
+  "model_call_id": "repository-solve-b000-d002",
+  "artifact": {
+    "fulfilment/rates.py": "def shipping_cents(weight_grams):\n    \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n    if weight_grams < 0:\n        raise ValueError('weight must not be negative')\n    return (weight_grams // 1000 + (weight_grams % 1000 > 0)) * 300",
+    "fulfilment/checkout.py": "from .rates import shipping_cents\n\n\ndef total_cents(items, discount_percent=0):\n    \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n    subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n    weight = sum(item['unit_grams'] * item['quantity'] for item in items)\n    shipping = shipping_cents(weight)\n    discounted_subtotal = (subtotal * (100 - discount_percent)) // 100\n    return discounted_subtotal + shipping"
+  }
+}

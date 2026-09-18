@@ -19,3 +19,9 @@ For a vulnerability, contact the repository maintainer privately through GitHub
 before posting exploit details. Do not include secrets or private customer data in
 an issue or reproduction. The repository currently makes no support or disclosure
 response-time guarantees.
+
+Repository repair copies only configured text files into the container and exports
+a patch; it does not mount or edit the host checkout. Non-editable file hashes are
+checked after tests. Project-test summaries are a quality signal, not an
+adversarially secure oracle: generated code can influence its test process. Use
+independent review and acceptance checks for consequential changes.

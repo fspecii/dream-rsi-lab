@@ -1,0 +1,24 @@
+diff --git "a/fulfilment/checkout.py" "b/fulfilment/checkout.py"
+--- a/fulfilment/checkout.py
++++ b/fulfilment/checkout.py
+@@ -4,6 +4,7 @@
+ def total_cents(items, discount_percent=0):
+     """Items have unit_cents, quantity, and unit_grams; discount items only."""
+     subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)
+-    weight = sum(item['unit_grams'] for item in items)
++    weight = sum(item['unit_grams'] * item['quantity'] for item in items)
+     shipping = shipping_cents(weight)
+-    return ((subtotal + shipping) * (100 - discount_percent)) // 100
++    discounted_subtotal = (subtotal * (100 - discount_percent)) // 100
++    return discounted_subtotal + shipping
+\ No newline at end of file
+diff --git "a/fulfilment/rates.py" "b/fulfilment/rates.py"
+--- a/fulfilment/rates.py
++++ b/fulfilment/rates.py
+@@ -2,4 +2,4 @@
+     """Charge 300 cents per started kilogram; zero weight ships free."""
+     if weight_grams < 0:
+         raise ValueError('weight must not be negative')
+-    return (weight_grams // 1000) * 300
++    return (weight_grams // 1000 + (weight_grams % 1000 > 0)) * 300
+\ No newline at end of file

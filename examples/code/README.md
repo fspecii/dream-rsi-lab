@@ -6,8 +6,8 @@ final checks for each problem. The included suite covers text normalization,
 batching, bookings, CSV aggregation, event deduplication, inventory deltas, URL
 queries, retries, configuration flattening, pagination, and path processing.
 
-This is a function-level coding workflow, not yet a general repository-editing
-agent. It supports the Python standard library; project dependencies and arbitrary
+This is the function-level coding workflow. For multi-file project repair and
+project test commands, see [repository repair](../repository/README.md). It supports the Python standard library; project dependencies and arbitrary
 unit-test commands are future work. The starter suite is a small functional check,
 not evidence of industrial superiority.
 

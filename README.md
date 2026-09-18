@@ -15,6 +15,8 @@ included coding suite is small; it does not establish industry-wide superiority.
 
 - Local browser workspaces with bounded runs, pause/resume, durable evidence,
   source inspection, downloads, policy version history, and rollback.
+- Multi-file Python project repair from explicit snapshots and editable paths,
+  with real unittest/pytest commands and reviewable patch export.
 - Python generation/repair from problem descriptions and optional starter code.
   Bring your own JSON suite with visible and private tests.
 - Disposable Docker execution with no network or host-directory mounts, a non-root
@@ -70,6 +72,20 @@ Inspect `solution.py`, `result.json`, raw model calls, and candidate test result
 the output directory. Only visible tests select the returned program; private
 checks report whether it generalizes to additional cases.
 
+## Repair a project
+
+```bash
+ollama pull qwen2.5-coder:7b
+python3 -m dream_rsi repo-solve \
+  --repo examples/repository --task examples/repository/task.json \
+  --branches 1 --depth 3 --output runs/project-repair
+```
+
+This exports a patch after running project tests in Docker. It leaves the source
+checkout unchanged. [Project configuration, dependencies, and limits](examples/repository/README.md).
+Repository repair currently uses fixed search; persistent learned repository
+controllers remain future work.
+
 ## Improvement and evidence
 
 The model proposes search-controller expressions for exploration width, depth,
@@ -89,9 +105,9 @@ validation. A smaller test score is never hidden behind a cheaper-call headline.
 
 ## Scope and limitations
 
-- Coding currently targets Python functions with JSON inputs and outputs, using
-  the standard library. Arbitrary repository edits, dependencies, and test commands
-  are not yet supported.
+- Function tasks use JSON inputs and outputs. Project tasks support explicitly
+  selected UTF-8 files and standard unittest/pytest reports. Dependencies must be
+  prepared in a Docker image; unrestricted repository access is not supported.
 - A local container is not a multi-tenant hostile-code service. Do not expose the
   local server publicly. No generated code runs on the host as a fallback.
 - Tests are part of your specification. Incomplete tests can reward incorrect code.

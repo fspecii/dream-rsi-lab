@@ -217,3 +217,19 @@ Install this package first and make the recorded Docker image available. The ver
 checks source provenance, test snapshots, visible scores, replay decisions, selected
 artifacts, private scores, call counts, and headline totals. It executes generated
 source only through the constrained Docker runner.
+
+## Multi-file repository repair development checks
+
+The repository runner was exercised on a synthetic fulfilment project with two
+editable modules and seven project tests. Local Qwen 2.5 Coder 7B produced a
+passing repair in the initial three-call trial. After adding partial-credit scoring,
+a three-call trial and a six-call trial each retained a 5/7 partial repair and
+correctly returned an incomplete status. All three selected patches were rerun
+without model inference, checking the snapshot, source provenance, exported diff,
+and final test score. The original source checkout stayed unchanged.
+
+These development trials use visible tests and different scoring configurations.
+They are not a controlled benchmark, a reliability estimate, or evidence of learned
+repository-controller improvement. [Raw positive and negative evidence](../examples/repository/evidence/README.md) is included.
+
+The next evaluation target is a public repository-repair benchmark. No public benchmark result is claimed yet.

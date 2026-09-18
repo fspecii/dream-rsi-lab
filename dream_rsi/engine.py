@@ -75,13 +75,13 @@ Return only JSON. Keep rationale under 25 words."""
         seed = stable_seed(world.seed, action.branch, action.depth, "discovery")
         artifact, rationale = "", ""
         try:
-            response = self.model.generate(prompt, self.task.schema, seed, "discovery", call_id, max_tokens=1600)
+            response = self.model.generate(prompt, self.task.schema, seed, "discovery", call_id, max_tokens=getattr(self.task, "max_tokens", 1600))
             artifact = self.task.artifact(response)
             rationale = str(response.get("rationale", ""))
             evaluation = self.task.evaluate_artifact(artifact, case)
         except ValueError as exc:
             evaluation = Evaluation(0., False, str(exc))
-        return Node(action.id, action.branch, action.depth, action.parent_id, (), artifact, rationale,
+        return Node(action.id, action.branch, action.depth, action.parent_id, (), self.task.source(artifact) if artifact else "", rationale,
                     evaluation, seed, call_id, artifact=artifact)
 
 

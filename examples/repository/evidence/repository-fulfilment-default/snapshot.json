@@ -1,0 +1,35 @@
+{
+  "task": {
+    "version": 1,
+    "description": "Repair order fulfilment calculations. Shipping costs 300 cents per started kilogram, with zero charge for zero weight and ValueError for negative weight. Cart weight must include item quantities. Apply the integer discount percentage to the item subtotal only, floor the discounted subtotal to whole cents, then add undiscounted shipping. Preserve both public function signatures and empty-cart behavior.",
+    "include": [
+      "fulfilment/*.py",
+      "tests/*.py"
+    ],
+    "editable": [
+      "fulfilment/rates.py",
+      "fulfilment/checkout.py"
+    ],
+    "test_files": [
+      "tests/test_checkout.py"
+    ],
+    "context": [],
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "test_framework": "unittest",
+    "minimum_tests": 7
+  },
+  "files": {
+    "fulfilment/__init__.py": "\"\"\"Small order fulfilment example.\"\"\"\n",
+    "fulfilment/checkout.py": "from .rates import shipping_cents\n\n\ndef total_cents(items, discount_percent=0):\n    \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n    subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n    weight = sum(item['unit_grams'] for item in items)\n    shipping = shipping_cents(weight)\n    return ((subtotal + shipping) * (100 - discount_percent)) // 100\n",
+    "fulfilment/rates.py": "def shipping_cents(weight_grams):\n    \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n    if weight_grams < 0:\n        raise ValueError('weight must not be negative')\n    return (weight_grams // 1000) * 300\n",
+    "tests/test_checkout.py": "import unittest\nfrom fulfilment.rates import shipping_cents\nfrom fulfilment.checkout import total_cents\n\n\nclass ShippingTests(unittest.TestCase):\n    def test_started_kilograms(self):\n        for grams, expected in [(0, 0), (1, 300), (999, 300), (1000, 300), (1001, 600), (2500, 900)]:\n            with self.subTest(grams=grams):\n                self.assertEqual(shipping_cents(grams), expected)\n\n    def test_negative_weight(self):\n        with self.assertRaises(ValueError):\n            shipping_cents(-1)\n\n\nclass CheckoutTests(unittest.TestCase):\n    def test_empty_cart(self):\n        self.assertEqual(total_cents([]), 0)\n\n    def test_quantity_affects_shipping(self):\n        self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 3, 'unit_grams': 400}]), 3600)\n\n    def test_discount_excludes_shipping(self):\n        self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 1, 'unit_grams': 1000}], 20), 1100)\n\n    def test_discount_rounds_down_before_shipping(self):\n        self.assertEqual(total_cents([{'unit_cents': 999, 'quantity': 1, 'unit_grams': 500}], 15), 1149)\n\n    def test_multiple_items(self):\n        items = [{'unit_cents': 900, 'quantity': 2, 'unit_grams': 200},\n                 {'unit_cents': 300, 'quantity': 1, 'unit_grams': 800}]\n        self.assertEqual(total_cents(items, 10), 2490)\n"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "fulfilment/rates.py": "def shipping_cents(weight_grams):\n    \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n    if weight_grams < 0:\n        raise ValueError('weight must not be negative')\n    return (weight_grams // 1000 + bool(weight_grams)) * 300\n",
+  "fulfilment/checkout.py": "from .rates import shipping_cents\n\n\ndef total_cents(items, discount_percent=0):\n    \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n    subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n    weight = sum(item['unit_grams'] * item['quantity'] for item in items)\n    shipping = shipping_cents(weight)\n    discounted_subtotal = ((subtotal * (100 - discount_percent)) // 100)\n    return discounted_subtotal + shipping\n"
+}

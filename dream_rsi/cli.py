@@ -59,9 +59,31 @@ def main(argv=None):
     code_bench.add_argument("--output", type=Path, required=True)
     code_bench.add_argument("--repeats", type=int, default=1)
     code_bench.add_argument("--base-url", default=Config.base_url)
+    repo_solve = commands.add_parser("repo-solve", help="Repair a project snapshot and export a tested patch")
+    repo_solve.add_argument("--repo", type=Path, required=True)
+    repo_solve.add_argument("--task", type=Path, required=True)
+    repo_solve.add_argument("--output", type=Path, required=True)
+    repo_solve.add_argument("--model", default="qwen2.5-coder:7b")
+    repo_solve.add_argument("--branches", type=int, default=2)
+    repo_solve.add_argument("--depth", type=int, default=3)
+    repo_solve.add_argument("--seed", type=int, default=2027)
+    repo_solve.add_argument("--image", default="python:3.12-slim")
+    repo_solve.add_argument("--timeout", type=int, default=60)
+    repo_solve.add_argument("--base-url", default=Config.base_url)
+    repo_verify = commands.add_parser("repo-verify", help="Recheck an exported repository patch without a model")
+    repo_verify.add_argument("directory", type=Path)
     args = parser.parse_args(argv)
     try:
-        if args.command == "code-benchmark":
+        if args.command == "repo-verify":
+            from .repository_workflow import verify_repository
+            evaluation = verify_repository(args.directory)
+            return 0 if evaluation.score == 1 else 2
+        elif args.command == "repo-solve":
+            from .repository_workflow import solve_repository
+            evaluation = solve_repository(args.repo, args.task, args.output, args.model, args.branches, args.depth,
+                                          args.seed, args.image, args.base_url, args.timeout)
+            return 0 if evaluation.score == 1 else 2
+        elif args.command == "code-benchmark":
             from .code_benchmark import benchmark
             result = benchmark(args.data_dir,args.workspace,args.output.resolve(),args.repeats,args.base_url)
             print(json.dumps(result["summary"],indent=2))

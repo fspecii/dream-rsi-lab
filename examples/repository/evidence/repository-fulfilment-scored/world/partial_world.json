@@ -1,0 +1,310 @@
+{
+  "name": "repository-solve",
+  "seed": 2027,
+  "baseline_points": [],
+  "baseline_score": 0.2857142857142857,
+  "branch_count": 1,
+  "max_depth": 3,
+  "workers": 1,
+  "nodes": [
+    {
+      "id": "b000-d000",
+      "branch": 0,
+      "depth": 0,
+      "parent_id": null,
+      "points": [],
+      "source": "diff --git \"a/fulfilment/checkout.py\" \"b/fulfilment/checkout.py\"\n--- a/fulfilment/checkout.py\n+++ b/fulfilment/checkout.py\n@@ -4,6 +4,7 @@\n def total_cents(items, discount_percent=0):\n     \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n     subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n-    weight = sum(item['unit_grams'] for item in items)\n+    weight = sum(item['unit_grams'] * item['quantity'] for item in items)\n     shipping = shipping_cents(weight)\n-    return ((subtotal + shipping) * (100 - discount_percent)) // 100\n+    discounted_subtotal = ((subtotal * (100 - discount_percent)) // 100)\n+    return discounted_subtotal + shipping\ndiff --git \"a/fulfilment/rates.py\" \"b/fulfilment/rates.py\"\n--- a/fulfilment/rates.py\n+++ b/fulfilment/rates.py\n@@ -2,4 +2,4 @@\n     \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n     if weight_grams < 0:\n         raise ValueError('weight must not be negative')\n-    return (weight_grams // 1000) * 300\n+    return (weight_grams // 1000 + 1) * 300\n",
+      "rationale": "",
+      "evaluation": {
+        "score": 0.5714285714285714,
+        "valid": true,
+        "error": "Project tests did not all pass",
+        "diagnostics": {
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "seconds": 0.4651785419846419,
+          "status": "completed",
+          "returncode": 1,
+          "output": "test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping) ... FAIL\ntest_discount_rounds_down_before_shipping (test_checkout.CheckoutTests.test_discount_rounds_down_before_shipping) ... ok\ntest_empty_cart (test_checkout.CheckoutTests.test_empty_cart) ... FAIL\ntest_multiple_items (test_checkout.CheckoutTests.test_multiple_items) ... ok\ntest_quantity_affects_shipping (test_checkout.CheckoutTests.test_quantity_affects_shipping) ... ok\ntest_negative_weight (test_checkout.ShippingTests.test_negative_weight) ... ok\ntest_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) ... \n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=0) ... FAIL\n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000) ... FAIL\n\n======================================================================\nFAIL: test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 25, in test_discount_excludes_shipping\n    self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 1, 'unit_grams': 1000}], 20), 1100)\nAssertionError: 1400 != 1100\n\n======================================================================\nFAIL: test_empty_cart (test_checkout.CheckoutTests.test_empty_cart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 19, in test_empty_cart\n    self.assertEqual(total_cents([]), 0)\nAssertionError: 300 != 0\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=0)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 300 != 0\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 600 != 300\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nFAILED (failures=4)\n",
+          "output_limit": false,
+          "protected_unchanged": true,
+          "test_count": 7,
+          "passed_tests": 4,
+          "failures": [
+            {
+              "test_output": "test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping) ... FAIL\ntest_discount_rounds_down_before_shipping (test_checkout.CheckoutTests.test_discount_rounds_down_before_shipping) ... ok\ntest_empty_cart (test_checkout.CheckoutTests.test_empty_cart) ... FAIL\ntest_multiple_items (test_checkout.CheckoutTests.test_multiple_items) ... ok\ntest_quantity_affects_shipping (test_checkout.CheckoutTests.test_quantity_affects_shipping) ... ok\ntest_negative_weight (test_checkout.ShippingTests.test_negative_weight) ... ok\ntest_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) ... \n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=0) ... FAIL\n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000) ... FAIL\n\n======================================================================\nFAIL: test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 25, in test_discount_excludes_shipping\n    self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 1, 'unit_grams': 1000}], 20), 1100)\nAssertionError: 1400 != 1100\n\n======================================================================\nFAIL: test_empty_cart (test_checkout.CheckoutTests.test_empty_cart)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 19, in test_empty_cart\n    self.assertEqual(total_cents([]), 0)\nAssertionError: 300 != 0\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=0)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 300 != 0\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 600 != 300\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nFAILED (failures=4)\n"
+            }
+          ]
+        }
+      },
+      "seed": 1203633561,
+      "model_call_id": "repository-solve-b000-d000",
+      "artifact": {
+        "fulfilment/rates.py": "def shipping_cents(weight_grams):\n    \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n    if weight_grams < 0:\n        raise ValueError('weight must not be negative')\n    return (weight_grams // 1000 + 1) * 300\n",
+        "fulfilment/checkout.py": "from .rates import shipping_cents\n\n\ndef total_cents(items, discount_percent=0):\n    \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n    subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n    weight = sum(item['unit_grams'] * item['quantity'] for item in items)\n    shipping = shipping_cents(weight)\n    discounted_subtotal = ((subtotal * (100 - discount_percent)) // 100)\n    return discounted_subtotal + shipping\n"
+      }
+    },
+    {
+      "id": "b000-d001",
+      "branch": 0,
+      "depth": 1,
+      "parent_id": "b000-d000",
+      "points": [],
+      "source": "diff --git \"a/fulfilment/checkout.py\" \"b/fulfilment/checkout.py\"\n--- a/fulfilment/checkout.py\n+++ b/fulfilment/checkout.py\n@@ -4,6 +4,7 @@\n def total_cents(items, discount_percent=0):\n     \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n     subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n-    weight = sum(item['unit_grams'] for item in items)\n+    weight = sum(item['unit_grams'] * item['quantity'] for item in items)\n     shipping = shipping_cents(weight)\n-    return ((subtotal + shipping) * (100 - discount_percent)) // 100\n+    discounted_subtotal = ((subtotal * (100 - discount_percent)) // 100)\n+    return discounted_subtotal + shipping\ndiff --git \"a/fulfilment/rates.py\" \"b/fulfilment/rates.py\"\n--- a/fulfilment/rates.py\n+++ b/fulfilment/rates.py\n@@ -2,4 +2,4 @@\n     \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n     if weight_grams < 0:\n         raise ValueError('weight must not be negative')\n-    return (weight_grams // 1000) * 300\n+    return (weight_grams // 1000 + bool(weight_grams)) * 300\n",
+      "rationale": "",
+      "evaluation": {
+        "score": 0.7142857142857143,
+        "valid": true,
+        "error": "Project tests did not all pass",
+        "diagnostics": {
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "seconds": 0.4204420839960221,
+          "status": "completed",
+          "returncode": 1,
+          "output": "test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping) ... FAIL\ntest_discount_rounds_down_before_shipping (test_checkout.CheckoutTests.test_discount_rounds_down_before_shipping) ... ok\ntest_empty_cart (test_checkout.CheckoutTests.test_empty_cart) ... ok\ntest_multiple_items (test_checkout.CheckoutTests.test_multiple_items) ... ok\ntest_quantity_affects_shipping (test_checkout.CheckoutTests.test_quantity_affects_shipping) ... ok\ntest_negative_weight (test_checkout.ShippingTests.test_negative_weight) ... ok\ntest_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) ... \n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000) ... FAIL\n\n======================================================================\nFAIL: test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 25, in test_discount_excludes_shipping\n    self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 1, 'unit_grams': 1000}], 20), 1100)\nAssertionError: 1400 != 1100\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 600 != 300\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nFAILED (failures=2)\n",
+          "output_limit": false,
+          "protected_unchanged": true,
+          "test_count": 7,
+          "passed_tests": 5,
+          "failures": [
+            {
+              "test_output": "test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping) ... FAIL\ntest_discount_rounds_down_before_shipping (test_checkout.CheckoutTests.test_discount_rounds_down_before_shipping) ... ok\ntest_empty_cart (test_checkout.CheckoutTests.test_empty_cart) ... ok\ntest_multiple_items (test_checkout.CheckoutTests.test_multiple_items) ... ok\ntest_quantity_affects_shipping (test_checkout.CheckoutTests.test_quantity_affects_shipping) ... ok\ntest_negative_weight (test_checkout.ShippingTests.test_negative_weight) ... ok\ntest_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) ... \n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000) ... FAIL\n\n======================================================================\nFAIL: test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 25, in test_discount_excludes_shipping\n    self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 1, 'unit_grams': 1000}], 20), 1100)\nAssertionError: 1400 != 1100\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 600 != 300\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nFAILED (failures=2)\n"
+            }
+          ]
+        }
+      },
+      "seed": 1779471420,
+      "model_call_id": "repository-solve-b000-d001",
+      "artifact": {
+        "fulfilment/rates.py": "def shipping_cents(weight_grams):\n    \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n    if weight_grams < 0:\n        raise ValueError('weight must not be negative')\n    return (weight_grams // 1000 + bool(weight_grams)) * 300\n",
+        "fulfilment/checkout.py": "from .rates import shipping_cents\n\n\ndef total_cents(items, discount_percent=0):\n    \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n    subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n    weight = sum(item['unit_grams'] * item['quantity'] for item in items)\n    shipping = shipping_cents(weight)\n    discounted_subtotal = ((subtotal * (100 - discount_percent)) // 100)\n    return discounted_subtotal + shipping\n"
+      }
+    },
+    {
+      "id": "b000-d002",
+      "branch": 0,
+      "depth": 2,
+      "parent_id": "b000-d001",
+      "points": [],
+      "source": "diff --git \"a/fulfilment/checkout.py\" \"b/fulfilment/checkout.py\"\n--- a/fulfilment/checkout.py\n+++ b/fulfilment/checkout.py\n@@ -4,6 +4,7 @@\n def total_cents(items, discount_percent=0):\n     \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n     subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n-    weight = sum(item['unit_grams'] for item in items)\n+    weight = sum(item['unit_grams'] * item['quantity'] for item in items)\n     shipping = shipping_cents(weight)\n-    return ((subtotal + shipping) * (100 - discount_percent)) // 100\n+    discounted_subtotal = ((subtotal * (100 - discount_percent)) // 100)\n+    return discounted_subtotal + shipping\ndiff --git \"a/fulfilment/rates.py\" \"b/fulfilment/rates.py\"\n--- a/fulfilment/rates.py\n+++ b/fulfilment/rates.py\n@@ -2,4 +2,4 @@\n     \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n     if weight_grams < 0:\n         raise ValueError('weight must not be negative')\n-    return (weight_grams // 1000) * 300\n+    return (weight_grams // 1000 + bool(weight_grams)) * 300\n",
+      "rationale": "",
+      "evaluation": {
+        "score": 0.7142857142857143,
+        "valid": true,
+        "error": "Project tests did not all pass",
+        "diagnostics": {
+          "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+          "seconds": 0.46069054200779647,
+          "status": "completed",
+          "returncode": 1,
+          "output": "test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping) ... FAIL\ntest_discount_rounds_down_before_shipping (test_checkout.CheckoutTests.test_discount_rounds_down_before_shipping) ... ok\ntest_empty_cart (test_checkout.CheckoutTests.test_empty_cart) ... ok\ntest_multiple_items (test_checkout.CheckoutTests.test_multiple_items) ... ok\ntest_quantity_affects_shipping (test_checkout.CheckoutTests.test_quantity_affects_shipping) ... ok\ntest_negative_weight (test_checkout.ShippingTests.test_negative_weight) ... ok\ntest_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) ... \n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000) ... FAIL\n\n======================================================================\nFAIL: test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 25, in test_discount_excludes_shipping\n    self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 1, 'unit_grams': 1000}], 20), 1100)\nAssertionError: 1400 != 1100\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 600 != 300\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nFAILED (failures=2)\n",
+          "output_limit": false,
+          "protected_unchanged": true,
+          "test_count": 7,
+          "passed_tests": 5,
+          "failures": [
+            {
+              "test_output": "test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping) ... FAIL\ntest_discount_rounds_down_before_shipping (test_checkout.CheckoutTests.test_discount_rounds_down_before_shipping) ... ok\ntest_empty_cart (test_checkout.CheckoutTests.test_empty_cart) ... ok\ntest_multiple_items (test_checkout.CheckoutTests.test_multiple_items) ... ok\ntest_quantity_affects_shipping (test_checkout.CheckoutTests.test_quantity_affects_shipping) ... ok\ntest_negative_weight (test_checkout.ShippingTests.test_negative_weight) ... ok\ntest_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) ... \n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000) ... FAIL\n\n======================================================================\nFAIL: test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 25, in test_discount_excludes_shipping\n    self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 1, 'unit_grams': 1000}], 20), 1100)\nAssertionError: 1400 != 1100\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1000)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 600 != 300\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nFAILED (failures=2)\n"
+            }
+          ]
+        }
+      },
+      "seed": 773842629,
+      "model_call_id": "repository-solve-b000-d002",
+      "artifact": {
+        "fulfilment/rates.py": "def shipping_cents(weight_grams):\n    \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n    if weight_grams < 0:\n        raise ValueError('weight must not be negative')\n    return (weight_grams // 1000 + bool(weight_grams)) * 300\n",
+        "fulfilment/checkout.py": "from .rates import shipping_cents\n\n\ndef total_cents(items, discount_percent=0):\n    \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n    subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n    weight = sum(item['unit_grams'] * item['quantity'] for item in items)\n    shipping = shipping_cents(weight)\n    discounted_subtotal = ((subtotal * (100 - discount_percent)) // 100)\n    return discounted_subtotal + shipping\n"
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 0.5714285714285714,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.2857142857142857,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 1,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.2857142857142857,
+            "latest": 0.2857142857142857,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 3
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 0.7142857142857143,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.5714285714285714,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.5714285714285714,
+            "latest": 0.5714285714285714,
+            "gain": 0.2857142857142857,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b000-d001"
+      ],
+      "selected": [
+        "b000-d002"
+      ],
+      "best": 0.7142857142857143,
+      "calls": 3,
+      "candidates": [
+        {
+          "action": "b000-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.7142857142857143,
+            "opened": 1,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 0.7142857142857143,
+            "latest": 0.7142857142857143,
+            "gain": 0.1428571428571429,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "policy": {
+    "name": "fixed_parallel_refine",
+    "rationale": "Open all available directions and refine uniformly to the shared cap.",
+    "priority": "10 if is_root else -depth",
+    "eligible": "True",
+    "batch_size": "workers",
+    "width": "hard_width",
+    "depth": "hard_depth",
+    "beta": 0.6
+  },
+  "wall_seconds": 0.0,
+  "hard_branch_count": 1,
+  "hard_max_depth": 3,
+  "planning_history": null,
+  "task_name": "repository",
+  "task_input": {
+    "description": "Repair order fulfilment calculations. Shipping costs 300 cents per started kilogram, with zero charge for zero weight and ValueError for negative weight. Cart weight must include item quantities. Apply the integer discount percentage to the item subtotal only, floor the discounted subtotal to whole cents, then add undiscounted shipping. Preserve both public function signatures and empty-cart behavior.",
+    "editable": [
+      "fulfilment/rates.py",
+      "fulfilment/checkout.py"
+    ],
+    "context": {},
+    "baseline_feedback": {
+      "score": 0.2857142857142857,
+      "error": "Project tests did not all pass",
+      "failures": [
+        {
+          "test_output": "test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping) ... FAIL\ntest_discount_rounds_down_before_shipping (test_checkout.CheckoutTests.test_discount_rounds_down_before_shipping) ... FAIL\ntest_empty_cart (test_checkout.CheckoutTests.test_empty_cart) ... ok\ntest_multiple_items (test_checkout.CheckoutTests.test_multiple_items) ... FAIL\ntest_quantity_affects_shipping (test_checkout.CheckoutTests.test_quantity_affects_shipping) ... FAIL\ntest_negative_weight (test_checkout.ShippingTests.test_negative_weight) ... ok\ntest_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) ... \n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1) ... FAIL\n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=999) ... FAIL\n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1001) ... FAIL\n  test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=2500) ... FAIL\n\n======================================================================\nFAIL: test_discount_excludes_shipping (test_checkout.CheckoutTests.test_discount_excludes_shipping)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 25, in test_discount_excludes_shipping\n    self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 1, 'unit_grams': 1000}], 20), 1100)\nAssertionError: 1040 != 1100\n\n======================================================================\nFAIL: test_discount_rounds_down_before_shipping (test_checkout.CheckoutTests.test_discount_rounds_down_before_shipping)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 28, in test_discount_rounds_down_before_shipping\n    self.assertEqual(total_cents([{'unit_cents': 999, 'quantity': 1, 'unit_grams': 500}], 15), 1149)\nAssertionError: 849 != 1149\n\n======================================================================\nFAIL: test_multiple_items (test_checkout.CheckoutTests.test_multiple_items)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 33, in test_multiple_items\n    self.assertEqual(total_cents(items, 10), 2490)\nAssertionError: 2160 != 2490\n\n======================================================================\nFAIL: test_quantity_affects_shipping (test_checkout.CheckoutTests.test_quantity_affects_shipping)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 22, in test_quantity_affects_shipping\n    self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 3, 'unit_grams': 400}]), 3600)\nAssertionError: 3000 != 3600\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 0 != 300\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=999)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 0 != 300\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=1001)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 300 != 600\n\n======================================================================\nFAIL: test_started_kilograms (test_checkout.ShippingTests.test_started_kilograms) (grams=2500)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/project/tests/test_checkout.py\", line 10, in test_started_kilograms\n    self.assertEqual(shipping_cents(grams), expected)\nAssertionError: 600 != 900\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nFAILED (failures=8)\n"
+        }
+      ]
+    }
+  },
+  "task_private": {
+    "snapshot_digest": "9dbddc50193dd6fa5067fa810d27867955b44eaa2bb197add15b466ad6b7a638",
+    "task": {
+      "version": 1,
+      "description": "Repair order fulfilment calculations. Shipping costs 300 cents per started kilogram, with zero charge for zero weight and ValueError for negative weight. Cart weight must include item quantities. Apply the integer discount percentage to the item subtotal only, floor the discounted subtotal to whole cents, then add undiscounted shipping. Preserve both public function signatures and empty-cart behavior.",
+      "include": [
+        "fulfilment/*.py",
+        "tests/*.py"
+      ],
+      "editable": [
+        "fulfilment/rates.py",
+        "fulfilment/checkout.py"
+      ],
+      "test_files": [
+        "tests/test_checkout.py"
+      ],
+      "context": [],
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "test_framework": "unittest",
+      "minimum_tests": 7
+    },
+    "files": {
+      "fulfilment/__init__.py": "\"\"\"Small order fulfilment example.\"\"\"\n",
+      "fulfilment/checkout.py": "from .rates import shipping_cents\n\n\ndef total_cents(items, discount_percent=0):\n    \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n    subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n    weight = sum(item['unit_grams'] for item in items)\n    shipping = shipping_cents(weight)\n    return ((subtotal + shipping) * (100 - discount_percent)) // 100\n",
+      "fulfilment/rates.py": "def shipping_cents(weight_grams):\n    \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n    if weight_grams < 0:\n        raise ValueError('weight must not be negative')\n    return (weight_grams // 1000) * 300\n",
+      "tests/test_checkout.py": "import unittest\nfrom fulfilment.rates import shipping_cents\nfrom fulfilment.checkout import total_cents\n\n\nclass ShippingTests(unittest.TestCase):\n    def test_started_kilograms(self):\n        for grams, expected in [(0, 0), (1, 300), (999, 300), (1000, 300), (1001, 600), (2500, 900)]:\n            with self.subTest(grams=grams):\n                self.assertEqual(shipping_cents(grams), expected)\n\n    def test_negative_weight(self):\n        with self.assertRaises(ValueError):\n            shipping_cents(-1)\n\n\nclass CheckoutTests(unittest.TestCase):\n    def test_empty_cart(self):\n        self.assertEqual(total_cents([]), 0)\n\n    def test_quantity_affects_shipping(self):\n        self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 3, 'unit_grams': 400}]), 3600)\n\n    def test_discount_excludes_shipping(self):\n        self.assertEqual(total_cents([{'unit_cents': 1000, 'quantity': 1, 'unit_grams': 1000}], 20), 1100)\n\n    def test_discount_rounds_down_before_shipping(self):\n        self.assertEqual(total_cents([{'unit_cents': 999, 'quantity': 1, 'unit_grams': 500}], 15), 1149)\n\n    def test_multiple_items(self):\n        items = [{'unit_cents': 900, 'quantity': 2, 'unit_grams': 200},\n                 {'unit_cents': 300, 'quantity': 1, 'unit_grams': 800}]\n        self.assertEqual(total_cents(items, 10), 2490)\n"
+    }
+  },
+  "case_id": "9dbddc50193dd6fa",
+  "baseline_artifact": {
+    "fulfilment/rates.py": "def shipping_cents(weight_grams):\n    \"\"\"Charge 300 cents per started kilogram; zero weight ships free.\"\"\"\n    if weight_grams < 0:\n        raise ValueError('weight must not be negative')\n    return (weight_grams // 1000) * 300\n",
+    "fulfilment/checkout.py": "from .rates import shipping_cents\n\n\ndef total_cents(items, discount_percent=0):\n    \"\"\"Items have unit_cents, quantity, and unit_grams; discount items only.\"\"\"\n    subtotal = sum(item['unit_cents'] * item['quantity'] for item in items)\n    weight = sum(item['unit_grams'] for item in items)\n    shipping = shipping_cents(weight)\n    return ((subtotal + shipping) * (100 - discount_percent)) // 100\n"
+  }
+}

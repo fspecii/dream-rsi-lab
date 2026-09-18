@@ -1,0 +1,383 @@
+{
+  "best_score": 0.7142857142857143,
+  "calls": 6,
+  "rounds": 6,
+  "curve": [
+    0.5714285714285714,
+    0.7142857142857143,
+    0.7142857142857143,
+    0.7142857142857143,
+    0.7142857142857143,
+    0.7142857142857143
+  ],
+  "decisions": [
+    {
+      "round": 0,
+      "prefix_ids": [],
+      "selected": [
+        "b000-d000"
+      ],
+      "best": 0.5714285714285714,
+      "calls": 1,
+      "candidates": [
+        {
+          "action": "b000-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.2857142857142857,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.2857142857142857,
+            "latest": 0.2857142857142857,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 3
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.2857142857142857,
+            "opened": 0,
+            "probes": 0,
+            "workers": 1,
+            "rounds": 0,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.2857142857142857,
+            "latest": 0.2857142857142857,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 3
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 1,
+      "prefix_ids": [
+        "b000-d000"
+      ],
+      "selected": [
+        "b001-d000"
+      ],
+      "best": 0.7142857142857143,
+      "calls": 2,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.5714285714285714,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.5714285714285714,
+            "latest": 0.5714285714285714,
+            "gain": 0.2857142857142857,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d000",
+          "eligible": true,
+          "priority": 10.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.5714285714285714,
+            "opened": 1,
+            "probes": 1,
+            "workers": 1,
+            "rounds": 1,
+            "legal_count": 2,
+            "is_root": true,
+            "depth": 0,
+            "anchor": 0.2857142857142857,
+            "latest": 0.2857142857142857,
+            "gain": 0.0,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 0,
+            "remaining": 3
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 2,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000"
+      ],
+      "selected": [
+        "b000-d001"
+      ],
+      "best": 0.7142857142857143,
+      "calls": 3,
+      "candidates": [
+        {
+          "action": "b000-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.7142857142857143,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.5714285714285714,
+            "latest": 0.5714285714285714,
+            "gain": 0.2857142857142857,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 2
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.7142857142857143,
+            "opened": 2,
+            "probes": 2,
+            "workers": 1,
+            "rounds": 2,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.7142857142857143,
+            "latest": 0.7142857142857143,
+            "gain": 0.4285714285714286,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 3,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001"
+      ],
+      "selected": [
+        "b001-d001"
+      ],
+      "best": 0.7142857142857143,
+      "calls": 4,
+      "candidates": [
+        {
+          "action": "b000-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.7142857142857143,
+            "opened": 2,
+            "probes": 3,
+            "workers": 1,
+            "rounds": 3,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 0.7142857142857143,
+            "latest": 0.7142857142857143,
+            "gain": 0.1428571428571429,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d001",
+          "eligible": true,
+          "priority": -1.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.7142857142857143,
+            "opened": 2,
+            "probes": 3,
+            "workers": 1,
+            "rounds": 3,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 1,
+            "anchor": 0.7142857142857143,
+            "latest": 0.7142857142857143,
+            "gain": 0.4285714285714286,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 1,
+            "remaining": 2
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 4,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001",
+        "b001-d001"
+      ],
+      "selected": [
+        "b000-d002"
+      ],
+      "best": 0.7142857142857143,
+      "calls": 5,
+      "candidates": [
+        {
+          "action": "b000-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.7142857142857143,
+            "opened": 2,
+            "probes": 4,
+            "workers": 1,
+            "rounds": 4,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 0.7142857142857143,
+            "latest": 0.7142857142857143,
+            "gain": 0.1428571428571429,
+            "stagnation": 0,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 1
+          }
+        },
+        {
+          "action": "b001-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.7142857142857143,
+            "opened": 2,
+            "probes": 4,
+            "workers": 1,
+            "rounds": 4,
+            "legal_count": 2,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 0.7142857142857143,
+            "latest": 0.7142857142857143,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    },
+    {
+      "round": 5,
+      "prefix_ids": [
+        "b000-d000",
+        "b001-d000",
+        "b000-d001",
+        "b001-d001",
+        "b000-d002"
+      ],
+      "selected": [
+        "b001-d002"
+      ],
+      "best": 0.7142857142857143,
+      "calls": 6,
+      "candidates": [
+        {
+          "action": "b001-d002",
+          "eligible": true,
+          "priority": -2.0,
+          "features": {
+            "beta": 0.6,
+            "baseline": 0.2857142857142857,
+            "global_best": 0.7142857142857143,
+            "opened": 2,
+            "probes": 5,
+            "workers": 1,
+            "rounds": 5,
+            "legal_count": 1,
+            "is_root": false,
+            "depth": 2,
+            "anchor": 0.7142857142857143,
+            "latest": 0.7142857142857143,
+            "gain": 0.0,
+            "stagnation": 1,
+            "failures": 0,
+            "last_failed": false,
+            "successes": 2,
+            "remaining": 1
+          }
+        }
+      ],
+      "batch_size": 1
+    }
+  ],
+  "stop_reason": "budget"
+}
