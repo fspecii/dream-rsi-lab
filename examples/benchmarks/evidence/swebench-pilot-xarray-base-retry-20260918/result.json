@@ -1,0 +1,22 @@
+{
+  "instance_id": "pydata__xarray-6461",
+  "status": "budget_exhausted",
+  "usage": {
+    "discovery": {
+      "calls": 24,
+      "input_tokens": 35808,
+      "output_tokens": 1355,
+      "request_seconds": 275.9065510809305,
+      "errors": 0
+    },
+    "policy": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "request_seconds": 0,
+      "errors": 0
+    }
+  },
+  "patch_bytes": 0,
+  "warning": "Candidate only; official benchmark resolution has not been measured."
+}

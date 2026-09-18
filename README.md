@@ -89,7 +89,9 @@ controllers remain future work.
 An experimental [SWE-bench candidate runner](docs/SWE-BENCH-PILOT.md) also supports
 prepared repository images, issue-driven code inspection, edits, and visible tests.
 Its container profile differs from snapshot repair; see [security scope](SECURITY.md).
-It currently uses a fixed tool loop and has no measured benchmark score.
+It currently uses a fixed tool loop. The first of three pilot tasks produced an
+empty patch after 24 calls; the remaining tasks are pending. No broad benchmark
+performance or repository-controller improvement is established.
 
 ## Improvement and evidence
 

@@ -1,6 +1,6 @@
 # Public repository-repair pilot
 
-Status: preparation in progress; no model-generated benchmark results yet.
+Status: one of three registered model attempts is complete; two remain pending.
 This three-task engineering pilot cannot establish benchmark-wide performance,
 controller efficiency, or industry impact. Tasks used to develop the solver are
 no longer untouched evaluation tasks.
@@ -67,6 +67,19 @@ linux/amd64 image build under emulation on an ARM host. Preserve both outcomes.
 
 ## Experimental candidate runner
 
+The first xarray attempt exhausted all 24 calls without producing a patch. Its
+three reads and 21 replacements all targeted nonexistent files and failed. The
+official harness classified the submitted prediction as **empty**, with zero
+resolved instances; it did not execute tests for that empty submission. Recorded
+cost was 35,808 input tokens, 1,355 output tokens, and 275.9 seconds of model-request
+time. This is a failed candidate search, not an infrastructure failure or a full
+three-task benchmark score. Django and Matplotlib results remain pending.
+
+An earlier setup attempt stopped with zero model calls because the prepared image
+retained its environment-setup revision. The runner was corrected to reset to the
+registered base before inference. Both records are preserved in
+[the evidence directory](../examples/benchmarks/evidence/README.md).
+
 After exporting public inputs and building the selected official image locally:
 
 ```bash
@@ -95,6 +108,10 @@ swebench eval verified --predictions /path/to/run/prediction.jsonl \
   --run-id unique-candidate-run --task-repo /path/to/swe-bench-tasks -j 1
 ```
 
+Check recorded actions, model costs, implementation snapshots, and prediction
+consistency without inference using `python3 -m dream_rsi.benchmark_audit RUN_DIR`.
+This audit does not execute the patch or replace official resolution scoring.
+
 Default bounds are 24 model calls, 4,096 output tokens per call, 60 seconds per
 container command, 2 GB container memory, 2 CPUs, and 128 processes. These are
 engineering defaults, not tuned performance claims. The writable container runs
@@ -109,4 +126,5 @@ model-action-to-prediction workflow. Enable these with
 
 The shipped `repo-solve` snapshot workflow remains separate. Both repository
 workflows currently use fixed policies; no learned repository-controller
-improvement has been demonstrated. No model benchmark result has been measured yet.
+improvement has been demonstrated. The incomplete pilot does not establish useful
+benchmark performance.
