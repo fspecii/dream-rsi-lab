@@ -20,7 +20,8 @@ def audit_candidate(directory: Path):
         raise ValueError('Instance identity mismatch')
     if result['status'] not in ('finished', 'budget_exhausted'):
         raise ValueError('Candidate run did not finish normally; preserve its infrastructure error separately')
-    if set(manifest['implementation']) != IMPLEMENTATION_FILES:
+    expected_implementation = IMPLEMENTATION_FILES | ({'repository_policy.py'} if isinstance(manifest.get('policy'), dict) else set())
+    if set(manifest['implementation']) != expected_implementation:
         raise ValueError('Unexpected implementation snapshot set')
     for name, digest in manifest['implementation'].items():
         if hashlib.sha256((directory/'implementation'/name).read_bytes()).hexdigest() != digest:

@@ -1,0 +1,37 @@
+{
+  "model": {
+    "name": "qwen2.5-coder:7b",
+    "model": "qwen2.5-coder:7b",
+    "modified_at": "2026-09-18T13:24:32.294940163+03:00",
+    "size": 4683087561,
+    "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "7.6B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 3584
+    },
+    "capabilities": [
+      "completion",
+      "tools",
+      "insert"
+    ]
+  },
+  "seed": 2027,
+  "training_instance": "pydata__xarray-6461",
+  "training_digest": "839bbb37513cf4a97cbb68f72eff871cd4581990d111e9058d906c60f56270e6",
+  "baseline": {
+    "search_first": false,
+    "read_before_edit": false,
+    "avoid_repeated_failures": false,
+    "history_window": 8
+  },
+  "status": "proposal_only",
+  "proposer_sha256": "02539c9407c04d6a56f13a35a28019eb8bf502e9c35eee221f404734a573e3c5"
+}

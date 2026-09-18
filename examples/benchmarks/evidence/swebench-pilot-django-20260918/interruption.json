@@ -1,0 +1,9 @@
+{
+  "classification": "runner_compatibility_failure",
+  "action": "Sent SIGINT after observing repeated trusted file-driver decoding errors",
+  "exit_code": 130,
+  "cause": "Python 3.6 locale could not decode non-ASCII driver command; driver also used Path.is_relative_to unavailable before Python 3.9",
+  "model_result_valid": false,
+  "legacy_status_note": "The old runner finally block wrote budget_exhausted on KeyboardInterrupt; this is not a completed budget run. No prediction was emitted.",
+  "cost_note": "Preserve all recorded calls, including the interrupted in-flight request; its unreturned token usage is unknown."
+}

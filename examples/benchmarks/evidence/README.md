@@ -34,3 +34,15 @@ python3 -m dream_rsi.benchmark_audit \
 
 `SHA256SUMS` covers the archived run and result artifacts. It is an integrity aid,
 not proof of benchmark correctness or an independently signed attestation.
+
+`swebench-pilot-django-20260918` is an interrupted infrastructure attempt, not a
+valid model outcome. Python 3.6 could not execute the original trusted file driver.
+The interruption note explains why the legacy `budget_exhausted` status is
+incorrect, why no prediction exists, and why the final in-flight token count is
+unknown. Preserve its cost as overhead; do not silently discard the attempt.
+
+`repository-policy-proposal-20260918` preserves the model's unvalidated controller
+proposal, complete request/response, training observations, original proposer
+source (verified against its recorded hash), and paired-validation plan. The
+proposal was generated before looking at validation outcomes. It has not been
+promoted or shown to improve performance.

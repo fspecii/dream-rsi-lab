@@ -1,0 +1,45 @@
+{
+  "registered_at_utc": "2026-09-18T11:40:47.947395+00:00",
+  "purpose": "Exploratory paired validation of one model-proposed controller; not final independent performance evidence",
+  "proposal_sha256": "84783048af3c085415a276b24895b1e714ed971767913b6e8232164b888f43c0",
+  "proposal_training_instances": [
+    "pydata__xarray-6461"
+  ],
+  "validation_instances": [
+    "django__django-11163",
+    "matplotlib__matplotlib-26291"
+  ],
+  "registration_note": "Proposal and validation criteria recorded before inspecting either validation baseline outcome; Django baseline inference already started.",
+  "baseline_implementation_commit": "40cfa84",
+  "model": "qwen2.5-coder:7b",
+  "seed": 2027,
+  "max_calls_per_instance": 24,
+  "max_tokens_per_call": 4096,
+  "candidate_implementation": "Snapshot and hash before candidate inference; freeze across both validation tasks",
+  "gate": [
+    "All four model runs must complete normally and have official reports; infrastructure failures block a decision and are never silently dropped.",
+    "Candidate must preserve resolution on every task resolved by baseline.",
+    "Candidate must resolve at least one validation task.",
+    "Candidate must improve total resolutions, or preserve resolutions while reducing total discovery calls by at least 10 percent.",
+    "Include proposal and validation costs separately; do not report discovery-only savings as net savings.",
+    "Passing is provisional validation only; require a newly registered independent final sample before stronger claims or changing default policy."
+  ],
+  "no_adaptive_retries": true,
+  "official_test_feedback_during_each_search": false,
+  "infrastructure_amendments": [
+    {
+      "reason": "Django Python 3.6 cannot execute original file driver; interrupted invalid baseline at 19 calls including one in flight. These calls remain reported overhead.",
+      "replacement_baseline_commit": "f30db4d",
+      "change": "ASCII-compatible driver, UTF-8 locale, pre-3.9 path containment, interruption status; no search-policy changes",
+      "original_baseline_run": "swebench-pilot-django-20260918",
+      "replacement_baseline_run": "swebench-pilot-django-compat-retry-20260918"
+    }
+  ],
+  "candidate_implementation_hashes": {
+    "benchmark_solver.py": "e3d087d5fe83daa9d8517d1302b2f3aefb8fff7e8e3ad16a2bed710bd3a9831e",
+    "prepared_workspace.py": "f799f562238562b7ef8feaff2859c1e64f62a901d3c203b541e640cdc301bb57",
+    "model.py": "36f369c386f0f17f5361399fd53e848c9b32bb00def54db38f5cbaa163874cd1",
+    "benchmark_inputs.py": "a30b6ee28993d074f91976c0bb1f78f5a2210e15c54dd099d2b64af48dccc7c1",
+    "repository_policy.py": "b6d905a55db3bd2da237c6cf3fa94975bd8fd34e893d3134778a2bcd91658d81"
+  }
+}

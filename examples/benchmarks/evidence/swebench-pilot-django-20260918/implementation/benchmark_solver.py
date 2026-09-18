@@ -70,23 +70,16 @@ Recent actions and bounded observations (older ones may be omitted):
 
 def generate_prediction(inputs: Path, instance_id: str, output: Path,
                         model='qwen2.5-coder:7b', steps=24, seed=2027,
-                        base_url='http://localhost:11434', policy_path: Path | None = None):
+                        base_url='http://localhost:11434'):
     if type(steps) is not int or not 1 <= steps <= 64:
         raise ValueError('Use 1–64 model calls')
     task, inputs_digest = load_public_input(inputs, instance_id)
-    controller = None
-    if policy_path is not None:
-        from .repository_policy import ToolPolicy
-        controller = ToolPolicy(json.loads(policy_path.read_text())['policy'])
     output.mkdir(parents=True, exist_ok=False)
     save_json(output/'task.json', task)
     client = OllamaModel(model, output/'model_calls', base_url, timeout=180)
     metadata = client.inspect()
     implementation = {}
-    names = ['benchmark_solver.py', 'prepared_workspace.py', 'model.py', 'benchmark_inputs.py']
-    if controller:
-        names.append('repository_policy.py')
-    for name in names:
+    for name in ('benchmark_solver.py', 'prepared_workspace.py', 'model.py', 'benchmark_inputs.py'):
         data = (Path(__file__).parent/name).read_bytes()
         (output/'implementation').mkdir(exist_ok=True)
         (output/'implementation'/name).write_bytes(data)
@@ -94,7 +87,7 @@ def generate_prediction(inputs: Path, instance_id: str, output: Path,
     manifest = {'instance_id': instance_id, 'model': metadata, 'inputs_sha256': inputs_digest,
                 'steps': steps, 'seed': seed, 'max_tokens_per_call': 4096,
                 'command_timeout_seconds': 60, 'output_limit_bytes_per_stream': 65536,
-                'implementation': implementation, 'policy': controller.value if controller else 'fixed sequential tool loop',
+                'implementation': implementation, 'policy': 'fixed sequential tool loop',
                 'selection': 'Current patch at finish or budget exhaustion; no official test feedback',
                 'status': 'preparing'}
     save_json(output/'manifest.json', manifest)
@@ -107,16 +100,8 @@ def generate_prediction(inputs: Path, instance_id: str, output: Path,
             for step in range(steps):
                 action = None
                 try:
-                    history_window = controller.value['history_window'] if controller else 8
-                    prompt = prompt_for(task, history[-history_window:], steps-step)
-                    schema = ACTION_SCHEMA
-                    if controller:
-                        prompt = controller.guidance(history) + '\n' + prompt
-                        schema = controller.schema(ACTION_SCHEMA, history)
-                    action = client.generate(prompt, schema,
+                    action = client.generate(prompt_for(task, history, steps-step), ACTION_SCHEMA,
                                              seed+step, 'discovery', f'step-{step:03d}', max_tokens=4096)
-                    if controller:
-                        controller.check(action, history)
                     kind = action.get('action')
                     if kind == 'finish':
                         status = 'finished'
@@ -138,7 +123,7 @@ def generate_prediction(inputs: Path, instance_id: str, output: Path,
                 print(f'{instance_id}: {step+1}/{steps} calls, action={action.get("action") if action else "invalid"}, patch={len(patch.encode())} bytes', flush=True)
                 if status == 'finished':
                     break
-    except BaseException as exc:
+    except Exception as exc:
         status = 'infrastructure_or_runner_error'
         save_json(output/'error.json', {'type': type(exc).__name__, 'message': str(exc)[:4000]})
         raise
@@ -160,9 +145,8 @@ def main():
     parser.add_argument('--model', default='qwen2.5-coder:7b')
     parser.add_argument('--steps', type=int, default=24)
     parser.add_argument('--seed', type=int, default=2027)
-    parser.add_argument('--policy', type=Path, help='Unvalidated bounded policy proposal; never auto-promoted')
     args = parser.parse_args()
-    generate_prediction(args.inputs, args.instance, args.output, args.model, args.steps, args.seed, policy_path=args.policy)
+    generate_prediction(args.inputs, args.instance, args.output, args.model, args.steps, args.seed)
 
 
 if __name__ == '__main__':

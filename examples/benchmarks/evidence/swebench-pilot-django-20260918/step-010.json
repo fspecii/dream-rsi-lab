@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/core/serializers/utils.py",
+    "start": 1,
+    "end": 100
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Unable to decode the command from the command line:\nUnicodeEncodeError: 'utf-8' codec can't encode characters in position 933-935: surrogates not allowed\n",
+    "seconds": 0.19424858401180245
+  }
+}

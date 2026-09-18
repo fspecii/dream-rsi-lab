@@ -112,6 +112,19 @@ RUN git init -q && git config user.name Fixture && git config user.email fixture
             manifest = json.loads((output/'manifest.json').read_text())
             self.assertTrue(manifest['image_id'].startswith('sha256:'))
             self.assertEqual(manifest['steps'], 4)
+            # A schema-violating model edit is rejected by the controller too.
+            # Then the same model can read, repair, test, and finish normally.
+            actions.insert(0, actions[1])
+            policy_path = root/'policy.json'
+            policy_path.write_text(json.dumps({'policy': {'search_first':False,
+                'read_before_edit':True, 'avoid_repeated_failures':True, 'history_window':4}}))
+            controlled = root/'controlled'
+            generated = generate_prediction(inputs, row['instance_id'], controlled,
+                                            model='fixture', steps=5, policy_path=policy_path)
+            self.assertIn('+    return a + b', generated['model_patch'])
+            rejected = json.loads((controlled/'step-000.json').read_text())
+            self.assertIn('invalid_action', rejected['observation'])
+            self.assertIn('repository_policy.py', json.loads((controlled/'manifest.json').read_text())['implementation'])
             with self.assertRaises(FileExistsError):
                 generate_prediction(inputs, row['instance_id'], output, model='fixture', steps=4)
             document['tasks'][0]['patch'] = 'forbidden'

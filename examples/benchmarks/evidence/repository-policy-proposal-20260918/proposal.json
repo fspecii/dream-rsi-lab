@@ -1,0 +1,27 @@
+{
+  "policy": {
+    "search_first": false,
+    "read_before_edit": true,
+    "avoid_repeated_failures": true,
+    "history_window": 4
+  },
+  "rationale": "The observations show that the replacement action is failing repeatedly with the same error. This suggests that the issue may be related to the file content or its context, rather than a general problem with the tool or environment. By setting 'read_before_edit' to true, we can ensure that we have a valid file to work with before attempting to replace it. The 'avoid_repeated_failures' policy will help us to avoid repeating the same failed action, which could lead to a never-ending cycle of failures. The 'history_window' of 4 is justified because it provides a sufficient history to identify the repeated failures, but it's not too large, which could potentially mask other issues.",
+  "usage": {
+    "discovery": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "request_seconds": 0,
+      "errors": 0
+    },
+    "policy": {
+      "calls": 1,
+      "input_tokens": 5311,
+      "output_tokens": 186,
+      "request_seconds": 35.706821875006426,
+      "errors": 0
+    }
+  },
+  "status": "unvalidated",
+  "warning": "Do not promote without fresh paired validation and independent final evaluation."
+}

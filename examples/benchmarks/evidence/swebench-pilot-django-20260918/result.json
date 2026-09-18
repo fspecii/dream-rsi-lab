@@ -1,0 +1,22 @@
+{
+  "instance_id": "django__django-11163",
+  "status": "budget_exhausted",
+  "usage": {
+    "discovery": {
+      "calls": 19,
+      "input_tokens": 21676,
+      "output_tokens": 837,
+      "request_seconds": 160.82171937692328,
+      "errors": 0
+    },
+    "policy": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "request_seconds": 0,
+      "errors": 0
+    }
+  },
+  "patch_bytes": 0,
+  "warning": "Candidate only; official benchmark resolution has not been measured."
+}

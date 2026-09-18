@@ -67,6 +67,16 @@ linux/amd64 image build under emulation on an ARM host. Preserve both outcomes.
 
 ## Experimental candidate runner
 
+The Django baseline needed a separate compatibility retry. Its prepared image
+uses Python 3.6; the original file driver failed to decode a non-ASCII command and
+also depended on a newer pathlib API. The invalid attempt was interrupted after
+18 completed requests and one request in flight. Its logs and recorded costs are
+preserved, but it is not a model-quality result. The corrected adapter passed the
+full fixture workflow inside that same Python 3.6 image. Remaining baseline runs
+use the published `benchmark-baseline-compat` branch, preserving the original
+search policy with these infrastructure fixes. See the archived interruption note
+for the old runner's inaccurate final status and incomplete in-flight token cost.
+
 The first xarray attempt exhausted all 24 calls without producing a patch. Its
 three reads and 21 replacements all targeted nonexistent files and failed. The
 official harness classified the submitted prediction as **empty**, with zero
@@ -128,3 +138,30 @@ The shipped `repo-solve` snapshot workflow remains separate. Both repository
 workflows currently use fixed policies; no learned repository-controller
 improvement has been demonstrated. The incomplete pilot does not establish useful
 benchmark performance.
+
+## Unvalidated controller proposal
+
+The model has proposed one bounded controller change from the xarray training
+trace: read a file successfully before editing it, avoid exact failed tool actions,
+and retain four recent observations. It left mandatory initial search disabled.
+The proposal consumed one additional call, 5,311 input tokens, 186 output tokens,
+and 35.7 seconds. Its rationale is model-generated and remains a hypothesis.
+
+The proposal and its [validation plan](../examples/benchmarks/evidence/repository-policy-proposal-20260918/validation-plan.json)
+were recorded before inspecting either validation baseline outcome. Django baseline
+inference had already started. Django and Matplotlib are exploratory validation
+tasks; they cannot subsequently be described as independent final tests.
+
+The candidate must preserve each baseline resolution, resolve at least one task,
+and either improve total resolutions or reduce discovery calls by at least 10%
+at preserved quality. Any missing or infrastructure-failed run blocks a decision.
+Proposal and validation overhead remains part of total cost. Passing this small
+gate would still require a new independent final sample before stronger claims or
+changing the default policy. No promotion has occurred.
+
+Generate a proposal with `python3 -m dream_rsi.repository_policy --training-run
+RUN_DIR --output NEW_DIR`. Experimental candidate runs may specify
+`--policy /path/to/proposal.json`. Policy controls affect tool selection and bounded
+history; they cannot modify the model, task, test oracle, or call budget. A rejected
+precondition can become valid after a successful read; only executed tool failures
+are considered by the exact-action repeat check. The default runner remains fixed.

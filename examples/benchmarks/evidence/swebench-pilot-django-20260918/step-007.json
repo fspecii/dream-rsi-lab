@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "replace",
+    "path": "django/core/serializers/utils.py",
+    "old": "if fields and f.name not in fields:",
+    "new": "if fields is not None and f.name not in fields:"
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Unable to decode the command from the command line:\nUnicodeEncodeError: 'utf-8' codec can't encode characters in position 933-935: surrogates not allowed\n",
+    "seconds": 0.19305000000167638
+  }
+}
