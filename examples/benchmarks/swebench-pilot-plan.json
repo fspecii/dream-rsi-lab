@@ -1,0 +1,33 @@
+{
+  "purpose": "Engineering pilot; not a full benchmark score or final holdout after tuning",
+  "dataset": "SWE-bench/SWE-bench_Verified",
+  "task_repo_commit": "3d07b464b7b311a0cbfb5ed5b2d8a3b96f84a33d",
+  "selection": "Ascending SHA256 of dream-rsi-pilot-20260918:INSTANCE_ID; first three distinct repositories; exclude setup control sympy__sympy-20590",
+  "eligible_instances": 499,
+  "instances": [
+    {
+      "instance_id": "pydata__xarray-6461",
+      "repo": "pydata/xarray",
+      "base_commit": "851dadeb0338403e5021c3fbe80cbc9127ee672d",
+      "image": "swebench/sweb.eval.x86_64.pydata_1776_xarray-6461:latest"
+    },
+    {
+      "instance_id": "django__django-11163",
+      "repo": "django/django",
+      "base_commit": "e6588aa4e793b7f56f4cadbfa155b581e0efc59a",
+      "image": "swebench/sweb.eval.x86_64.django_1776_django-11163:latest"
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-26291",
+      "repo": "matplotlib/matplotlib",
+      "base_commit": "fa68f46289adf4a8a4bc7ba97ded8258ec9d079c",
+      "image": "swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-26291:latest"
+    }
+  ],
+  "constraints": [
+    "Never expose reference or evaluation patches or their file lists to candidate generation.",
+    "Record environment failures separately; do not replace failed environments with easier tasks.",
+    "Register exact model, search budgets, and candidate implementation before any candidate inference.",
+    "Use official final resolution scoring, separated from visible discovery feedback."
+  ]
+}
