@@ -35,9 +35,13 @@ A separate batching repair passed all private checks. These are small local resu
 
 ## Quick start
 
-Use macOS or Linux, Python 3.11+, Ollama, and Docker. Clone [fspecii/dream-rsi-lab](https://github.com/fspecii/dream-rsi-lab), then:
+Use macOS or Linux, Python 3.11+, Ollama, and Docker:
 
 ```bash
+git clone https://github.com/fspecii/dream-rsi-lab.git
+cd dream-rsi-lab
+python3 -m venv .venv
+source .venv/bin/activate
 python3 -m pip install -e .
 ollama pull gemma3:4b
 docker pull python:3.12-slim
