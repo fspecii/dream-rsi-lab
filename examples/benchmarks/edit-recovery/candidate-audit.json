@@ -1,0 +1,20 @@
+{
+  "instance_id": "django__django-11163",
+  "status": "budget_exhausted",
+  "usage": {
+    "calls": 24,
+    "input_tokens": 77072,
+    "output_tokens": 1031,
+    "request_seconds": 398.6121770860045,
+    "errors": 0
+  },
+  "patch_bytes": 0,
+  "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "actions": {
+    "replace": 10,
+    "read": 14
+  },
+  "failed_tool_actions": 10,
+  "most_repeated_failed_action_count": 10,
+  "scope": "Saved-record consistency only; not patch execution or official resolution."
+}

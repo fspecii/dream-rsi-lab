@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/forms/models.py",
+    "start": 432,
+    "end": 440
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "432:             if not hasattr(f, 'save_form_data'):\n433:                 continue\n434:             if fields and f.name not in fields:\n435:                 continue\n436:             if exclude and f.name in exclude:\n437:                 continue\n438:             if f.name in cleaned_data:\n439:                 f.save_form_data(self.instance, cleaned_data[f.name])\n440: \n",
+    "stderr": "",
+    "seconds": 0.35298433297430165
+  }
+}

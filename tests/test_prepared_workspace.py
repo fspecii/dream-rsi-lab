@@ -99,6 +99,27 @@ RUN git init -q && git config user.name Fixture && git config user.email fixture
             self.assertIn('return 2', str(feedback['current_excerpts']))
             self.assertEqual(workspace.run('python -c "from calc import first, second; assert first() == 1 and second() == 2"')['returncode'], 0)
 
+    def test_scoped_replacement_only_changes_requested_occurrence(self):
+        with PreparedWorkspace(self.image, self.base) as workspace:
+            workspace.run("printf 'def first():\\n    return 1\\ndef second():\\n    return 1\\n' > calc.py")
+            request = {'action':'replace', 'path':'calc.py', 'old':'return 1',
+                       'new':'return 2', 'start':4, 'end':4}
+            edited = workspace.file_action(request)
+            self.assertEqual(edited['returncode'], 0, edited['stderr'])
+            self.assertEqual(workspace.run('python -c "from calc import first, second; assert first() == 1 and second() == 2"')['returncode'], 0)
+            before = workspace.patch()
+            # Stale and malformed scopes must not write.
+            for fields in ({'start':4,'end':4}, {'start':0,'end':4},
+                           {'start':1,'end':999}, {'start':True,'end':2},
+                           {'start':1}):
+                bad = {key:value for key,value in request.items() if key not in ('start','end')}
+                bad.update(fields)
+                self.assertNotEqual(workspace.file_action(bad)['returncode'], 0)
+                self.assertEqual(workspace.patch(), before)
+            ambiguous = dict(request, old='def', new='class', start=1, end=4)
+            self.assertEqual(json.loads(workspace.file_action(ambiguous)['stdout'])['matches'], 2)
+            self.assertEqual(workspace.patch(), before)
+
     def test_candidate_workflow_exports_logged_prediction(self):
         from dream_rsi.benchmark_inputs import prepare_inputs, VERIFIED
         from dream_rsi.benchmark_solver import generate_prediction, load_public_input

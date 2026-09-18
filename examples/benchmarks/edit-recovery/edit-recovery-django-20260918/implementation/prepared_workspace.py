@@ -112,27 +112,17 @@ elif request['action'] == 'replace':
     old, new = request['old'], request['new']
     if not isinstance(old, str) or not old or not isinstance(new, str):
         raise ValueError('Replacement needs nonempty old text and string new text')
-    prefix, target, suffix = '', content, ''
-    first_line = 1
-    if 'start' in request or 'end' in request:
-        start, end = request.get('start'), request.get('end')
-        lines = content.splitlines(keepends=True)
-        if (type(start) is not int or type(end) is not int or
-                not 1 <= start <= end <= len(lines) or end - start >= 300):
-            raise ValueError('Replacement scope needs start and end within the file, spanning 1-300 lines')
-        prefix, target, suffix = ''.join(lines[:start-1]), ''.join(lines[start-1:end]), ''.join(lines[end:])
-        first_line = start
-    count = target.count(old)
+    count = content.count(old)
     if count != 1:
         positions = []
         offset = 0
         for _ in range(min(count, 3)):
-            offset = target.find(old, offset)
-            positions.append(target.count('\n', 0, offset) + first_line)
+            offset = content.find(old, offset)
+            positions.append(content.count('\n', 0, offset) + 1)
             offset += len(old)
         lines = content.splitlines()
         # For missing matches, show the current beginning; never reuse stale source.
-        anchors = positions or [first_line]
+        anchors = positions or [1]
         excerpts = []
         for line in anchors:
             start = max(1, line - 2)
@@ -140,9 +130,9 @@ elif request['action'] == 'replace':
                 for i in range(start, min(len(lines), start + 7) + 1)))
         print(json.dumps({'error': 'missing_match' if count == 0 else 'ambiguous_match',
             'matches': count, 'match_lines': positions, 'current_excerpts': excerpts,
-            'next_step': 'Read the intended location, then either set start and end to its line range or include more surrounding old text. Old text must match exactly once within the selected scope.'}))
+            'next_step': 'Read the current file around the intended location, then include enough surrounding text to match exactly once.'}))
         sys.exit(1)
-    changed = prefix + target.replace(old, new, 1) + suffix
+    changed = content.replace(old, new, 1)
     if len(changed.encode()) > 262144:
         raise ValueError('Changed file exceeds 256 KiB')
     p.write_text(changed, encoding='utf-8')
