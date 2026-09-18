@@ -1,7 +1,7 @@
 # Public repository-repair pilot
 
-Status: two of three registered baseline attempts are complete. The Django policy
-comparison is complete; Matplotlib environment recovery is in progress.
+Status: the registered baseline and controller comparison are complete. The baseline
+resolved 0/3 tasks; the controller resolved 0/2 validation tasks and was rejected.
 This three-task engineering pilot cannot establish benchmark-wide performance,
 controller efficiency, or industry impact. Tasks used to develop the solver are
 no longer untouched evaluation tasks.
@@ -89,7 +89,12 @@ with an empty patch: all 14 reads, six replacements, and four shell actions fail
 Its recorded cost was 29,400 input tokens, 1,014 output tokens, and 177.5 seconds of
 model-request time, in addition to the separate interrupted infrastructure attempt.
 The official harness classified this submission as empty with zero resolutions.
-Matplotlib remains pending. Thus neither completed baseline task was resolved.
+The Matplotlib baseline likewise exhausted 24 calls with an empty patch, recorded
+by the official harness as an empty submission. It used 52,900 input tokens,
+1,195 output tokens, and 315.2 seconds of model-request time. Of its actions, 23
+failed and one issue-reproducer command exited successfully without creating a
+repair. The three-task baseline therefore resolved **0/3**, using 72 model calls.
+No tests were executed by the official harness for these empty predictions.
 
 An earlier setup attempt stopped with zero model calls because the prepared image
 retained its environment-setup revision. The runner was corrected to reset to the
@@ -142,10 +147,10 @@ model-action-to-prediction workflow. Enable these with
 
 The shipped `repo-solve` snapshot workflow remains separate. Default repository
 workflows still use fixed policies; no learned repository-controller
-improvement has been demonstrated. The incomplete pilot does not establish useful
+improvement has been demonstrated. The completed pilot does not establish useful
 benchmark performance.
 
-## Unvalidated controller proposal
+## Rejected controller proposal
 
 The model has proposed one bounded controller change from the xarray training
 trace: read a file successfully before editing it, avoid exact failed tool actions,
@@ -170,8 +175,16 @@ successful file reads but did not find the relevant implementation. Recorded
 candidate cost was 53,294 input tokens, 1,089 output tokens, and 333.1 seconds of
 model-request time, versus 29,400 / 1,014 / 177.5 seconds for the valid baseline.
 The official harness recorded both predictions as empty. There is no improvement
-on this task. The full gate remains incomplete until the registered Matplotlib
-pair is available; no task is dropped from the comparison.
+on this task. The Matplotlib candidate likewise produced an empty patch after 24
+calls, using 64,937 input tokens, 932 output tokens, and 359.8 seconds of model-request
+time. All four paired runs completed and received official reports. Both strategies
+resolved zero validation tasks and consumed 48 discovery calls each. The registered
+gate therefore rejected the proposal: it met neither the minimum-quality condition
+nor the improvement condition. No task was dropped and no policy was promoted.
+The [final comparison](../examples/benchmarks/evidence/repository-policy-final-comparison.json)
+includes both pairs and proposal overhead. Successful file reads alone did not
+translate into repairs. These exposed pilot tasks are now development evidence,
+not independent final holdouts for subsequent changes.
 
 Matplotlib's local image build failed with a GCC internal compiler segmentation
 fault while compiling bundled FreeType under amd64 emulation. No model call ran.
@@ -202,3 +215,13 @@ RUN_DIR --output NEW_DIR`. Experimental candidate runs may specify
 history; they cannot modify the model, task, test oracle, or call budget. A rejected
 precondition can become valid after a successful read; only executed tool failures
 are considered by the exact-action repeat check. The default runner remains fixed.
+
+## Follow-up development
+
+The failed traces motivate better source localization before further controller
+tuning. An [issue-derived retrieval helper](../examples/benchmarks/retrieval/README.md)
+has located the reported xarray expression and the named Django function in their
+real base checkouts. It uses public issue symbols and traceback text, without
+reference patches. These already-exposed tasks are development cases. Retrieval
+alone is not a successful repair, and this engineering change must not be reported
+as a learned-controller gain or substituted into the completed frozen comparison.

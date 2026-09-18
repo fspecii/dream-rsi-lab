@@ -1,0 +1,13 @@
+{
+  "action": {
+    "action": "run",
+    "command": "git grep 'inset_axes' lib/matplotlib/axes/_axes.py"
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "lib/matplotlib/axes/_axes.py:    def inset_axes(self, bounds, *, transform=None, zorder=5, **kwargs):\nlib/matplotlib/axes/_axes.py:            axin1 = ax.inset_axes([0.8, 0.1, 0.15, 0.15])\nlib/matplotlib/axes/_axes.py:            axin2 = ax.inset_axes(\nlib/matplotlib/axes/_axes.py:        kwargs.setdefault('label', 'inset_axes')\nlib/matplotlib/axes/_axes.py:        connect the rectangle to an inset Axes (`.Axes.inset_axes`).\nlib/matplotlib/axes/_axes.py:            # connect the inset_axes to the rectangle\n",
+    "stderr": "",
+    "seconds": 0.17160454200347885
+  }
+}

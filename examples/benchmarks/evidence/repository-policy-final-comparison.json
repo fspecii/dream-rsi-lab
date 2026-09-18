@@ -1,0 +1,91 @@
+{
+  "decision": "rejected",
+  "promoted": false,
+  "selected_instances": 2,
+  "reasons": [
+    "Candidate resolved no validation tasks",
+    "No quality gain or at least 10 percent discovery-call reduction at preserved quality"
+  ],
+  "regressions": [],
+  "baseline_resolved": 0,
+  "candidate_resolved": 0,
+  "baseline_discovery_calls": 48,
+  "candidate_discovery_calls": 48,
+  "warning": "Exploratory validation only. Call comparison excludes training, proposal, and validation overhead; it is not net savings.",
+  "pairs": [
+    {
+      "instance_id": "django__django-11163",
+      "baseline": {
+        "status": "complete",
+        "resolved": false,
+        "outcome": "empty_patch",
+        "calls": 24,
+        "usage": {
+          "calls": 24,
+          "input_tokens": 29400,
+          "output_tokens": 1014,
+          "request_seconds": 177.50544729502872,
+          "errors": 0
+        },
+        "official_report_sha256": "47b70afafec61f113a3fb08596d0fb31b83a4b15397ada7df1494c404076c9f8",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "candidate": {
+        "status": "complete",
+        "resolved": false,
+        "outcome": "empty_patch",
+        "calls": 24,
+        "usage": {
+          "calls": 24,
+          "input_tokens": 53294,
+          "output_tokens": 1089,
+          "request_seconds": 333.13346120598726,
+          "errors": 0
+        },
+        "official_report_sha256": "47b70afafec61f113a3fb08596d0fb31b83a4b15397ada7df1494c404076c9f8",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-26291",
+      "baseline": {
+        "status": "complete",
+        "resolved": false,
+        "outcome": "empty_patch",
+        "calls": 24,
+        "usage": {
+          "calls": 24,
+          "input_tokens": 52900,
+          "output_tokens": 1195,
+          "request_seconds": 315.227894000971,
+          "errors": 0
+        },
+        "official_report_sha256": "95aa6a8088177c63583b76312548df07c78f58cacc80f4587acc2c1a9370730c",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "candidate": {
+        "status": "complete",
+        "resolved": false,
+        "outcome": "empty_patch",
+        "calls": 24,
+        "usage": {
+          "calls": 24,
+          "input_tokens": 64937,
+          "output_tokens": 932,
+          "request_seconds": 359.81885516495095,
+          "errors": 0
+        },
+        "official_report_sha256": "95aa6a8088177c63583b76312548df07c78f58cacc80f4587acc2c1a9370730c",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "proposal_usage": {
+    "calls": 1,
+    "input_tokens": 5311,
+    "output_tokens": 186,
+    "request_seconds": 35.706821875006426,
+    "errors": 0
+  },
+  "cost_scope": "Paired discovery and proposal costs shown separately. Training and interrupted infrastructure overhead remain in archived evidence; unknown in-flight token counts prevent an exact total."
+}

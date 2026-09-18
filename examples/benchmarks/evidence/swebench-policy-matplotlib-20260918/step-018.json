@@ -1,0 +1,11 @@
+{
+  "action": {
+    "action": "read",
+    "path": "matplotlib/matplotlib/lib/matplotlib/axes/_axes.py",
+    "start": 1,
+    "end": 300
+  },
+  "observation": {
+    "invalid_action": "This exact action already failed. Search for the actual path or choose a different action"
+  }
+}

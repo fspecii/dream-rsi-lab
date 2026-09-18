@@ -35,6 +35,11 @@ A separate batching repair passed all private checks. These are small local resu
 [successful and failed traces](examples/evidence/README.md) and
 [the full measurements](docs/experiments.md) are included.
 
+The fixed repository baseline resolved **0 of 3** tasks in the registered SWE-bench
+engineering pilot: each exhausted 24 calls with an empty patch. This is a small
+pilot, not a benchmark-wide score. The proposed controller also resolved neither
+validation task and saved no calls, so the registered gate rejected it.
+
 ## Quick start
 
 Use macOS or Linux, Python 3.11+, Ollama, and Docker:
@@ -89,8 +94,8 @@ controllers remain future work.
 An experimental [SWE-bench candidate runner](docs/SWE-BENCH-PILOT.md) also supports
 prepared repository images, issue-driven code inspection, edits, and visible tests.
 Its container profile differs from snapshot repair; see [security scope](SECURITY.md).
-Its baseline uses a fixed tool loop. Two of three pilot tasks each produced an
-empty patch after 24 calls; Matplotlib remains pending. No broad benchmark
+Its baseline uses a fixed tool loop. All three pilot tasks each produced an
+empty patch after 24 calls. The controller comparison is complete and rejected. No broad benchmark
 performance or repository-controller improvement is established.
 
 ## Improvement and evidence

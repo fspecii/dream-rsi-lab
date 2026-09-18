@@ -1,0 +1,22 @@
+{
+  "instance_id": "matplotlib__matplotlib-26291",
+  "status": "budget_exhausted",
+  "usage": {
+    "discovery": {
+      "calls": 24,
+      "input_tokens": 52900,
+      "output_tokens": 1195,
+      "request_seconds": 315.227894000971,
+      "errors": 0
+    },
+    "policy": {
+      "calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "request_seconds": 0,
+      "errors": 0
+    }
+  },
+  "patch_bytes": 0,
+  "warning": "Candidate only; official benchmark resolution has not been measured."
+}
