@@ -1,6 +1,7 @@
 # Public repository-repair pilot
 
-Status: two of three registered baseline attempts are complete; Matplotlib remains pending.
+Status: two of three registered baseline attempts are complete. The Django policy
+comparison is complete; Matplotlib environment recovery is in progress.
 This three-task engineering pilot cannot establish benchmark-wide performance,
 controller efficiency, or industry impact. Tasks used to develop the solver are
 no longer untouched evaluation tasks.
@@ -163,6 +164,28 @@ at preserved quality. Any missing or infrastructure-failed run blocks a decision
 Proposal and validation overhead remains part of total cost. Passing this small
 gate would still require a new independent final sample before stronger claims or
 changing the default policy. No promotion has occurred.
+
+The Django candidate also produced an empty patch after 24 calls. It made 14
+successful file reads but did not find the relevant implementation. Recorded
+candidate cost was 53,294 input tokens, 1,089 output tokens, and 333.1 seconds of
+model-request time, versus 29,400 / 1,014 / 177.5 seconds for the valid baseline.
+The official harness recorded both predictions as empty. There is no improvement
+on this task. The full gate remains incomplete until the registered Matplotlib
+pair is available; no task is dropped from the comparison.
+
+Matplotlib's local image build failed with a GCC internal compiler segmentation
+fault while compiling bundled FreeType under amd64 emulation. No model call ran.
+Recovery uses the official registry image, pinned to its amd64 manifest digest,
+and retains the same task. This is infrastructure evidence, not a model failure.
+
+`python3 -m dream_rsi.repository_validation` checks the recorded proposal,
+candidate implementation hashes, budgets, matching input/image/model identities,
+candidate audits, and supplied official outcomes before applying the gate. It
+reports missing tasks explicitly and never promotes a policy automatically. Its
+`--locations` JSON maps each registered instance to `baseline` and `candidate`
+objects containing `run` and `report` paths. Supply `--plan`, `--proposal`, and an
+optional new `--output` file. Official report hashes identify the supplied reports;
+they are not independently signed attestations or a replacement for the harness.
 
 Generate a proposal with `python3 -m dream_rsi.repository_policy --training-run
 RUN_DIR --output NEW_DIR`. Experimental candidate runs may specify

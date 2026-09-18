@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/core/serializers/base.py",
+    "start": 130,
+    "end": 160
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "130:         \"\"\"\n131:         pass\n132: \n133:     def start_object(self, obj):\n134:         \"\"\"\n135:         Called when serializing of an object starts.\n136:         \"\"\"\n137:         raise NotImplementedError('subclasses of Serializer must provide a start_object() method')\n138: \n139:     def end_object(self, obj):\n140:         \"\"\"\n141:         Called when serializing of an object ends.\n142:         \"\"\"\n143:         pass\n144: \n145:     def handle_field(self, obj, field):\n146:         \"\"\"\n147:         Called to handle each individual (non-relational) field on an object.\n148:         \"\"\"\n149:         raise NotImplementedError('subclasses of Serializer must provide an handle_field() method')\n150: \n151:     def handle_fk_field(self, obj, field):\n152:         \"\"\"\n153:         Called to handle a ForeignKey field.\n154:         \"\"\"\n155:         raise NotImplementedError('subclasses of Serializer must provide an handle_fk_field() method')\n156: \n157:     def handle_m2m_field(self, obj, field):\n158:         \"\"\"\n159:         Called to handle a ManyToManyField.\n160:         \"\"\"\n",
+    "stderr": "",
+    "seconds": 0.2908862080075778
+  }
+}

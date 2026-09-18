@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/core/serializers/base.py",
+    "start": 0,
+    "end": 300
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 20, in <module>\nValueError: Read 1-300 lines using positive line numbers\n",
+    "seconds": 0.29587916599120945
+  }
+}

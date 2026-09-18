@@ -1,0 +1,11 @@
+{
+  "instance_id": "matplotlib__matplotlib-26291",
+  "status": "image_build_failed",
+  "stage": "pip editable install / bundled FreeType compilation",
+  "error": "gcc: internal compiler error: Segmentation fault signal terminated program cc1",
+  "model_calls": 0,
+  "build_log_sha256": "40e66a5be43fd1d7eba1fef482b6a3cf6c6efb7879384a9ebbbe3047a928ca66",
+  "recovery": "Pull official registered image for linux/amd64, pinned to manifest digest",
+  "registry_manifest_digest": "sha256:9c568e99e8a534ba8b622af9c48a5c4c157c4f1003237b10ed8d0b82c4b771a5",
+  "task_replacement": false
+}

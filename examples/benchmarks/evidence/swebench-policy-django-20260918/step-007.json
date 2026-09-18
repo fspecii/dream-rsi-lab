@@ -1,0 +1,11 @@
+{
+  "action": {
+    "action": "replace",
+    "path": "django/core/serializers/base.py",
+    "old": "if fields and f.name not in fields:",
+    "new": "if fields is not None and f.name not in fields:"
+  },
+  "observation": {
+    "invalid_action": "This exact action already failed. Search for the actual path or choose a different action"
+  }
+}

@@ -52,3 +52,14 @@ proposal, complete request/response, training observations, original proposer
 source (verified against its recorded hash), and paired-validation plan. The
 proposal was generated before looking at validation outcomes. It has not been
 promoted or shown to improve performance.
+
+`swebench-policy-django-20260918` records the policy candidate: 24 calls, 14
+successful reads, and an empty final patch. `django-policy-official-results.json`
+is its official empty-submission report. Its saved-record audit is separate.
+`django-only-comparison.json` verifies the registered configuration and reports
+the whole comparison as incomplete because Matplotlib is missing. This prevents
+an early acceptance based on an unfinished selected sample. Django source excerpts
+in the prompts and tool observations are covered by the included `DJANGO-LICENSE`.
+
+`matplotlib-build-failure.json` records the local compiler failure, full local
+build-log digest, and pinned official-image recovery. It is not a model outcome.

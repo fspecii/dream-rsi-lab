@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/core/serializers/base.py",
+    "start": 80,
+    "end": 110
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "80:         self.options = options\n81: \n82:         self.stream = stream if stream is not None else self.stream_class()\n83:         self.selected_fields = fields\n84:         self.use_natural_foreign_keys = use_natural_foreign_keys\n85:         self.use_natural_primary_keys = use_natural_primary_keys\n86:         progress_bar = self.progress_class(progress_output, object_count)\n87: \n88:         self.start_serialization()\n89:         self.first = True\n90:         for count, obj in enumerate(queryset, start=1):\n91:             self.start_object(obj)\n92:             # Use the concrete parent class' _meta instead of the object's _meta\n93:             # This is to avoid local_fields problems for proxy models. Refs #17717.\n94:             concrete_model = obj._meta.concrete_model\n95:             # When using natural primary keys, retrieve the pk field of the\n96:             # parent for multi-table inheritance child models. That field must\n97:             # be serialized, otherwise deserialization isn't possible.\n98:             if self.use_natural_primary_keys:\n99:                 pk = concrete_model._meta.pk\n100:                 pk_parent = pk if pk.remote_field and pk.remote_field.parent_link else None\n101:             else:\n102:                 pk_parent = None\n103:             for field in concrete_model._meta.local_fields:\n104:                 if field.serialize or field is pk_parent:\n105:                     if field.remote_field is None:\n106:                         if self.selected_fields is None or field.attname in self.selected_fields:\n107:                             self.handle_field(obj, field)\n108:                     else:\n109:                         if self.selected_fields is None or field.attname[:-3] in self.selected_fields:\n110:                             self.handle_fk_field(obj, field)\n",
+    "stderr": "",
+    "seconds": 0.3041280830220785
+  }
+}

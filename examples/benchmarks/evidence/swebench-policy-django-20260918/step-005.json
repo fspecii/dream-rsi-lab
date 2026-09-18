@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/core/serializers/base.py",
+    "start": 149,
+    "end": 170
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "149:         raise NotImplementedError('subclasses of Serializer must provide an handle_field() method')\n150: \n151:     def handle_fk_field(self, obj, field):\n152:         \"\"\"\n153:         Called to handle a ForeignKey field.\n154:         \"\"\"\n155:         raise NotImplementedError('subclasses of Serializer must provide an handle_fk_field() method')\n156: \n157:     def handle_m2m_field(self, obj, field):\n158:         \"\"\"\n159:         Called to handle a ManyToManyField.\n160:         \"\"\"\n161:         raise NotImplementedError('subclasses of Serializer must provide an handle_m2m_field() method')\n162: \n163:     def getvalue(self):\n164:         \"\"\"\n165:         Return the fully serialized queryset (or None if the output stream is\n166:         not seekable).\n167:         \"\"\"\n168:         if callable(getattr(self.stream, 'getvalue', None)):\n169:             return self.stream.getvalue()\n170: \n",
+    "stderr": "",
+    "seconds": 0.48029512498760596
+  }
+}

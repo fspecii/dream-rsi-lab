@@ -1,0 +1,61 @@
+{
+  "decision": "incomplete",
+  "missing": [],
+  "incomplete": [
+    "matplotlib__matplotlib-26291"
+  ],
+  "promoted": false,
+  "selected_instances": 2,
+  "pairs": [
+    {
+      "instance_id": "django__django-11163",
+      "baseline": {
+        "status": "complete",
+        "resolved": false,
+        "outcome": "empty_patch",
+        "calls": 24,
+        "usage": {
+          "calls": 24,
+          "input_tokens": 29400,
+          "output_tokens": 1014,
+          "request_seconds": 177.50544729502872,
+          "errors": 0
+        },
+        "official_report_sha256": "47b70afafec61f113a3fb08596d0fb31b83a4b15397ada7df1494c404076c9f8",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "candidate": {
+        "status": "complete",
+        "resolved": false,
+        "outcome": "empty_patch",
+        "calls": 24,
+        "usage": {
+          "calls": 24,
+          "input_tokens": 53294,
+          "output_tokens": 1089,
+          "request_seconds": 333.13346120598726,
+          "errors": 0
+        },
+        "official_report_sha256": "47b70afafec61f113a3fb08596d0fb31b83a4b15397ada7df1494c404076c9f8",
+        "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-26291",
+      "baseline": {
+        "status": "missing"
+      },
+      "candidate": {
+        "status": "missing"
+      }
+    }
+  ],
+  "proposal_usage": {
+    "calls": 1,
+    "input_tokens": 5311,
+    "output_tokens": 186,
+    "request_seconds": 35.706821875006426,
+    "errors": 0
+  },
+  "cost_scope": "Paired discovery and proposal costs shown separately. Training and interrupted infrastructure overhead remain in archived evidence; unknown in-flight token counts prevent an exact total."
+}
