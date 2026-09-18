@@ -32,7 +32,7 @@ class PreparedWorkspaceTests(unittest.TestCase):
 USER root
 RUN rm -rf /testbed && mkdir /testbed
 WORKDIR /testbed
-RUN git init -q && git config user.name Fixture && git config user.email fixture@example.invalid && printf 'def add(a, b):\\n    return a - b\\n' > calc.py && git add calc.py && git commit -qm base && git rev-parse HEAD > /fixture-base && printf 'future solution canary' > later.txt && git add later.txt && git commit -qm later && git checkout -q $(cat /fixture-base)
+RUN git init -q && git config user.name Fixture && git config user.email fixture@example.invalid && printf 'def add(a, b):\\n    return a - b\\n' > calc.py && git add calc.py && git commit -qm base && git rev-parse HEAD > /fixture-base && printf 'future solution canary' > later.txt && git add later.txt && git commit -qm later
 '''
         with tempfile.TemporaryDirectory() as directory:
             (Path(directory)/'Dockerfile').write_text(dockerfile)
@@ -121,7 +121,7 @@ RUN git init -q && git config user.name Fixture && git config user.email fixture
 
     def test_bad_base_and_runaway_commands_remove_container(self):
         workspace = PreparedWorkspace(self.image, 'a'*40)
-        with self.assertRaisesRegex(SandboxUnavailable, 'Base commit mismatch'):
+        with self.assertRaisesRegex(SandboxUnavailable, 'Base commit unavailable'):
             workspace.__enter__()
         self.assertFalse(workspace.active)
         for command, kwargs in [('sleep 30', {'timeout':1}), ('python -c "print(\'x\'*100000)"', {'output_limit':1024})]:

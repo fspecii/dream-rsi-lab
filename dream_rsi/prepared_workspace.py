@@ -68,6 +68,10 @@ def bounded_process(argv, *, payload=b'', timeout=60, limit=65536):
 # Keep exactly the originally tracked files, including tracked ignored files.
 INITIALIZE = r'''
 set -eu
+# Prepared images may retain the environment-setup revision at HEAD.
+# Resolve only the registered task commit, before any model can inspect files.
+git -c safe.directory=/testbed cat-file -e "$1^{commit}" 2>/dev/null || { echo 'Base commit unavailable' >&2; exit 1; }
+git -c safe.directory=/testbed reset --hard "$1" >/dev/null
 actual=$(git -c safe.directory=/testbed rev-parse HEAD)
 [ "$actual" = "$1" ] || { echo 'Base commit mismatch' >&2; exit 1; }
 git -c safe.directory=/testbed ls-files -z > /tmp/dream-original-files
