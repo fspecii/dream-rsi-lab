@@ -91,17 +91,17 @@ p = root / name
 if (not name or name.startswith('/') or any(x in ('', '.', '..', '.git') for x in name.split('/'))
     or '\\' in name or any(ord(c) < 32 for c in name)):
     raise ValueError('Invalid repository path')
-if not p.resolve().is_relative_to(root) or p.is_symlink() or not p.is_file():
+if root not in p.resolve().parents or p.is_symlink() or not p.is_file():
     raise ValueError('Expected an existing regular repository file')
 subprocess.run(['git', 'ls-files', '--error-unmatch', '--', name], check=True, stdout=subprocess.DEVNULL)
 if p.stat().st_size > 262144:
     raise ValueError('File exceeds 256 KiB')
-content = p.read_text()
+content = p.read_text(encoding='utf-8')
 if request['action'] == 'read':
     start = request.get('start', 1)
     end = request.get('end', start + 159)
     if type(start) is not int or type(end) is not int or not 1 <= start <= end <= start + 299:
-        raise ValueError('Read 1–300 lines using positive line numbers')
+        raise ValueError('Read 1-300 lines using positive line numbers')
     print('\n'.join(f'{i}: {line}' for i, line in enumerate(content.splitlines(), 1) if start <= i <= end))
 elif request['action'] == 'replace':
     old, new = request['old'], request['new']
@@ -110,7 +110,7 @@ elif request['action'] == 'replace':
     changed = content.replace(old, new, 1)
     if len(changed.encode()) > 262144:
         raise ValueError('Changed file exceeds 256 KiB')
-    p.write_text(changed)
+    p.write_text(changed, encoding='utf-8')
     print('Replaced one occurrence')
 else:
     raise ValueError('Unknown file action')
@@ -142,6 +142,7 @@ class PreparedWorkspace:
                    '--log-driver=none', '--user=0:0', '--workdir=/testbed',
                    '--env=HOME=/tmp/dream-home', '--env=GIT_CONFIG_NOSYSTEM=1',
                    '--env=GIT_CONFIG_GLOBAL=/dev/null', '--env=PYTHONDONTWRITEBYTECODE=1',
+                   '--env=LANG=C.UTF-8', '--env=LC_ALL=C.UTF-8',
                    '--env=PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/bin:/usr/local/bin:/usr/bin:/bin',
                    '--entrypoint=/bin/sh', self.image_id, '-c', 'while :; do sleep 3600; done']
         self.active = True  # Also clean up an uncertain/timed-out Docker launch.
