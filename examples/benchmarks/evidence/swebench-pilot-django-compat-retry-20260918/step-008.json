@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "replace",
+    "path": "django/core/serializers/utils.py",
+    "old": "if fields and f.name not in fields:",
+    "new": "if fields is not None and f.name not in fields:"
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 11, in <module>\nValueError: Expected an existing regular repository file\n",
+    "seconds": 0.34687599999597296
+  }
+}

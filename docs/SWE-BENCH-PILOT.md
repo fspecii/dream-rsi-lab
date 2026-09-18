@@ -1,6 +1,6 @@
 # Public repository-repair pilot
 
-Status: one of three registered model attempts is complete; two remain pending.
+Status: two of three registered baseline attempts are complete; Matplotlib remains pending.
 This three-task engineering pilot cannot establish benchmark-wide performance,
 controller efficiency, or industry impact. Tasks used to develop the solver are
 no longer untouched evaluation tasks.
@@ -83,7 +83,12 @@ official harness classified the submitted prediction as **empty**, with zero
 resolved instances; it did not execute tests for that empty submission. Recorded
 cost was 35,808 input tokens, 1,355 output tokens, and 275.9 seconds of model-request
 time. This is a failed candidate search, not an infrastructure failure or a full
-three-task benchmark score. Django and Matplotlib results remain pending.
+three-task benchmark score. The corrected Django baseline also exhausted 24 calls
+with an empty patch: all 14 reads, six replacements, and four shell actions failed.
+Its recorded cost was 29,400 input tokens, 1,014 output tokens, and 177.5 seconds of
+model-request time, in addition to the separate interrupted infrastructure attempt.
+The official harness classified this submission as empty with zero resolutions.
+Matplotlib remains pending. Thus neither completed baseline task was resolved.
 
 An earlier setup attempt stopped with zero model calls because the prepared image
 retained its environment-setup revision. The runner was corrected to reset to the
@@ -134,8 +139,8 @@ history removal, path rejection, timeout/overflow cleanup, and the complete
 model-action-to-prediction workflow. Enable these with
 `DREAM_TEST_PREPARED_BASE` naming an available image containing Git and Python.
 
-The shipped `repo-solve` snapshot workflow remains separate. Both repository
-workflows currently use fixed policies; no learned repository-controller
+The shipped `repo-solve` snapshot workflow remains separate. Default repository
+workflows still use fixed policies; no learned repository-controller
 improvement has been demonstrated. The incomplete pilot does not establish useful
 benchmark performance.
 

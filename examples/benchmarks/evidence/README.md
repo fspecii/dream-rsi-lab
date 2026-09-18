@@ -17,7 +17,13 @@ while repeatedly using nonexistent paths. All 24 tool actions failed.
 `dream-lab-pilot-xarray-fixed-20260918`: one submitted instance, one empty patch,
 zero resolved. Empty patches are not executed, so this is not a test-run failure.
 `xarray-candidate-audit.json` independently summarizes saved-record consistency and
-cost. It does not establish patch correctness. Django and Matplotlib are pending.
+cost. It does not establish patch correctness. Matplotlib remains pending.
+
+`swebench-pilot-django-compat-retry-20260918` is the valid Django baseline retry
+using the Python 3.6-compatible adapter. It exhausted 24 calls with an empty patch
+and 24 failed tool actions. `django-official-results.json` records the official
+empty-submission classification, and `django-candidate-audit.json` checks recorded
+costs and provenance. This is separate from the invalid infrastructure attempt.
 
 The source issue is from [SWE-bench's public task repository](https://github.com/SWE-bench/swe-bench-tasks)
 and [pydata/xarray](https://github.com/pydata/xarray). No reference patches,

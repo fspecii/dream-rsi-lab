@@ -1,0 +1,15 @@
+{
+  "action": {
+    "action": "read",
+    "path": "django/core/serializers/utils.py",
+    "start": 1,
+    "end": 300
+  },
+  "observation": {
+    "status": "completed",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 11, in <module>\nValueError: Expected an existing regular repository file\n",
+    "seconds": 0.2897344999946654
+  }
+}

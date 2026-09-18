@@ -1,0 +1,43 @@
+{
+  "instance_id": "django__django-11163",
+  "model": {
+    "name": "qwen2.5-coder:7b",
+    "model": "qwen2.5-coder:7b",
+    "modified_at": "2026-09-18T13:24:32.294940163+03:00",
+    "size": 4683087561,
+    "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "7.6B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 32768,
+      "embedding_length": 3584
+    },
+    "capabilities": [
+      "completion",
+      "tools",
+      "insert"
+    ]
+  },
+  "inputs_sha256": "60361d69d9872efc87ec711db3d2ee03e9a3b0f322b41b8b9f4b5820372f2c8b",
+  "steps": 24,
+  "seed": 2027,
+  "max_tokens_per_call": 4096,
+  "command_timeout_seconds": 60,
+  "output_limit_bytes_per_stream": 65536,
+  "implementation": {
+    "benchmark_solver.py": "de4c1bfbe0f6a06e3bc44237437da6016fcb6042a9828b2b4ad89db38e94acc1",
+    "prepared_workspace.py": "f799f562238562b7ef8feaff2859c1e64f62a901d3c203b541e640cdc301bb57",
+    "model.py": "36f369c386f0f17f5361399fd53e848c9b32bb00def54db38f5cbaa163874cd1",
+    "benchmark_inputs.py": "a30b6ee28993d074f91976c0bb1f78f5a2210e15c54dd099d2b64af48dccc7c1"
+  },
+  "policy": "fixed sequential tool loop",
+  "selection": "Current patch at finish or budget exhaustion; no official test feedback",
+  "status": "running",
+  "image_id": "sha256:50498082fff67d42201c282ba0e9f768f31e4cae8982012db9f8d4216652f24b"
+}
